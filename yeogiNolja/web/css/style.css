@@ -11,10 +11,17 @@
 	-webkit-transform: translateY(-50%);
 	transform: translateY(-50%);
 }
+/* saebom made  */
+body {
+	background-image: url('../img/background.jpg');
+	font-family: 'Montserrat', sans-serif;
+}
+
+header {
+	text-align: right;
+}
 
 #booking {
-	font-family: 'Montserrat', sans-serif;
-	background-image: url('../img/background.jpg');
 	background-size: cover;
 	background-position: center;
 }
@@ -115,8 +122,7 @@
 	transition: 0.2s all;
 }
 
-.booking-form .submit-btn:hover,
-.booking-form .submit-btn:focus {
+.booking-form .submit-btn:hover, .booking-form .submit-btn:focus {
 	opacity: 0.9;
 }
 
