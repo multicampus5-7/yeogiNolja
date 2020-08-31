@@ -13,9 +13,10 @@
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.2.xsd">
 	<context:component-scan base-package="com.*" />
 	<aop:aspectj-autoproxy></aop:aspectj-autoproxy>
-	
+
 	<mvc:annotation-driven />
-	<tx:annotation-driven transaction-manager="txManager" />
+	<tx:annotation-driven
+		transaction-manager="txManager" />
 
 
 
@@ -52,18 +53,19 @@
 			<property name="paramName" value="lang" />
 		</bean>
 	</mvc:interceptors>
-	
-	
-	
+
+
+
 	<!-- 1. Database Setting -->
 	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName"
 			value="oracle.jdbc.driver.OracleDriver" />
 		<property name="url"
-			value="jdbc:oracle:thin:@127.0.0.1:1521:xe" />
-		<property name="username" value="system" />
-		<property name="password" value="oracle" />
+			value="jdbc:oracle:thin:@oracle.ceym10bgnbuf.ap-northeast-2.rds.amazonaws.com:1521:orcl" />
+
+		<property name="username" value="db" />
+		<property name="password" value="mypassword" />
 	</bean>
 
 	<!-- 2. Transaction Setting -->

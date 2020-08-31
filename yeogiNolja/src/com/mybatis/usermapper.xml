@@ -3,23 +3,23 @@
 <mapper namespace="com.dao.UserDao">
 
 	<insert id="insert" parameterType="user">
-		INSERT INTO MUSER VALUES (#{email},#{pwd},#{name})
+		INSERT INTO USERS VALUES (#{email},#{pwd},#{name})
 	</insert>
 
 	<update id="update" parameterType="user">
-		UPDATE MUSER SET PWD=#{pwd}, NAME=#{name} WHERE EMAIL=#{email}
+		UPDATE USERS SET PWD=#{pwd}, NAME=#{name} WHERE EMAIL=#{email}
 	</update>
 
 	<delete id="delete" parameterType="String">
-		DELETE FROM MUSER WHERE EMAIL=#{k}
+		DELETE FROM USERS WHERE EMAIL=#{k}
 	</delete>
 
 	<select id="select" parameterType="String" resultType="user">
-		SELECT * FROM MUSER WHERE EMAIL=#{k}
+		SELECT * FROM USERS WHERE EMAIL=#{k}
 	</select>
 
 	<select id="selectall" resultType="user">
-		SELECT * FROM MUSER 
+		SELECT * FROM USERS 
 	</select>
 
 </mapper>
