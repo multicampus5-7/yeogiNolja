@@ -31,13 +31,19 @@
 		<c:choose>
 			<c:when test="${user == null}">
 				<p>
-					<a href="login.mc">login</a>
-					<a href="admin.mc">admin</a>
+					<a href="login.mc">login</a> <a href="admin.mc">admin</a>
 				</p>
 			</c:when>
 			<c:otherwise>
-				<p>${user.name}님</p>
-				<p><a href="logout.mc">logout</a></p>
+				<p>${user.name}님
+					<a href="logout.mc">logout</a>
+				</p>
+				<p>
+					<a href="myReserve.mc">나의 예약 확인하기 </a>
+				</p>
+				<p>
+					<a href="myInfo.mc">회원 정보 수정</a>
+				</p>
 			</c:otherwise>
 		</c:choose>
 
@@ -53,11 +59,11 @@
 					<div class="col-md-4 col-md-pull-7">
 
 						<c:choose>
-							<c:when test="${setBookingForm==true }">
+							<c:when test="${setBooking}">
 								<jsp:include page="bookingForm.jsp"></jsp:include>
 							</c:when>
 							<c:otherwise>
-								<p>form not found</p>
+								<p>set booking false</p>
 							</c:otherwise>
 						</c:choose>
 					</div>
