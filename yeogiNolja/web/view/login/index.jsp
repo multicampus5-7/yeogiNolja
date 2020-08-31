@@ -72,8 +72,7 @@
 				</div>
 
 				<div class="text-center">
-					<span class="txt1"> Create an account? </span> <a href="#"
-						class="txt2 hov1"> Sign up </a>
+					<span class="txt1"> Create an account? </span> <a href="../user/register.jsp" class="txt2 hov1"> Sign up </a>
 				</div>
 			</div>
 		</div>
