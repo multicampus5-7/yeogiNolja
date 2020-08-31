@@ -32,6 +32,7 @@
 			<c:when test="${user == null}">
 				<p>
 					<a href="login.mc">login</a>
+					<a href="admin.mc">admin</a>
 				</p>
 			</c:when>
 			<c:otherwise>
