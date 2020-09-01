@@ -23,20 +23,23 @@
 		return today = "" + yyyy + '-' + mm + '-' + dd;
 	}
 
-	function getListData() {
+	function getHotelListData() {
 		$.ajax({
-			
+			url : 'hotelListAutoCom.mc',
+			async : false,
 			success : function() {
-				console.log("sssss");
+				console.log("autoComplete ok");
 			},
 			error : function() {
-				console.log("fail");
+				console.log("autoComplete Fail");
 			}
 		});
 	}
-	$(function() { //화면 다 뜨면 시작
+
+	function setAutoComplete() { //화면 다 뜨면 시작
 		var searchSource = [ "김치 볶음밥", "신라면", "진라면", "라볶이", "팥빙수", "너구리",
 				"삼양라면", "안성탕면", "불닭볶음면", "짜왕", "라면사리" ];
+		console.log("zzz")
 		$("#dest").autocomplete({
 			source : searchSource,
 			select : function(event, ui) {
@@ -50,7 +53,6 @@
 			classes : {
 				"ui-autocomplete" : "highlight"
 			},
-			delay : 500,
 			position : {
 				my : "right top",
 				at : "right bottom"
@@ -60,12 +62,11 @@
 			}
 		});
 
-	});
+	}
 
 	$(document).ready(function() {
-		console.log(${booking});
-		//getListData();
-
+		getHotelListData();
+		setAutoComplete();
 		var today = getDateFormat(new Date());
 		document.getElementById("inDate").setAttribute("min", today);
 		document.getElementById("outDate").setAttribute("min", today);
