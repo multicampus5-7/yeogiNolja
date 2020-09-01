@@ -53,4 +53,10 @@ public class HotelListBiz implements Biz<String, HotelList> {
 		return null;
 	}
 
+	@Override
+	public String count() throws Exception {
+		String result = dao.selectall_count();
+		return result;
+	}
+
 }

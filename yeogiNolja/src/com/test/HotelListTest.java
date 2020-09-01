@@ -25,23 +25,33 @@ public class HotelListTest {
 //			e.printStackTrace();
 //		}
 
+//		try {
+//			HotelList h = biz.get("ht0001");
+//			System.out.println("----------" + h);
+//		} catch (Exception e1) {
+//			// TODO Auto-generated catch block
+//			e1.printStackTrace();
+//		}
+		
+		//Count Total Hotel
+		String hotelTotal = null;
 		try {
-			HotelList h = biz.get("ht0001");
-			System.out.println("----------" + h);
-		} catch (Exception e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-
-		ArrayList<HotelList> list = null;
-		try {
-			list = biz.get();
-			for (HotelList hotelList : list) {
-				System.out.println(hotelList);
-			}
+			hotelTotal = biz.count();
+			System.out.println(hotelTotal);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	
+
+//		ArrayList<HotelList> list = null;
+//		try {
+//			list = biz.get();
+//			for (HotelList hotelList : list) {
+//				System.out.println(hotelList);
+//			}
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
 
 	}
 }
