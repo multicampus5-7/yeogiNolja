@@ -1,9 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<link rel="stylesheet"
+	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+
 <script>
 	function getDateFormat(date) {
 		var dd = date.getDate();
@@ -19,10 +23,53 @@
 		return today = "" + yyyy + '-' + mm + '-' + dd;
 	}
 
+	function getListData() {
+		$.ajax({
+			
+			success : function() {
+				console.log("sssss");
+			},
+			error : function() {
+				console.log("fail");
+			}
+		});
+	}
+	$(function() { //화면 다 뜨면 시작
+		var searchSource = [ "김치 볶음밥", "신라면", "진라면", "라볶이", "팥빙수", "너구리",
+				"삼양라면", "안성탕면", "불닭볶음면", "짜왕", "라면사리" ];
+		$("#dest").autocomplete({
+			source : searchSource,
+			select : function(event, ui) {
+				console.log(ui.item);
+			},
+			focus : function(event, ui) {
+				return false;
+			},
+			minLength : 1,
+			autoFocus : true,
+			classes : {
+				"ui-autocomplete" : "highlight"
+			},
+			delay : 500,
+			position : {
+				my : "right top",
+				at : "right bottom"
+			},
+			close : function(event) {
+				console.log(event);
+			}
+		});
+
+	});
+
 	$(document).ready(function() {
+		console.log(${booking});
+		//getListData();
+
 		var today = getDateFormat(new Date());
 		document.getElementById("inDate").setAttribute("min", today);
 		document.getElementById("outDate").setAttribute("min", today);
+
 	});
 </script>
 
@@ -33,7 +80,7 @@
 			<span class="form-label">Your Destination</span> <input
 				class="form-control" type="text"
 				placeholder="Enter a destination or hotel name" name="dest"
-				value="${booking.dest}" required>
+				id="dest" value="${booking.dest}" required>
 
 		</div>
 		<div class="row">

@@ -43,5 +43,7 @@ public class HotelListTest {
 			e.printStackTrace();
 		}
 
+		factory.close();
+		System.out.println("end");
 	}
 }
