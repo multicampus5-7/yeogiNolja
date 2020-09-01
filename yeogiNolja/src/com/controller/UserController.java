@@ -58,6 +58,7 @@ public class UserController {
 
 	@RequestMapping("/useradd.mc")
 	public ModelAndView useradd(ModelAndView mv) {
+		System.out.println("REGISTERING>>");
 		mv.addObject("centerpage", "user/register.jsp");
 		mv.setViewName("main");
 		return mv;
@@ -65,6 +66,7 @@ public class UserController {
 
 	@RequestMapping("/useraddimpl.mc")
 	public ModelAndView useraddimpl(ModelAndView mv, UserVO user) {
+		
 		try {
 			biz.register(user);
 			mv.addObject("centerpage", "user/registerok.jsp");
