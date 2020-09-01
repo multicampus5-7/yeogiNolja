@@ -25,14 +25,8 @@ public class MainController {
 	public ModelAndView main(HttpServletRequest request) {
 		ModelAndView mv = new ModelAndView();
 
-		String centerPage = request.getParameter("page");
-		if (centerPage == null)
-			centerPage = "center.jsp";
-		System.out.println("center: " + centerPage);
-		mv.addObject("centerpage", centerPage);
+		mv.addObject("centerpage", "center.jsp");
 		mv.addObject("booking", booking);
-		mv.addObject("setBooking", true);
-
 		mv.setViewName("main");
 		return mv;
 	}
@@ -49,14 +43,4 @@ public class MainController {
 		return "redirect: hotelList.mc";
 	}
 
-	@RequestMapping("hotelList.mc")
-	public ModelAndView hotelList(HttpServletRequest request) {
-		ModelAndView mv = new ModelAndView();
-
-		mv.addObject("centerpage", "hotelList.jsp");
-		mv.addObject("setBooking", true);
-		mv.addObject("booking", booking);
-		mv.setViewName("main");
-		return mv;
-	}
 }

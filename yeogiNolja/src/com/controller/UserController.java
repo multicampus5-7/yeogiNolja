@@ -1,7 +1,5 @@
 package com.controller;
 
-import java.util.ArrayList;
-
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -27,23 +25,24 @@ public class UserController {
 	@RequestMapping("loginImpl.mc")
 	public ModelAndView loginImpl(HttpServletRequest request) {
 		ModelAndView mv = new ModelAndView();
-
 		String id = request.getParameter("email");
 		String pwd = request.getParameter("pwd");
 		UserVO user = null;
-		String centerPage = "user/loginfail.jsp";
 		try {
 			user = biz.get(id);
 			if (user.getPwd().equals(pwd)) {
 				HttpSession session = request.getSession();
 				session.setAttribute("user", user);
-				centerPage = "user/loginok.jsp";
-			}
+				mv.addObject("centerpage", "user/loginok.jsp");
+			} else
+				mv.addObject("centerpage", "user/loginfail.jsp");
+
 		} catch (Exception e) {
+			mv.addObject("centerpage", "user/loginfail.jsp");
 			e.printStackTrace();
 		}
-
-		return new ModelAndView("redirect:main.mc?page=" + centerPage);
+		mv.setViewName("main");
+		return mv;
 	}
 
 	@RequestMapping("/logout.mc")

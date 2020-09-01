@@ -57,15 +57,7 @@
 						<jsp:include page="${centerpage}"></jsp:include>
 					</div>
 					<div class="col-md-4 col-md-pull-7">
-
-						<c:choose>
-							<c:when test="${setBooking}">
-								<jsp:include page="bookingForm.jsp"></jsp:include>
-							</c:when>
-							<c:otherwise>
-								<p>set booking false</p>
-							</c:otherwise>
-						</c:choose>
+						<jsp:include page="bookingForm.jsp"></jsp:include>
 					</div>
 				</div>
 			</div>

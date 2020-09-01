@@ -3,10 +3,13 @@
 <configuration>
 	<typeAliases>
 		<typeAlias type="com.vo.UserVO" alias="user" />
+		<typeAlias type="com.vo.HotelList" alias="hotelList" />
+
 	</typeAliases>
 
 	<mappers>
 		<mapper resource="com/mybatis/usermapper.xml" />
+		<mapper resource="com/mybatis/hotelListMapper.xml" />
+
 	</mappers>
 </configuration>
-

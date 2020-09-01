@@ -1,83 +1,86 @@
 package com.vo;
 
 public class HotelList {
-	String hotelId;
-	String name;
-	String addrSd;
-	String addrSgg;
-	String addrEmp;
-	int totalRoom;
+	String hotel_id;
+	String hotel_name;
+	String addr_sd;
+	String addr_sgg;
+	String addr_emd;
+	int total_room;
 	double lon;
 	double lat;
 	String amenities;
 	String grade;
-	String hotelImg;
+	String hotel_img;
 
 	public HotelList() {
 	}
 
-	public HotelList(String hotelId, String name, String addrSd, String addrSgg, String addrEmp, int totalRoom,
-			double lon, double lat, String amenities, String grade, String hotelImg) {
-		super();
-		this.hotelId = hotelId;
-		this.name = name;
-		this.addrSd = addrSd;
-		this.addrSgg = addrSgg;
-		this.addrEmp = addrEmp;
-		this.totalRoom = totalRoom;
+	public HotelList(String hotel_id) {
+		this.hotel_id = hotel_id;
+	}
+
+	public HotelList(String hotel_id, String hotel_name, String addr_sd, String addr_sgg, String addr_emd, int total_room,
+			double lon, double lat, String amenities, String grade, String hotel_img) {
+		this.hotel_id = hotel_id;
+		this.hotel_name = hotel_name;
+		this.addr_sd = addr_sd;
+		this.addr_sgg = addr_sgg;
+		this.addr_emd = addr_emd;
+		this.total_room = total_room;
 		this.lon = lon;
 		this.lat = lat;
 		this.amenities = amenities;
 		this.grade = grade;
-		this.hotelImg = hotelImg;
+		this.hotel_img = hotel_img;
 	}
 
-	public String getHotelId() {
-		return hotelId;
+	public String getHotel_id() {
+		return hotel_id;
 	}
 
-	public void setHotelId(String hotelId) {
-		this.hotelId = hotelId;
+	public void setHotel_id(String hotel_id) {
+		this.hotel_id = hotel_id;
 	}
 
 	public String getName() {
-		return name;
+		return hotel_name;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setName(String hotel_name) {
+		this.hotel_name = hotel_name;
 	}
 
-	public String getAddrSd() {
-		return addrSd;
+	public String getAddr_sd() {
+		return addr_sd;
 	}
 
-	public void setAddrSd(String addrSd) {
-		this.addrSd = addrSd;
+	public void setAddr_sd(String addr_sd) {
+		this.addr_sd = addr_sd;
 	}
 
-	public String getAddrSgg() {
-		return addrSgg;
+	public String getAddr_sgg() {
+		return addr_sgg;
 	}
 
-	public void setAddrSgg(String addrSgg) {
-		this.addrSgg = addrSgg;
+	public void setAddr_sgg(String addr_sgg) {
+		this.addr_sgg = addr_sgg;
 	}
 
-	public String getAddrEmp() {
-		return addrEmp;
+	public String getAddr_emd() {
+		return addr_emd;
 	}
 
-	public void setAddrEmp(String addrEmp) {
-		this.addrEmp = addrEmp;
+	public void setAddr_emd(String addr_emd) {
+		this.addr_emd = addr_emd;
 	}
 
-	public int getTotalRoom() {
-		return totalRoom;
+	public int getTotal_room() {
+		return total_room;
 	}
 
-	public void setTotalRoom(int totalRoom) {
-		this.totalRoom = totalRoom;
+	public void setTotal_room(int total_room) {
+		this.total_room = total_room;
 	}
 
 	public double getLon() {
@@ -112,20 +115,19 @@ public class HotelList {
 		this.grade = grade;
 	}
 
-	public String getHotelImg() {
-		return hotelImg;
+	public String getHotel_img() {
+		return hotel_img;
 	}
 
-	public void setHotelImg(String hotelImg) {
-		this.hotelImg = hotelImg;
+	public void setHotel_img(String hotel_img) {
+		this.hotel_img = hotel_img;
 	}
 
 	@Override
 	public String toString() {
-		return "HotelList [hotelId=" + hotelId + ", name=" + name + ", addrSd=" + addrSd + ", addrSgg=" + addrSgg
-				+ ", addrEmp=" + addrEmp + ", totalRoom=" + totalRoom + ", lon=" + lon + ", lat=" + lat + ", amenities="
-				+ amenities + ", grade=" + grade + ", hotelImg=" + hotelImg + "]";
+		return "HotelList [hotel_id=" + hotel_id + ", name=" + hotel_name + ", addr_sd=" + addr_sd + ", addr_sgg=" + addr_sgg
+				+ ", addr_emd=" + addr_emd + ", total_room=" + total_room + ", lon=" + lon + ", lat=" + lat
+				+ ", amenities=" + amenities + ", grade=" + grade + ", hotel_img=" + hotel_img + "]";
 	}
-	
-	
+
 }

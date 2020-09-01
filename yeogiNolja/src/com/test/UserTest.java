@@ -8,7 +8,7 @@ import org.springframework.context.support.GenericXmlApplicationContext;
 import com.frame.Biz;
 import com.vo.UserVO;
 
-public class App2 {
+public class UserTest {
 
 	public static void main(String[] args) {
 		System.out.println("App Start .......");
