@@ -14,6 +14,7 @@ public interface Biz<K,V> {
 	public V get(K k) throws Exception;
 	public ArrayList<V> get() throws Exception;
 	public ArrayList<V> search(Object obj) throws Exception;
+	public K count() throws Exception;
 }
 
 

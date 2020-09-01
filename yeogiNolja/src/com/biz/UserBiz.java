@@ -52,4 +52,12 @@ public class UserBiz implements Biz<String, UserVO> {
 		return null;
 	}
 
+	@Override
+	public String count() throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+
 }
