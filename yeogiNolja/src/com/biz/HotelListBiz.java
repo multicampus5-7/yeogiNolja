@@ -64,4 +64,10 @@ public class HotelListBiz implements Biz<String, HotelList> {
 		return dao.selectall_count();
 	}
 
+	@Override
+	public ArrayList<HotelList> getN(String k) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

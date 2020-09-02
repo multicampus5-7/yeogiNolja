@@ -11,5 +11,6 @@ public interface Dao<K,V> {
 	public ArrayList<V> search(Object obj) throws Exception;
 	public K selectall_count() throws Exception;
 	public void insertAdminFrom(V v) throws Exception;
+	public ArrayList<V> selectN(K k) throws Exception;
 
 }

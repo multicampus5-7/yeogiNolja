@@ -63,6 +63,11 @@ public class HotelRoomBiz implements Biz<String, HotelRoomVO> {
 		return dao.selectall_count();
 	}
 
+	@Override
+	public ArrayList<HotelRoomVO> getN(String k) throws Exception {
+		return dao.selectN(k);
+	}
+
 	
 
 }

@@ -17,9 +17,25 @@ public class HotelRoomTest {
 
 		Biz<String, HotelRoomVO> biz = (Biz) factory.getBean("hotelRoomBiz");	
 
+//		//select all room
+//		ArrayList<HotelRoomVO> list = null;
+//		try {
+//			list = biz.get();
+//			for (HotelRoomVO hotelRoomList : list) {
+//				System.out.println(hotelRoomList);
+//			}
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//		
+//		factory.close();
+//		System.out.println("end");
+		
+		
+		//select Hotels Room
 		ArrayList<HotelRoomVO> list = null;
 		try {
-			list = biz.get();
+			list = biz.getN("ht0001");
 			for (HotelRoomVO hotelRoomList : list) {
 				System.out.println(hotelRoomList);
 			}
@@ -28,6 +44,7 @@ public class HotelRoomTest {
 		}
 		
 		factory.close();
-		System.out.println("end");
+		System.out.println("end");		
+		
 	}
 }

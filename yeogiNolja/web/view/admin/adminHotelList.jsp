@@ -2,7 +2,6 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-
 <div class="app-page-title">
 	<div class="page-title-wrapper">
 		<div class="page-title-heading">
@@ -75,7 +74,7 @@
 						<c:forEach var="hlist" items="${hotelList}">
 							<tr>
 								<th scope="row">${hlist.hotel_id}</th>
-								<td>${hlist.name}</td>
+								<td><a href="hotelDetail.mc?id=${hlist.hotel_id}">${hlist.name}</a></td>
 								<td>${hlist.grade}</td>
 								<td>${hlist.total_room}</td>
 								<td>${hlist.addr_sd} ${hlist.addr_sgg} ${hlist.addr_emd}</td>						

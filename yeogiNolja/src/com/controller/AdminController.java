@@ -3,16 +3,14 @@ package com.controller;
 import java.util.ArrayList;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.frame.Biz;
-import com.vo.Booking;
 import com.vo.HotelList;
+import com.vo.HotelRoomVO;
 import com.vo.UserVO;
 
 @Controller
@@ -23,6 +21,9 @@ public class AdminController {
 	
 	@Resource(name = "ubiz")
 	Biz<String, UserVO> ubiz;
+	
+	@Resource(name = "hotelRoomBiz")
+	Biz<String, HotelRoomVO> rbiz;	
 
 	@RequestMapping("/admin.mc")
 	public ModelAndView admin() {
@@ -85,8 +86,39 @@ public class AdminController {
 			e.printStackTrace();
 		}	
 	
-		mv.addObject("centerpage", "adminHotelRegister.jsp");
-		mv.setViewName("admin/index");
 		return "redirect:adminHotelList.mc";
+	}
+	
+	@RequestMapping("/adminHotelRoomRegisterImpl.mc")
+	public String adminHotelRoomRegisterImpl(HotelRoomVO hr) {
+		ModelAndView mv = new ModelAndView();
+		System.out.println(hr);
+	
+		return "redirect:adminHotelList.mc";
+	}
+	
+	@RequestMapping("hotelDetail.mc")
+	public ModelAndView hotelDetail(String id) {
+		ModelAndView mv = new ModelAndView();
+		System.out.println(id);
+		HotelList h = null;
+		ArrayList<HotelRoomVO> roomlist = new ArrayList<HotelRoomVO>();
+
+		try {
+			h = hbiz.get(id);
+			roomlist = rbiz.getN(id);
+			System.out.println(h);
+			System.out.println(roomlist);
+	
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		mv.addObject("hotelDetail", h);
+		mv.addObject("roomList", roomlist);
+		mv.addObject("centerpage", "adminHotelDetail.jsp");
+		mv.setViewName("admin/index");		
+		return mv;
 	}
 }

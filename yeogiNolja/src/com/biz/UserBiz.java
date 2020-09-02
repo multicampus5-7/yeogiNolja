@@ -64,4 +64,10 @@ public class UserBiz implements Biz<String, UserVO> {
 
 	}
 
+	@Override
+	public ArrayList<UserVO> getN(String k) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

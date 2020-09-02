@@ -25,6 +25,10 @@
 	<select id="selectall_count" resultType="String">
 		SELECT COUNT(*) FROM HOTEL_ROOM 
 	</select>
+	
+	<select id="selectN" resultType="hotelRoomVO">
+		SELECT * FROM HOTEL_ROOM WHERE HOTEL_ID=#{k}
+	</select>
 
 
 </mapper>
