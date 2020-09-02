@@ -52,4 +52,16 @@ public class UserBiz implements Biz<String, UserVO> {
 		return null;
 	}
 
+	@Override
+	public void registerAdmin(UserVO v) throws Exception {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public String count() throws Exception {
+		return dao.selectall_count();
+
+	}
+
 }

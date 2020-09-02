@@ -21,5 +21,14 @@
 	<select id="selectall" resultType="hotelList">
 		SELECT * FROM HOTEL_LIST 
 	</select>
+	
+	<select id="selectall_count" resultType="String">
+		SELECT COUNT(*) FROM HOTEL_LIST 
+	</select>
+
+	<insert id="insertAdminFrom" parameterType="hotelList">
+		INSERT INTO HOTEL_LIST (HOTEL_ID,HOTEL_NAME,ADDR_SD,ADDR_SGG,ADDR_EMD,TOTAL_ROOM,AMENITIES,GRADE)
+		VALUES (#{hotel_id},#{name},#{addr_sd},#{addr_sgg},#{addr_emd},#{total_room},#{amenities},#{grade})	
+	</insert>	
 
 </mapper>

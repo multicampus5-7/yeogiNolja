@@ -20,6 +20,18 @@ public class HotelList {
 		this.hotel_id = hotel_id;
 	}
 
+	public HotelList(String hotel_id, String hotel_name, String addr_sd, String addr_sgg, String addr_emd,
+			int total_room, String amenities, String grade) {
+		this.hotel_id = hotel_id;
+		this.hotel_name = hotel_name;
+		this.addr_sd = addr_sd;
+		this.addr_sgg = addr_sgg;
+		this.addr_emd = addr_emd;
+		this.total_room = total_room;
+		this.amenities = amenities;
+		this.grade = grade;
+	}
+	
 	public HotelList(String hotel_id, String hotel_name, String addr_sd, String addr_sgg, String addr_emd, int total_room,
 			double lon, double lat, String amenities, String grade, String hotel_img) {
 		this.hotel_id = hotel_id;

@@ -22,5 +22,9 @@
 		SELECT * FROM USERS 
 	</select>
 
+	<select id="selectall_count" resultType="String">
+		SELECT COUNT(*) FROM USERS
+	</select>
+
 </mapper>
 

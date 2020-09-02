@@ -52,21 +52,32 @@ public class UserTest {
 //		}
 //		
 //		
-		ArrayList<UserVO> list = null;
+//		ArrayList<UserVO> list = null;
+//		try {
+//			list = biz.get();
+//			for (UserVO co : list) {
+//				System.out.println(co);
+//			}
+//		} catch (Exception e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//
+//		factory.close();
+//		System.out.println("Spring End .......");
+//		System.out.println("App End .......");
+		
+		// Count Total USERS
+		String userTotal = null;
 		try {
-			list = biz.get();
-			for (UserVO co : list) {
-				System.out.println(co);
-			}
+			userTotal = biz.count();
+			System.out.println(userTotal);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
-
-		factory.close();
-		System.out.println("Spring End .......");
-		System.out.println("App End .......");
+		}	
 
 	}
+	
+	
 
 }

@@ -53,4 +53,15 @@ public class HotelListBiz implements Biz<String, HotelList> {
 		return null;
 	}
 
+	@Override
+	public void registerAdmin(HotelList v) throws Exception {
+		dao.insertAdminFrom(v);
+		
+	}
+
+	@Override
+	public String count() throws Exception {
+		return dao.selectall_count();
+	}
+
 }
