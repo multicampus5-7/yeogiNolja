@@ -3,7 +3,7 @@
 <mapper namespace="com.dao.UserDao">
 
 	<insert id="insert" parameterType="user">
-		INSERT INTO USERS VALUES (#{email},#{pwd},#{name})
+		INSERT INTO USERS VALUES (#{email},#{pwd},#{name}, 'N')
 	</insert>
 
 	<update id="update" parameterType="user">

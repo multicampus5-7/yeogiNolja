@@ -1,15 +1,10 @@
 package com.controller;
 
-import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.HashSet;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpServletRequest;
 
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -24,6 +19,7 @@ public class HotelController {
 	@Resource(name = "hotelListBiz")
 	Biz<String, HotelList> biz;
 
+<<<<<<< HEAD
 	@RequestMapping("/hotelListAutoCom.mc")
 	@ResponseBody
 	public void hotelListAutoCom(HttpServletResponse response) throws IOException {
@@ -70,6 +66,9 @@ public class HotelController {
 	}
 
 	@RequestMapping("/hotelList.mc")
+=======
+	@RequestMapping("hotelList.mc")
+>>>>>>> branch 'master' of https://github.com/multicampus5-7/yeogiNolja.git
 	public ModelAndView hotelList() {
 		ArrayList<HotelList> hotelList = new ArrayList<HotelList>();
 		try {

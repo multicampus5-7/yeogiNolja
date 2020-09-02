@@ -55,24 +55,27 @@ public class UserController {
 		return new ModelAndView("redirect: main.mc");
 	}
 
-	@RequestMapping("/useradd.mc")
-	public ModelAndView useradd(ModelAndView mv) {
-		System.out.println("REGISTERING>>");
-		mv.addObject("centerpage", "user/register.jsp");
-		mv.setViewName("main");
-		return mv;
+//	@RequestMapping("/useradd.mc")
+//	public ModelAndView useradd(ModelAndView mv) {
+//		System.out.println("REGISTERING>>");
+//		mv.addObject("centerpage", "user/register.jsp");
+//		mv.setViewName("main");
+//		return mv;
+//	}
+	@RequestMapping("useradd.mc")
+	public String useradd() {
+		return "user/register";
 	}
 
-	@RequestMapping("/useraddimpl.mc")
+	@RequestMapping("useraddimpl.mc")
 	public ModelAndView useraddimpl(ModelAndView mv, UserVO user) {
-		
 		try {
 			biz.register(user);
-			mv.addObject("centerpage", "user/registerok.jsp");
 		} catch (Exception e) {
 			mv.addObject("centerpage", "user/registerfail.jsp");
 			e.printStackTrace();
 		}
+		mv.addObject("centerpage", "user/registerok.jsp");
 		mv.setViewName("main");
 		return mv;
 	}
