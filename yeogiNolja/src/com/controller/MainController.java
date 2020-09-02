@@ -19,14 +19,12 @@ public class MainController {
 
 	@Resource(name = "ubiz")
 	Biz<String, UserVO> biz;
-	Booking booking;
 
 	@RequestMapping("/main.mc")
 	public ModelAndView main(HttpServletRequest request) {
 		ModelAndView mv = new ModelAndView();
 
 		mv.addObject("centerpage", "center.jsp");
-		mv.addObject("booking", booking);
 		mv.setViewName("main");
 		return mv;
 	}
@@ -35,11 +33,13 @@ public class MainController {
 	public String bookingImpl(HttpServletRequest request, Booking booking) {
 		try {
 			request.setCharacterEncoding("UTF-8");
+
+			HttpSession session = request.getSession();
+			session.setAttribute("booking", booking);
 		} catch (UnsupportedEncodingException e) {
 			System.out.println("booking error");
 			e.printStackTrace();
 		}
-		this.booking = booking;
 		return "redirect: hotelList.mc";
 	}
 

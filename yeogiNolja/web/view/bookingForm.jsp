@@ -27,8 +27,10 @@
 		$.ajax({
 			url : 'hotelListAutoCom.mc',
 			async : false,
-			success : function() {
+
+			success : function(result) {
 				console.log("autoComplete ok");
+				setAutoComplete(result.data);
 			},
 			error : function() {
 				console.log("autoComplete Fail");
@@ -36,10 +38,7 @@
 		});
 	}
 
-	function setAutoComplete() { //화면 다 뜨면 시작
-		var searchSource = [ "김치 볶음밥", "신라면", "진라면", "라볶이", "팥빙수", "너구리",
-				"삼양라면", "안성탕면", "불닭볶음면", "짜왕", "라면사리" ];
-		console.log("zzz")
+	function setAutoComplete(searchSource) {
 		$("#dest").autocomplete({
 			source : searchSource,
 			select : function(event, ui) {
@@ -66,7 +65,6 @@
 
 	$(document).ready(function() {
 		getHotelListData();
-		setAutoComplete();
 		var today = getDateFormat(new Date());
 		document.getElementById("inDate").setAttribute("min", today);
 		document.getElementById("outDate").setAttribute("min", today);
