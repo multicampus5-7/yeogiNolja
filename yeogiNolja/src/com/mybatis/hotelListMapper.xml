@@ -21,9 +21,5 @@
 	<select id="selectall" resultType="hotelList">
 		SELECT * FROM HOTEL_LIST 
 	</select>
-	
-	<select id="selectall_count" resultType="String">
-		SELECT COUNT(*) FROM HOTEL_LIST 
-	</select>
 
 </mapper>
