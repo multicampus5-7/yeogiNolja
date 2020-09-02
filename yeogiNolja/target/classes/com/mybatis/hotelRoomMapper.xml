@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.HotelRoomDao">
+
+	<insert id="insert" parameterType="hotelRoomVO">
+		INSERT INTO HOTEL_ROOM VALUES (#{room_id},#{room_name},#{hotel_id},#{capacity},#{price},#{room_img})
+	</insert>
+
+	<update id="update" parameterType="hotelRoomVO">
+		UPDATE HOTEL_ROOM SET ROOM_NAME=#{room_name}, HOTEL_ID=#{hotel_id}, CAPACITY=#{capacity}, PRCICE=#{price} WHERE ROOM_ID=#{room_id}
+	</update>
+
+	<delete id="delete" parameterType="String">
+		DELETE FROM HOTEL_ROOM WHERE ROOM_ID=#{k}
+	</delete>
+
+	<select id="select" parameterType="String" resultType="hotelRoomVO">
+		SELECT * FROM HOTEL_ROOM WHERE ROOM_ID=#{k}
+	</select>
+
+	<select id="selectall" resultType="hotelRoomVO">
+		SELECT * FROM HOTEL_ROOM 
+	</select>
+	
+	<select id="selectall_count" resultType="String">
+		SELECT COUNT(*) FROM HOTEL_ROOM 
+	</select>
+
+
+</mapper>
