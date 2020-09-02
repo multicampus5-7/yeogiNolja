@@ -66,9 +66,11 @@
 		data-toggle="tab" href="#tab-content-2"> <span>Basic Alerts</span>
 	</a></li>
 </ul>
+
 <div class="tab-content">
 	<div class="tab-pane tabs-animation fade show active"
 		id="tab-content-0" role="tabpanel">
+		<form action="adminHotelRegisterImpl.mc" method="post">
 		<div class="main-card mb-3 card">
 			<div class="card-body">
 				<div class="card-title">Enter Hotel Information</div>
@@ -76,61 +78,83 @@
 					<div class="col-md-3">
 						<div class="form-group">
 							<label class="form-label" for="title"><h5>Hotel ID</h5></label> <input
-								id="title" type="text" class="form-control"
-								placeholder="ex) ht1001" />
+								id="title" name="hotel_id" type="text" class="form-control"
+								value="ht1001"/>
 						</div>
 						<div class="form-group">
 							<label class="form-label" for="message"><h5>NAME</h5></label> <input
-								id="title" type="text" class="form-control"
-								placeholder="ex) JW Mariott" />
+								id="title" name="name" type="text" class="form-control"
+								value="Park Hyatt" />
+						</div>
+					</div>
+					
+					<div class="col-md-3">
+						<h5>Address</h5>
+						<div class="form-group">
+							<label for="showEasing">City</label> <input
+								id="showEasing" name="addr_sd" type="text" placeholder="swing, linear"
+								class="form-control" value="서울특별시" />
 						</div>
 						<div class="form-group">
+							<label for="hideEasing">Address 1</label> <input
+								id="hideEasing" name="addr_sgg" type="text" placeholder="swing, linear"
+								class="form-control" value="강남구" />
+						</div>
+						<div class="form-group">
+							<label for="showMethod">Address 2</label> <input
+								id="showMethod" name="addr_emd" type="text"
+								placeholder="show, fadeIn, slideDown" class="form-control"
+								value="테헤란로 606" />
+						</div>
+						<h5>Number of Rooms</h5>
+						<div class="form-group">
+							<input id="showDuration" type="number" name="total_room" placeholder="ms"
+								class="form-control" value="120" />
+						</div>
+					</div>
+
+					<div class="col-md-3">
+						<div id="positionGroup">
+							<h5>Amenities</h5>
 							<div class="form-check">
-								<input id="closeButton" type="checkbox" value="checked"
-									class="form-check-input" /> <label class="form-check-label"
-									for="closeButton"> Close Button </label>
+								<input type="checkbox" name="amenities" class="form-check-input"
+									value="실내수영장" checked /> <label
+									class="form-check-label" for="exampleRadios1"> 실내수영장 </label>
 							</div>
 							<div class="form-check">
-								<input id="addBehaviorOnToastClick" type="checkbox"
-									value="checked" class="form-check-input" /> <label
-									class="form-check-label" for="addBehaviorOnToastClick">
-									Add behavior on toast click </label>
+								<input type="checkbox" name="amenities" class="form-check-input"
+									value="레스토랑" /> <label class="form-check-label"
+									for="exampleRadios1"> 레스토랑 </label>
 							</div>
 							<div class="form-check">
-								<input disabled id="addBehaviorOnToastCloseClick"
-									type="checkbox" value="checked" class="form-check-input" /> <label
-									class="form-check-label" for="addBehaviorOnToastCloseClick">
-									Add behavior on toast close button click </label>
+								<input type="checkbox" name="amenities" class="form-check-input"
+									value="회의실" /> <label class="form-check-label"
+									for="exampleRadios1"> 회의실 </label>
 							</div>
 							<div class="form-check">
-								<input id="debugInfo" type="checkbox" value="checked"
-									class="form-check-input" /> <label class="form-check-label"
-									for="debugInfo"> Debug </label>
+								<input type="checkbox" name="positions" class="form-check-input"
+									value="운동시설" /> <label class="form-check-label"
+									for="exampleRadios1"> 운동시설 </label>
 							</div>
 							<div class="form-check">
-								<input id="progressBar" type="checkbox" value="checked"
-									class="form-check-input" /> <label class="form-check-label"
-									for="progressBar"> Progress Bar </label>
+								<input type="checkbox" name="amenities" class="form-check-input"
+									value="무료와이파이" /> <label class="form-check-label"
+									for="exampleRadios1"> 무료 와이파이 </label>
 							</div>
 							<div class="form-check">
-								<input id="rtl" type="checkbox" value="checked"
-									class="form-check-input" /> <label class="form-check-label"
-									for="rtl"> Right-To-Left </label>
+								<input type="checkbox" name="amenities" class="form-check-input"
+									value="주차장" /> <label
+									class="form-check-label" for="exampleRadios1"> 주차장 </label>
 							</div>
 							<div class="form-check">
-								<input id="preventDuplicates" type="checkbox" value="checked"
-									class="form-check-input" /> <label class="form-check-label"
-									for="preventDuplicates"> Prevent Duplicates </label>
+								<input type="checkbox" name="amenities" class="form-check-input"
+									value="반려동물동반" /> <label class="form-check-label"
+									for="exampleRadios1"> 반려동물 동반 </label>
 							</div>
 							<div class="form-check">
-								<input id="addClear" type="checkbox" value="checked"
-									class="form-check-input" /> <label class="form-check-label"
-									for="addClear"> Add button to force clearing a toast </label>
-							</div>
-							<div class="form-check">
-								<input id="newestOnTop" type="checkbox" value="checked"
-									class="form-check-input" /> <label class="form-check-label"
-									for="newestOnTop"> Newest on top </label>
+								<input type="checkbox" name="amenities" class="form-check-input"
+									value="카페" /> <label class="form-check-label"
+									for="exampleRadios1"> 카페 </label>
 							</div>
 						</div>
 					</div>
@@ -138,120 +162,41 @@
 						<div id="toastTypeGroup">
 							<h5>Grade</h5>
 							<div class="form-check">
-								<input type="radio" name="toasts" class="form-check-input"
-									value="success" checked /> <label class="form-check-label"
+								<input type="radio" name="grade" class="form-check-input"
+									value="5-star" checked /> <label class="form-check-label"
 									for="exampleRadios1"> 5-star </label>
 							</div>
 							<div class="form-check">
-								<input type="radio" name="toasts" class="form-check-input"
-									value="info" /> <label class="form-check-label"
+								<input type="radio" name="grade" class="form-check-input"
+									value="4-star" /> <label class="form-check-label"
 									for="exampleRadios1"> 4-star </label>
 							</div>
 							<div class="form-check">
-								<input type="radio" name="toasts" class="form-check-input"
-									value="warning" /> <label class="form-check-label"
+								<input type="radio" name="grade" class="form-check-input"
+									value="3-star" /> <label class="form-check-label"
 									for="exampleRadios1"> 3-star </label>
 							</div>
 							<div class="form-check">
-								<input type="radio" name="toasts" class="form-check-input"
-									value="error" /> <label class="form-check-label"
+								<input type="radio" name="grade" class="form-check-input"
+									value="2-star" /> <label class="form-check-label"
 									for="exampleRadios1"> 2-star </label>
 							</div>
 							<div class="form-check">
-								<input type="radio" name="toasts" class="form-check-input"
-									value="error" /> <label class="form-check-label"
+								<input type="radio" name="grade" class="form-check-input"
+									value="1-star" /> <label class="form-check-label"
 									for="exampleRadios1"> 1-star </label>
 							</div>							
-						</div>
-						<div id="positionGroup">
-							<h5>Amenities</h5>
-							<div class="form-check">
-								<input type="checkbox" name="positions" class="form-check-input"
-									value="toast-top-right" checked /> <label
-									class="form-check-label" for="exampleRadios1"> Top
-									Right </label>
-							</div>
-							<div class="form-check">
-								<input type="checkbox" name="positions" class="form-check-input"
-									value="toast-bottom-right" /> <label class="form-check-label"
-									for="exampleRadios1"> Bottom Right </label>
-							</div>
-							<div class="form-check">
-								<input type="checkbox" name="positions" class="form-check-input"
-									value="toast-bottom-left" /> <label class="form-check-label"
-									for="exampleRadios1"> Bottom Left </label>
-							</div>
-							<div class="form-check">
-								<input type="checkbox" name="positions" class="form-check-input"
-									value="toast-top-left" /> <label class="form-check-label"
-									for="exampleRadios1"> Top Left </label>
-							</div>
-							<div class="form-check">
-								<input type="checkbox" name="positions" class="form-check-input"
-									value="toast-top-full-width" /> <label class="form-check-label"
-									for="exampleRadios1"> Top Full Width </label>
-							</div>
-							<div class="form-check">
-								<input type="checkbox" name="positions" class="form-check-input"
-									value="toast-bottom-full-width" /> <label
-									class="form-check-label" for="exampleRadios1"> Bottom
-									Full Width </label>
-							</div>
-							<div class="form-check">
-								<input type="checkbox" name="positions" class="form-check-input"
-									value="toast-top-center" /> <label class="form-check-label"
-									for="exampleRadios1"> Top Center </label>
-							</div>
-							<div class="form-check">
-								<input type="checkbox" name="positions" class="form-check-input"
-									value="toast-bottom-center" /> <label class="form-check-label"
-									for="exampleRadios1"> Bottom Center </label>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-3">
-						<h5>Address</h5>
-						<div class="form-group">
-							<label for="showEasing">City</label> <input
-								id="showEasing" type="text" placeholder="swing, linear"
-								class="form-control" value="서울특별시" />
-						</div>
-						<div class="form-group">
-							<label for="hideEasing">Gu</label> <input
-								id="hideEasing" type="text" placeholder="swing, linear"
-								class="form-control" value="강남구" />
-						</div>
-						<div class="form-group">
-							<label for="showMethod">Dong</label> <input
-								id="showMethod" type="text"
-								placeholder="show, fadeIn, slideDown" class="form-control"
-								value="테헤란로 606" />
-						</div>
-					</div>
-
-					<div class="col-md-3">
-						<h5>Number of Rooms</h5>
-						<div class="form-group">
-							<label class="form-label" for="showDuration">Total
-								</label> <input id="showDuration" type="number" placeholder="ms"
-								class="form-control" value="120" />
 						</div>
 					</div>
 				</div>
 			</div>
 			<div class="card-footer d-block clearfix">
-				<div class="float-left">
-					<button type="button" class="btn btn-link text-danger"
-						id="cleartoasts">Clear Toasts</button>
-					<button type="button" class="btn btn-link" id="clearlasttoast">Clear
-						Last Toast</button>
-				</div>
 				<div class="float-right">
-					<button type="button" class="btn btn-success" id="showtoast">Register
-						</button>
+					<button type="submit" class="btn btn-success">Register </button>
 				</div>
 			</div>
 		</div>
+		</form>
 	</div>
 	<div class="tab-pane tabs-animation fade" id="tab-content-2"
 		role="tabpanel">
@@ -259,101 +204,12 @@
 			<div class="col-md-6">
 				<div class="main-card mb-3 card">
 					<div class="card-body">
-						<h5 class="card-title">Alerts</h5>
-						<div class="alert alert-primary fade show" role="alert">This
-							is a primary alert — check it out!</div>
-						<div class="alert alert-secondary fade show" role="alert">This
-							is a secondary alert — check it out!</div>
-						<div class="alert alert-success fade show" role="alert">This
-							is a success alert — check it out!</div>
-						<div class="alert alert-danger fade show" role="alert">This
-							is a danger alert — check it out!</div>
-						<div class="alert alert-warning fade show" role="alert">This
-							is a warning alert — check it out!</div>
-						<div class="alert alert-info fade show" role="alert">This is
-							a info alert — check it out!</div>
-						<div class="alert alert-light fade show" role="alert">This
-							is a light alert — check it out!</div>
-						<div class="alert alert-dark fade show" role="alert">This is
-							a dark alert — check it out!</div>
 					</div>
 				</div>
 			</div>
 			<div class="col-md-6">
 				<div class="main-card mb-3 card">
 					<div class="card-body">
-						<h5 class="card-title">Alerts Link Color</h5>
-						<div class="alert alert-primary fade show" role="alert">
-							This is a primary alert with <a href="javascript:void(0);"
-								class="alert-link">an example link</a>. Give it a click if you
-							like.
-						</div>
-						<div class="alert alert-secondary fade show" role="alert">
-							This is a secondary alert with <a href="javascript:void(0);"
-								class="alert-link">an example link</a>. Give it a click if you
-							like.
-						</div>
-						<div class="alert alert-success fade show" role="alert">
-							This is a success alert with <a href="javascript:void(0);"
-								class="alert-link">an example link</a>. Give it a click if you
-							like.
-						</div>
-						<div class="alert alert-danger fade show" role="alert">
-							This is a danger alert with <a href="javascript:void(0);"
-								class="alert-link">an example link</a>. Give it a click if you
-							like.
-						</div>
-						<div class="alert alert-warning fade show" role="alert">
-							This is a warning alert with <a href="javascript:void(0);"
-								class="alert-link">an example link</a>. Give it a click if you
-							like.
-						</div>
-						<div class="alert alert-info fade show" role="alert">
-							This is a info alert with <a href="javascript:void(0);"
-								class="alert-link">an example link</a>. Give it a click if you
-							like.
-						</div>
-						<div class="alert alert-light fade show" role="alert">
-							This is a light alert with <a href="javascript:void(0);"
-								class="alert-link">an example link</a>. Give it a click if you
-							like.
-						</div>
-						<div class="alert alert-dark fade show" role="alert">
-							This is a dark alert with <a href="javascript:void(0);"
-								class="alert-link">an example link</a>. Give it a click if you
-							like.
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-6">
-				<div class="main-card mb-3 card">
-					<div class="card-body">
-						<h5 class="card-title">Alerts Content</h5>
-						<div class="alert alert-success fade show" role="alert">
-							<h4 class="alert-heading">Well done!</h4>
-							<p>Aww yeah, you successfully read this important alert
-								message. This example text is going to run a bit longer so that
-								you can see how spacing within an alert works with this kind of
-								content.</p>
-							<hr>
-							<p class="mb-0">Whenever you need to, be sure to use margin
-								utilities to keep things nice and tidy.</p>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-6">
-				<div class="main-card mb-3 card">
-					<div class="card-body">
-						<h5 class="card-title">Dismissable Alerts</h5>
-						<div class="alert alert-info alert-dismissible fade show"
-							role="alert">
-							<button type="button" class="close" aria-label="Close">
-								<span aria-hidden="true">×</span>
-							</button>
-							I am an alert and I can be dismissed!
-						</div>
 					</div>
 				</div>
 			</div>

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.frame.Biz;
+import com.vo.Booking;
 import com.vo.HotelList;
 import com.vo.UserVO;
 
@@ -72,5 +73,20 @@ public class AdminController {
 		mv.addObject("centerpage", "adminHotelRegister.jsp");
 		mv.setViewName("admin/index");
 		return mv;
+	}
+	
+	@RequestMapping("/adminHotelRegisterImpl.mc")
+	public String adminHotelRegisterImpl(HotelList h) {
+		ModelAndView mv = new ModelAndView();
+		System.out.println(h);
+		try {
+			hbiz.registerAdmin(h);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}	
+	
+		mv.addObject("centerpage", "adminHotelRegister.jsp");
+		mv.setViewName("admin/index");
+		return "redirect:adminHotelList.mc";
 	}
 }
