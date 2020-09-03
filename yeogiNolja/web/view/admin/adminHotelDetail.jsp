@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 	
 <script src="http://maps.google.com/maps/api/js?sensor=true"></script>
 
@@ -8,7 +9,7 @@
 	<div class="page-title-wrapper">
 		<div class="page-title-heading">
 			<div class="page-title-icon">
-				<i class="pe-7s-box2 icon-gradient bg-amy-crisp"> </i>
+				<i class="pe-7s-diamond icon-gradient bg-strong-bliss"> </i>
 			</div>
 			<div>
 				${hotelDetail.name}
@@ -17,10 +18,11 @@
 			</div>
 		</div>
 		<div class="page-title-actions">
-			<button type="button" data-toggle="tooltip" title="Example Tooltip"
-				data-placement="bottom" class="btn-shadow mr-3 btn btn-dark">
-				<i class="fa fa-star"></i>
-			</button>
+			<button class="mb-2 mr-2 btn btn-info"
+				onclick="location.href='adminHotelModify.mc?id=${hotelDetail.hotel_id}'">
+				Edit</button>
+			<button class="mb-2 mr-2 btn btn-danger">
+				Delete</button>
 		</div>
 	</div>
 </div>
@@ -28,9 +30,7 @@
 	<div class="col-lg-6-2">
 		<div class="main-card mb-3 card">
 			<div class="card-body">
-			<div id="gmap-example"></div>
 				<h5 class="card-title">Hotel Information</h5>
-				<img src="img/hotel/${hotelDetail.hotel_img }">
 				<table class="mb-0 table">
 					<tbody>
 						<tr>
@@ -38,33 +38,48 @@
 							<td>${hotelDetail.hotel_id}</td>
 						</tr>
 						<tr>
+							<th>NAME</th>
+							<td>${hotelDetail.name}</td>
+						</tr>
+						<tr>
 							<th>ADDRESS</th>
 							<td>${hotelDetail.addr_sd} ${hotelDetail.addr_sgg} ${hotelDetail.addr_emd}</td>
 						</tr>
 						<tr>
 							<th>ROOMS</th>
-							<th>${hotelDetail.total_room}</th>
+							<td>${hotelDetail.total_room}</td>
 						</tr>
 						<tr>
 							<th>AMENITIES</th>
-							<th>${hotelDetail.amenities}</th>
+							<td>${hotelDetail.amenities}</td>
 						</tr>
-					</tbody>
-					<tbody><!-- 
-						<c:forEach var="hlist" items="${hotelList}">
-							<tr>
-								<th scope="row">${hlist.hotel_id}</th>
-								<td><a href="hotelDetail.mc?id=${hlist.hotel_id}">${hlist.name}</a></td>
-								<td>${hlist.grade}</td>
-								<td>${hlist.total_room}</td>
-								<td>${hlist.addr_sd} ${hlist.addr_sgg} ${hlist.addr_emd}</td>						
-							</tr>
-						</c:forEach> -->
+						<tr>
+							<th>GRADE</th>
+							<td>${hotelDetail.grade}</td>
+						</tr>
 					</tbody>
 				</table>
 			</div>
 		</div>
 	</div>
+
+	<div class="col-md-6">
+		<div class="main-card mb-3 card">
+			<div class="card-body">
+				<div class="card-title">Photo</div>
+				<img src="img/hotel/${hotelDetail.hotel_img }" width=100% height=300px>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-6">
+		<div class="main-card mb-3 card">
+			<div class="card-body">
+				<div class="card-title">Maps</div>
+				<div id="gmap-example"></div>
+			</div>
+		</div>
+	</div>
+
 	<div class="col-lg-6-2">
 		<div class="main-card mb-3 card">
 			<div class="card-body">
@@ -86,15 +101,17 @@
 							<tr>
 								<th scope="row">${r.room_id}</th>
 								<td>${r.room_num}</td>
-								<td><a href="#">${r.room_name}</a></td>
+								<td>${r.room_name}</td>
 								<td>${r.adults}</td>
-								<td>${r.price}</td>
+								<td><fmt:formatNumber value="${r.price}" pattern="###,###,###"/></td>
 								<td>
 									<button type="button" class="btn mr-2 mb-2 btn-primary" data-target="#exampleModal">
 	                                            ${r.room_img}
 	                                </button> <!-- data-toggle="modal" -->
 								</td>
-								<td></td>
+								<td><button class="mb-2 mr-2 btn-transition btn btn-outline-info" >Edit</button>
+									<button class="mb-2 mr-2 btn-transition btn btn-outline-danger">Delete</button>
+								</td>
 							</tr>
 						</c:forEach>
 					</tbody>

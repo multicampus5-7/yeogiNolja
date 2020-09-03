@@ -1,6 +1,11 @@
 .col-lg-6-2 {
 	flex:0 0 100%;
 	max-width:100%
+	
+	position: relative;
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
 }
 
 .modal-dialog-2{
@@ -10,7 +15,7 @@
 
 .form-control-address{
 	display: inherit;
-	width:33%;
+	width:32.5%;
 	height:calc(2.25rem + 2px);
 	padding:.375rem .75rem;
 	font-size:1rem;

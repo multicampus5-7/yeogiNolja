@@ -6,10 +6,10 @@
 	<div class="page-title-wrapper">
 		<div class="page-title-heading">
 			<div class="page-title-icon">
-				<i class="pe-7s-drawer icon-gradient bg-happy-itmeo"> </i>
+				<i class="pe-7s-magic-wand icon-gradient bg-mixed-hopes"> </i>
 			</div>
 			<div>
-				Hotel List
+				User List
 				<div class="page-title-subheading">Tables are the backbone of
 					almost all web applications.</div>
 			</div>
@@ -35,29 +35,27 @@
 	<div class="col-lg-6-2">
 		<div class="main-card mb-3 card">
 			<div class="card-body">
-				<h5 class="card-title">ALL Hotels</h5>
+				<h5 class="card-title">ALL Users</h5>
 				<table class="mb-0 table">
 					<thead>
 						<tr>
-							<th>ID</th>
+							<th>E-MAIL</th>
 							<th>NAME</th>
-							<th>GRADE</th>
-							<th>ROOMS</th>
-							<th>ADDRESS</th>
+							<th>PASSWORD</th>
+							<th>ADMIN</th>
 							<th>Actions</th>
 						</tr>
 					</thead>
 					<tbody>
-						<c:forEach var="hlist" items="${hotelList}">
+						<c:forEach var="u" items="${userList}">
 							<tr>
-								<th scope="row">${hlist.hotel_id}</th>
-								<td><a href="hotelDetail.mc?id=${hlist.hotel_id}">${hlist.name}</a></td>
-								<td>${hlist.grade}</td>
-								<td>${hlist.total_room}</td>
-								<td>${hlist.addr_sd} ${hlist.addr_sgg} ${hlist.addr_emd}</td>	
+								<td scope="row">${u.email}</td>
+								<th>${u.name}</th>
+								<td>${u.pwd}</td>
+								<td>${u.admin_yn}</td>
 								<td>
 									<button class="mb-2 mr-2 btn-transition btn btn-outline-info" 
-									onclick="location.href='adminHotelModify.mc?id=${hlist.hotel_id}'">Edit</button>
+									onclick="location.href='adminUserModify.mc?id=${u.email}'">Edit</button>
 									<button class="mb-2 mr-2 btn-transition btn btn-outline-danger">Delete</button>
 								</td>					
 							</tr>

@@ -450,19 +450,25 @@
                                 </li>                                
                                 <li>
                                     <a href="adminHotelRegister.mc">
-                                        <i class="metismenu-icon pe-7s-graph2">
+                                        <i class="metismenu-icon pe-7s-albums">
                                         </i>
                                         Hotel Register
                                     </a>
                                 </li>
                                 <li>
                                     <a href="adminReserve.mc">
-                                        <i class="metismenu-icon pe-7s-graph2">
+                                        <i class="metismenu-icon pe-7s-ribbon">
                                         </i>
                                         Reservations
                                     </a>
                                 </li>
-                                
+                                <li>
+                                    <a href="adminUserList.mc">
+                                        <i class="metismenu-icon pe-7s-user">
+                                        </i>
+                                        Users
+                                    </a>
+                                </li>
                                 
                                 <li class="app-sidebar__heading">Widgets</li>
                                 <li>
@@ -505,11 +511,6 @@
                                         <li class="nav-item">
                                             <a href="javascript:void(0);" class="nav-link">
                                                 Footer Link 1
-                                            </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a href="javascript:void(0);" class="nav-link">
-                                                Footer Link 2
                                             </a>
                                         </li>
                                     </ul>

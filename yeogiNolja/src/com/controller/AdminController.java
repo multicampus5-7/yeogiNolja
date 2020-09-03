@@ -156,4 +156,24 @@ public class AdminController {
 		}
 		return "redirect:hotelDetail.mc?id="+hotelid;
 	}
+	
+	@RequestMapping("/adminUserList.mc")
+	public ModelAndView adminUserList() {
+		ModelAndView mv = new ModelAndView();
+		
+		ArrayList<UserVO> ulist = null;
+		try {
+			ulist = ubiz.get();
+			for (UserVO co : ulist) {
+				System.out.println(co);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		mv.addObject("userList", ulist);
+		mv.addObject("centerpage", "adminUserList.jsp");
+		mv.setViewName("admin/index");
+		return mv;
+	}
 }

@@ -27,7 +27,7 @@
 	</select>
 	
 	<select id="selectN" resultType="hotelRoomVO">
-		SELECT * FROM HOTEL_ROOM WHERE HOTEL_ID=#{k}
+		SELECT * FROM HOTEL_ROOM WHERE HOTEL_ID=#{k} ORDER BY ROOM_NUM
 	</select>
 
 	<insert id="insertAdminForm" parameterType="hotelRoomVO">
