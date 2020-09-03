@@ -7,7 +7,7 @@
 	</insert>
 
 	<update id="update" parameterType="hotelList">
-		UPDATE HOTEL_LIST SET NAME=#{name}, TOTAL_ROOM=#{total_room} WHERE HOTEL_ID=#{hotel_id}
+		UPDATE HOTEL_LIST SET HOTEL_NAME=#{name}, TOTAL_ROOM=#{total_room} WHERE HOTEL_ID=#{hotel_id}
 	</update>
 
 	<delete id="delete" parameterType="String">
@@ -36,9 +36,13 @@
 		SELECT COUNT(*) FROM HOTEL_LIST 
 	</select>
 
-	<insert id="insertAdminFrom" parameterType="hotelList">
+	<insert id="insertAdminForm" parameterType="hotelList">
 		INSERT INTO HOTEL_LIST (HOTEL_ID,HOTEL_NAME,ADDR_SD,ADDR_SGG,ADDR_EMD,TOTAL_ROOM,AMENITIES,GRADE)
 		VALUES (#{hotel_id},#{name},#{addr_sd},#{addr_sgg},#{addr_emd},#{total_room},#{amenities},#{grade})	
-	</insert>
-
+	</insert>	
+	
+	<update id="updateAdminForm" parameterType="hotelList">
+		UPDATE HOTEL_LIST SET HOTEL_NAME=#{name}, ADDR_SD=#{addr_sd}, ADDR_SGG=#{addr_sgg}, ADDR_EMD=#{addr_emd}, TOTAL_ROOM=#{total_room}, LON=#{lon}, LAT=#{lat}, AMENITIES=#{amenities}, GRADE=#{grade}, HOTEL_IMG=#{hotel_img} 
+		WHERE HOTEL_ID=#{hotel_id}
+	</update>
 </mapper>

@@ -27,10 +27,10 @@
 	</select>
 	
 	<select id="selectN" resultType="hotelRoomVO">
-		SELECT * FROM HOTEL_ROOM WHERE HOTEL_ID=#{k}
+		SELECT * FROM HOTEL_ROOM WHERE HOTEL_ID=#{k} ORDER BY ROOM_NUM
 	</select>
 
-	<insert id="insertAdminFrom" parameterType="hotelRoomVO">
+	<insert id="insertAdminForm" parameterType="hotelRoomVO">
 		INSERT INTO HOTEL_ROOM (ROOM_ID,ROOM_NAME,HOTEL_ID,ADULTS,PRICE,ROOM_NUM)
 		VALUES (#{room_id},#{room_name},#{hotel_id},#{adults},#{price},#{room_num})	
 	</insert>

@@ -23,7 +23,7 @@ public class HotelRoomBiz implements Biz<String, HotelRoomVO> {
 
 	@Override
 	public void registerAdmin(HotelRoomVO v) throws Exception {
-		dao.insertAdminFrom(v);
+		dao.insertAdminForm(v);
 	}
 
 	@Override
@@ -66,6 +66,12 @@ public class HotelRoomBiz implements Biz<String, HotelRoomVO> {
 	@Override
 	public ArrayList<HotelRoomVO> getN(String k) throws Exception {
 		return dao.selectN(k);
+	}
+
+	@Override
+	public void modifyAdmin(HotelRoomVO v) throws Exception {
+		// TODO Auto-generated method stub
+		
 	}
 
 	

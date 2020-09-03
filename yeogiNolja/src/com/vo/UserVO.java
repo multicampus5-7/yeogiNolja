@@ -4,6 +4,7 @@ public class UserVO {
 	private String email;
 	private String pwd;
 	private String name;
+	private String admin_yn;
 
 	public UserVO() {
 	}
@@ -12,6 +13,13 @@ public class UserVO {
 		this.email = email;
 		this.pwd = pwd;
 		this.name = name;
+	}
+
+	public UserVO(String email, String pwd, String name, String admin_yn) {
+		this.email = email;
+		this.pwd = pwd;
+		this.name = name;
+		this.admin_yn = admin_yn;
 	}
 
 	public String getEmail() {
@@ -38,9 +46,19 @@ public class UserVO {
 		this.name = name;
 	}
 
+	public String getadmin_yn() {
+		return admin_yn;
+	}
+
+	public void setadmin_yn(String admin_yn) {
+		this.admin_yn = admin_yn;
+	}
+
 	@Override
 	public String toString() {
-		return "User [email=" + email + ", pwd=" + pwd + ", name=" + name + "]";
+		return "UserVO [email=" + email + ", pwd=" + pwd + ", name=" + name + ", admin_yn=" + admin_yn + "]";
 	}
+
+
 
 }

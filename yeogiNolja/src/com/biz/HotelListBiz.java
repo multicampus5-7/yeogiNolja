@@ -47,9 +47,6 @@ public class HotelListBiz implements Biz<String, HotelList> {
 		return dao.selectall();
 	}
 
-	public ArrayList<HotelList> findByKey(String k) throws Exception {
-		return null;
-	}
 
 	@Override
 	public ArrayList<HotelList> search(Object obj) throws Exception {
@@ -71,6 +68,15 @@ public class HotelListBiz implements Biz<String, HotelList> {
 	public ArrayList<HotelList> getN(String k) throws Exception {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+
+	@Override
+	public void modifyAdmin(HotelList v) throws Exception {
+		int result = dao.updateAdminForm(v);
+		if (result == 0) {
+			throw new Exception();
+		}		
 	}
 
 }

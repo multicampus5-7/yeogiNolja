@@ -122,4 +122,58 @@ public class AdminController {
 		mv.setViewName("admin/index");		
 		return mv;
 	}
+	
+	@RequestMapping("adminHotelModify.mc")
+	public ModelAndView adminHotelModify(String id) {
+		ModelAndView mv = new ModelAndView();
+		System.out.println(id);
+		HotelList h = null;
+		ArrayList<HotelRoomVO> roomlist = new ArrayList<HotelRoomVO>();
+
+		try {
+			h = hbiz.get(id);
+			roomlist = rbiz.getN(id);
+			System.out.println(h);
+			System.out.println(roomlist);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		mv.addObject("hotelDetail", h);
+		mv.addObject("centerpage", "adminHotelModify.jsp");
+		mv.setViewName("admin/index");		
+		return mv;
+	}
+	
+	@RequestMapping("/adminHotelModifyImpl.mc")
+	public String adminHotelModifyImpl(HotelList h) {
+		System.out.println(h);
+		String hotelid = h.getHotel_id();
+		try {
+			hbiz.modifyAdmin(h);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "redirect:hotelDetail.mc?id="+hotelid;
+	}
+	
+	@RequestMapping("/adminUserList.mc")
+	public ModelAndView adminUserList() {
+		ModelAndView mv = new ModelAndView();
+		
+		ArrayList<UserVO> ulist = null;
+		try {
+			ulist = ubiz.get();
+			for (UserVO co : ulist) {
+				System.out.println(co);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		mv.addObject("userList", ulist);
+		mv.addObject("centerpage", "adminUserList.jsp");
+		mv.setViewName("admin/index");
+		return mv;
+	}
 }
