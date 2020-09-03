@@ -4,10 +4,10 @@ public class HotelRoomVO {
 	String room_id;
 	String room_name;
 	String hotel_id;
-	String hotel_name;
-	int capacity;
+	int adults;
 	double price;
 	String room_img;
+	String room_num;
 	
 	public HotelRoomVO() {
 	}
@@ -18,25 +18,26 @@ public class HotelRoomVO {
 	}
 
 
-	public HotelRoomVO(String room_id, String room_name, String hotel_id, String hotel_name, int capacity, double price,
-			String room_img) {
+	public HotelRoomVO(String room_id, String room_name, String hotel_id, int adults, double price,
+			String room_num) {
 		this.room_id = room_id;
 		this.room_name = room_name;
 		this.hotel_id = hotel_id;
-		this.hotel_name = hotel_name;
-		this.capacity = capacity;
+		this.adults = adults;
 		this.price = price;
-		this.room_img = room_img;
+		this.room_num = room_num;
 	}
 
 
-	public HotelRoomVO(String room_id, String room_name, String hotel_id, String hotel_name, int capacity, double price) {
+	public HotelRoomVO(String room_id, String room_name, String hotel_id, int adults, double price,
+			String room_img, String room_num) {
 		this.room_id = room_id;
 		this.room_name = room_name;
 		this.hotel_id = hotel_id;
-		this.hotel_name = hotel_name;
-		this.capacity = capacity;
+		this.adults = adults;
 		this.price = price;
+		this.room_img = room_img;
+		this.room_num = room_num;
 	}
 
 
@@ -70,23 +71,13 @@ public class HotelRoomVO {
 	}
 
 
-	public String getHotel_name() {
-		return hotel_name;
+	public int getadults() {
+		return adults;
 	}
 
 
-	public void setHotel_name(String hotel_name) {
-		this.hotel_name = hotel_name;
-	}
-
-
-	public int getCapacity() {
-		return capacity;
-	}
-
-
-	public void setCapacity(int capacity) {
-		this.capacity = capacity;
+	public void setadults(int adults) {
+		this.adults = adults;
 	}
 
 
@@ -110,12 +101,24 @@ public class HotelRoomVO {
 	}
 
 
+	public String getRoom_num() {
+		return room_num;
+	}
+
+
+	public void setRoom_num(String room_num) {
+		this.room_num = room_num;
+	}
+
+
 	@Override
 	public String toString() {
-		return "RoomVO [room_id=" + room_id + ", room_name=" + room_name + ", hotel_id=" + hotel_id + ", hotel_name="
-				+ hotel_name + ", capacity=" + capacity + ", price=" + price + ", room_img=" + room_img + "]";
+		return "HotelRoomVO [room_id=" + room_id + ", room_name=" + room_name + ", hotel_id=" + hotel_id
+				+ ", adults=" + adults + ", price=" + price + ", room_img="
+				+ room_img + ", room_num=" + room_num + "]";
 	}
-	
+
+
 	
 	
 	

@@ -2,3 +2,8 @@
 	flex:0 0 100%;
 	max-width:100%
 }
+
+.modal-dialog-2{
+	max-width:500px;
+	margin:8rem auto
+}

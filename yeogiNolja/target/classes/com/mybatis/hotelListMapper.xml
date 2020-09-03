@@ -3,7 +3,7 @@
 <mapper namespace="com.dao.HotelListDao">
 
 	<insert id="insert" parameterType="hotelList">
-		INSERT INTO HOTEL_LIST VALUES (#{hotel_id},#{name},#{addr_sd},#{addr_sgg},#{addr_emd},#{total_room},#{lon},#{lat},#{amenities},#{grade}, #{hotel_img})
+		INSERT INTO HOTEL_LIST VALUES (#{hotel_id},#{name},#{addr_sd},#{addr_sgg},#{addr_emd},#{total_room},#{lon},#{lat},#{amenities},#{grade},#{hotel_img})
 	</insert>
 
 	<update id="update" parameterType="hotelList">

@@ -3,11 +3,11 @@
 <mapper namespace="com.dao.HotelRoomDao">
 
 	<insert id="insert" parameterType="hotelRoomVO">
-		INSERT INTO HOTEL_ROOM VALUES (#{room_id},#{room_name},#{hotel_id},#{capacity},#{price},#{room_img})
+		INSERT INTO HOTEL_ROOM VALUES (#{room_id},#{room_name},#{hotel_id},#{adults},#{price},#{room_img},#{room_num})
 	</insert>
 
 	<update id="update" parameterType="hotelRoomVO">
-		UPDATE HOTEL_ROOM SET ROOM_NAME=#{room_name}, HOTEL_ID=#{hotel_id}, CAPACITY=#{capacity}, PRCICE=#{price} WHERE ROOM_ID=#{room_id}
+		UPDATE HOTEL_ROOM SET ROOM_NAME=#{room_name}, HOTEL_ID=#{hotel_id}, ADULTS=#{adults}, PRCICE=#{price}, ROOM_NUM=#{room_num} WHERE ROOM_ID=#{room_id}
 	</update>
 
 	<delete id="delete" parameterType="String">
@@ -30,5 +30,9 @@
 		SELECT * FROM HOTEL_ROOM WHERE HOTEL_ID=#{k}
 	</select>
 
+	<insert id="insertAdminFrom" parameterType="hotelRoomVO">
+		INSERT INTO HOTEL_ROOM (ROOM_ID,ROOM_NAME,HOTEL_ID,ADULTS,PRICE,ROOM_NUM)
+		VALUES (#{room_id},#{room_name},#{hotel_id},#{adults},#{price},#{room_num})	
+	</insert>
 
 </mapper>

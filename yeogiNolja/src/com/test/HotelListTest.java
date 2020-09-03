@@ -25,13 +25,13 @@ public class HotelListTest {
 //			e.printStackTrace();
 //		}
 
-		try {
-			HotelList h = biz.get("ht0001");
-			System.out.println("----------" + h);
-		} catch (Exception e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
+//		try {
+//			HotelList h = biz.get("ht0001");
+//			System.out.println("----------" + h);
+//		} catch (Exception e1) {
+//			// TODO Auto-generated catch block
+//			e1.printStackTrace();
+//		}
 		
 //		//Count Total Hotel
 //		String hotelTotal = null;
@@ -53,22 +53,25 @@ public class HotelListTest {
 //			e.printStackTrace();
 //		}
 
-//		//Insert Hotel Info
-//		String hotel_id = "ht01";
-//		String hotel_name = "ase";
-//		String addr_sd = "SD";
-//		String addr_sgg = "SGG";
-//		String addr_emd = "EMD";
-//		int total_room = 50;
-//		String amenities = "AMAMAM MAM";
-//		String grade = "5-stars";
-//		HotelList h = new HotelList(hotel_id, hotel_name, addr_sd, addr_sgg, 
-//				addr_emd, total_room, amenities, grade);
-//		try {
-//			biz.registerAdmin(h);
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}		
+		//Insert Hotel Info
+		String hotel_id = "ht101";
+		String hotel_name = "ase";
+		String addr_sd = "SD";
+		String addr_sgg = "SGG";
+		String addr_emd = "EMD";
+		int total_room = 50;
+		double lon = 0.0;
+		double lat = 0.0;
+		String amenities = "AMAMAM MAM";
+		String grade = "5-stars";
+		String hotel_img = "ss.jpg";
+		HotelList h = new HotelList(hotel_id, hotel_name, addr_sd, addr_sgg, 
+				addr_emd, total_room, lon, lat, amenities, grade, hotel_img);
+		try {
+			biz.register(h);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}		
 		
 		factory.close();
 		System.out.println("end");

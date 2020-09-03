@@ -32,19 +32,37 @@ public class HotelRoomTest {
 //		System.out.println("end");
 		
 		
-		//select Hotels Room
-		ArrayList<HotelRoomVO> list = null;
+//		//select Hotels Room
+//		ArrayList<HotelRoomVO> list = null;
+//		try {
+//			list = biz.getN("ht0001");
+//			for (HotelRoomVO hotelRoomList : list) {
+//				System.out.println(hotelRoomList);
+//			}
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+		
+		//insert Hotel Room 
+		String room_id = "rm101";
+		String room_name ="aaa";
+		String hotel_id="ht111";
+		int adults = 5;
+		double price = 300000;
+		String room_img = "aa.jpg";
+		String room_num = "1515";
+		
+		HotelRoomVO hr = new HotelRoomVO(room_id, room_name, hotel_id, adults, price, room_num);
+		System.out.println(hr);
 		try {
-			list = biz.getN("ht0001");
-			for (HotelRoomVO hotelRoomList : list) {
-				System.out.println(hotelRoomList);
-			}
+			biz.registerAdmin(hr);
 		} catch (Exception e) {
 			e.printStackTrace();
-		}
+		}		
+		
+		
 		
 		factory.close();
 		System.out.println("end");		
-		
 	}
 }

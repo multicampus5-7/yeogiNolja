@@ -197,6 +197,8 @@
 		</div>
 		</form>
 	</div>
+	
+	
 	<div class="tab-pane tabs-animation fade" id="tab-content-2"
 		role="tabpanel">
 		<form action="adminHotelRoomRegisterImpl.mc" method="post">
@@ -207,114 +209,38 @@
 					<div class="col-md-3">
 						<div class="form-group">
 							<label class="form-label" for="title"><h5>Room ID</h5></label> <input
+								id="title" name="room_id" type="text" class="form-control"
+								value="rm1001"/>
+						</div>
+						<div class="form-group">
+							<label class="form-label" for="message"><h5>Room Name</h5></label> <input
+								id="title" name="room_name" type="text" class="form-control"
+								value="디럭스 킹" />
+						</div>
+						<div class="form-group">
+							<label class="form-label" for="message"><h5>Room Number</h5></label> <input
+								id="title" name="room_num" type="text" class="form-control"
+								value="1101" />
+						</div>						
+					</div>
+					<div class="col-md-3">					
+						<div class="form-group">
+							<label class="form-label" for="message"><h5>Hotel ID</h5></label> <input
 								id="title" name="hotel_id" type="text" class="form-control"
-								value="ht1001"/>
-						</div>
-						<div class="form-group">
-							<label class="form-label" for="message"><h5>NAME</h5></label> <input
-								id="title" name="name" type="text" class="form-control"
-								value="Park Hyatt" />
-						</div>
-					</div>
-					
-					<div class="col-md-3">
-						<h5>Address</h5>
-						<div class="form-group">
-							<label for="showEasing">City</label> <input
-								id="showEasing" name="addr_sd" type="text" placeholder="swing, linear"
-								class="form-control" value="서울특별시" />
-						</div>
-						<div class="form-group">
-							<label for="hideEasing">Address 1</label> <input
-								id="hideEasing" name="addr_sgg" type="text" placeholder="swing, linear"
-								class="form-control" value="강남구" />
-						</div>
-						<div class="form-group">
-							<label for="showMethod">Address 2</label> <input
-								id="showMethod" name="addr_emd" type="text"
-								placeholder="show, fadeIn, slideDown" class="form-control"
-								value="테헤란로 606" />
-						</div>
-						<h5>Number of Rooms</h5>
-						<div class="form-group">
-							<input id="showDuration" type="number" name="total_room" placeholder="ms"
-								class="form-control" value="120" />
-						</div>
-					</div>
-
-					<div class="col-md-3">
-						<div id="positionGroup">
-							<h5>Amenities</h5>
-							<div class="form-check">
-								<input type="checkbox" name="amenities" class="form-check-input"
-									value="실내수영장" checked /> <label
-									class="form-check-label" for="exampleRadios1"> 실내수영장 </label>
-							</div>
-							<div class="form-check">
-								<input type="checkbox" name="amenities" class="form-check-input"
-									value="레스토랑" /> <label class="form-check-label"
-									for="exampleRadios1"> 레스토랑 </label>
-							</div>
-							<div class="form-check">
-								<input type="checkbox" name="amenities" class="form-check-input"
-									value="회의실" /> <label class="form-check-label"
-									for="exampleRadios1"> 회의실 </label>
-							</div>
-							<div class="form-check">
-								<input type="checkbox" name="positions" class="form-check-input"
-									value="운동시설" /> <label class="form-check-label"
-									for="exampleRadios1"> 운동시설 </label>
-							</div>
-							<div class="form-check">
-								<input type="checkbox" name="amenities" class="form-check-input"
-									value="무료와이파이" /> <label class="form-check-label"
-									for="exampleRadios1"> 무료 와이파이 </label>
-							</div>
-							<div class="form-check">
-								<input type="checkbox" name="amenities" class="form-check-input"
-									value="주차장" /> <label
-									class="form-check-label" for="exampleRadios1"> 주차장 </label>
-							</div>
-							<div class="form-check">
-								<input type="checkbox" name="amenities" class="form-check-input"
-									value="반려동물동반" /> <label class="form-check-label"
-									for="exampleRadios1"> 반려동물 동반 </label>
-							</div>
-							<div class="form-check">
-								<input type="checkbox" name="amenities" class="form-check-input"
-									value="카페" /> <label class="form-check-label"
-									for="exampleRadios1"> 카페 </label>
-							</div>
+								value="ht0001" />
 						</div>
 					</div>
 					<div class="col-md-3">
-						<div id="toastTypeGroup">
-							<h5>Grade</h5>
-							<div class="form-check">
-								<input type="radio" name="grade" class="form-check-input"
-									value="5-star" checked /> <label class="form-check-label"
-									for="exampleRadios1"> 5-star </label>
-							</div>
-							<div class="form-check">
-								<input type="radio" name="grade" class="form-check-input"
-									value="4-star" /> <label class="form-check-label"
-									for="exampleRadios1"> 4-star </label>
-							</div>
-							<div class="form-check">
-								<input type="radio" name="grade" class="form-check-input"
-									value="3-star" /> <label class="form-check-label"
-									for="exampleRadios1"> 3-star </label>
-							</div>
-							<div class="form-check">
-								<input type="radio" name="grade" class="form-check-input"
-									value="2-star" /> <label class="form-check-label"
-									for="exampleRadios1"> 2-star </label>
-							</div>
-							<div class="form-check">
-								<input type="radio" name="grade" class="form-check-input"
-									value="1-star" /> <label class="form-check-label"
-									for="exampleRadios1"> 1-star </label>
-							</div>							
+						<h5>Adults</h5>
+						<div class="form-group">
+							<input id="showDuration" type="number" name="adults" placeholder="ms"
+								class="form-control" value="3" />
+						</div>
+						
+						<h5>PRICE</h5>
+						<div class="form-group">
+							<input id="showDuration" type="number" name="price" placeholder="ms"
+								class="form-control" value="50000" />
 						</div>
 					</div>
 				</div>
