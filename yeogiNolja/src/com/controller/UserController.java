@@ -78,12 +78,12 @@ public class UserController {
 		UserVO user = null;
 		try {
 			user=biz.get(email);
-//			System.out.println(user.getEmail());
+			System.out.println(user.getEmail());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		mv.addObject("userdetail", user);
-		mv.addObject("centerpage", "detail.jsp");
+		mv.addObject("centerpage", "registerok.jsp");
 		mv.setViewName("main");
 		return mv;
 	}
