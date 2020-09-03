@@ -55,7 +55,7 @@ public class HotelListBiz implements Biz<String, HotelList> {
 
 	@Override
 	public void registerAdmin(HotelList v) throws Exception {
-		dao.insertAdminFrom(v);
+		dao.insertAdminForm(v);
 		
 	}
 
@@ -68,6 +68,14 @@ public class HotelListBiz implements Biz<String, HotelList> {
 	public ArrayList<HotelList> getN(String k) throws Exception {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public void modifyAdmin(HotelList v) throws Exception {
+		int result = dao.updateAdminForm(v);
+		if (result == 0) {
+			throw new Exception();
+		}		
 	}
 
 }

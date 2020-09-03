@@ -70,4 +70,10 @@ public class UserBiz implements Biz<String, UserVO> {
 		return null;
 	}
 
+	@Override
+	public void modifyAdmin(UserVO v) throws Exception {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

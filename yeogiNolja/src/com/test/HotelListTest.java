@@ -53,8 +53,28 @@ public class HotelListTest {
 //			e.printStackTrace();
 //		}
 
+//		//Insert Hotel Info
+//		String hotel_id = "ht101";
+//		String hotel_name = "ase";
+//		String addr_sd = "SD";
+//		String addr_sgg = "SGG";
+//		String addr_emd = "EMD";
+//		int total_room = 50;
+//		double lon = 0.0;
+//		double lat = 0.0;
+//		String amenities = "AMAMAM MAM";
+//		String grade = "5-stars";
+//		String hotel_img = "ss.jpg";
+//		HotelList h = new HotelList(hotel_id, hotel_name, addr_sd, addr_sgg, 
+//				addr_emd, total_room, lon, lat, amenities, grade, hotel_img);
+//		try {
+//			biz.register(h);
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}		
+		
 		//Insert Hotel Info
-		String hotel_id = "ht101";
+		String hotel_id = "ht1001";
 		String hotel_name = "ase";
 		String addr_sd = "SD";
 		String addr_sgg = "SGG";
@@ -68,10 +88,10 @@ public class HotelListTest {
 		HotelList h = new HotelList(hotel_id, hotel_name, addr_sd, addr_sgg, 
 				addr_emd, total_room, lon, lat, amenities, grade, hotel_img);
 		try {
-			biz.register(h);
+			biz.modifyAdmin(h);
 		} catch (Exception e) {
 			e.printStackTrace();
-		}		
+		}				
 		
 		factory.close();
 		System.out.println("end");

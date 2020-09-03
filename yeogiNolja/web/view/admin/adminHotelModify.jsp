@@ -2,7 +2,6 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 	
-<script src="http://maps.google.com/maps/api/js?sensor=true"></script>
 
 <div class="app-page-title">
 	<div class="page-title-wrapper">
@@ -28,40 +27,77 @@
 	<div class="col-lg-6-2">
 		<div class="main-card mb-3 card">
 			<div class="card-body">
-			<div id="gmap-example"></div>
-				<h5 class="card-title">Hotel Information</h5>
+			<form action="adminHotelModifyImpl.mc" method="post">
+				<h5 class="card-title">Modify Hotel Information</h5>
 				<img src="img/hotel/${hotelDetail.hotel_img }">
 				<table class="mb-0 table">
 					<tbody>
 						<tr>
 							<th>ID</th>
-							<td>${hotelDetail.hotel_id}</td>
+							<th>${hotelDetail.hotel_id}
+								<input type="hidden" name="hotel_id" value="${hotelDetail.hotel_id}">
+							</th>
+						</tr>
+						<tr>
+							<th>NAME</th>
+							<td><input id="title" name="name" type="text" class="form-control"
+								value="${hotelDetail.name}"/>
+							</td>
 						</tr>
 						<tr>
 							<th>ADDRESS</th>
-							<td>${hotelDetail.addr_sd} ${hotelDetail.addr_sgg} ${hotelDetail.addr_emd}</td>
+							<td><input id="title" name="addr_sd" type="text" class="form-control-address"
+								value="${hotelDetail.addr_sd}"/>
+								<input id="title" name="addr_sgg" type="text" class="form-control-address"
+								value="${hotelDetail.addr_sgg}"/>
+								<input id="title" name="addr_emd" type="text" class="form-control-address"
+								value="${hotelDetail.addr_emd}"/>
+							</td>
 						</tr>
 						<tr>
-							<th>ROOMS</th>
-							<th>${hotelDetail.total_room}</th>
+							<th>Total ROOMS</th>
+							<td><input id="title" name="total_room" type="text" class="form-control"
+								value="${hotelDetail.total_room}"/>
+							</td>
+						</tr>
+						<tr>
+							<th>Longitude</th>
+							<td><input id="title" name="lon" type="text" class="form-control"
+								value="${hotelDetail.lon}"/>
+							</td>
+						</tr>
+						<tr>
+							<th>Latitude</th>
+							<td><input id="title" name="lat" type="text" class="form-control"
+								value="${hotelDetail.lat}"/>
+							</td>
 						</tr>
 						<tr>
 							<th>AMENITIES</th>
-							<th>${hotelDetail.amenities}</th>
+							<td><input id="title" name="amenities" type="text" class="form-control"
+								value="${hotelDetail.amenities}"/>
+							</td>
+						</tr>
+						<tr>
+							<th>Grade</th>
+							<td><input id="title" name="grade" type="text" class="form-control"
+								value="${hotelDetail.grade}"/>
+							</td>
+						</tr>
+						<tr>
+							<th>Image</th>
+							<td><input id="title" name="hotel_img" type="text" class="form-control"
+								value="${hotelDetail.hotel_img}"/>
+							</td>
 						</tr>
 					</tbody>
-					<tbody><!-- 
-						<c:forEach var="hlist" items="${hotelList}">
-							<tr>
-								<th scope="row">${hlist.hotel_id}</th>
-								<td><a href="hotelDetail.mc?id=${hlist.hotel_id}">${hlist.name}</a></td>
-								<td>${hlist.grade}</td>
-								<td>${hlist.total_room}</td>
-								<td>${hlist.addr_sd} ${hlist.addr_sgg} ${hlist.addr_emd}</td>						
-							</tr>
-						</c:forEach> -->
-					</tbody>
 				</table>
+				<div class="card-footer d-block clearfix">
+				<div class="float-right">
+					<button type="submit" class="mb-2 mr-2 btn btn-primary btn-lg btn-block">Modify </button>
+				</div>
+			</div>
+			</form>
 			</div>
 		</div>
 	</div>

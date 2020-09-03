@@ -27,30 +27,6 @@
 						class="fa fa-business-time fa-w-20"></i>
 					</span> Buttons
 				</button>
-				<div tabindex="-1" role="menu" aria-hidden="true"
-					class="dropdown-menu dropdown-menu-right">
-					<ul class="nav flex-column">
-						<li class="nav-item"><a href="javascript:void(0);"
-							class="nav-link"> <i class="nav-link-icon lnr-inbox"></i> <span>
-									Inbox </span>
-								<div class="ml-auto badge badge-pill badge-secondary">86</div>
-						</a></li>
-						<li class="nav-item"><a href="javascript:void(0);"
-							class="nav-link"> <i class="nav-link-icon lnr-book"></i> <span>
-									Book </span>
-								<div class="ml-auto badge badge-pill badge-danger">5</div>
-						</a></li>
-						<li class="nav-item"><a href="javascript:void(0);"
-							class="nav-link"> <i class="nav-link-icon lnr-picture"></i> <span>
-									Picture </span>
-						</a></li>
-						<li class="nav-item"><a disabled href="javascript:void(0);"
-							class="nav-link disabled"> <i
-								class="nav-link-icon lnr-file-empty"></i> <span> File
-									Disabled </span>
-						</a></li>
-					</ul>
-				</div>
 			</div>
 		</div>
 	</div>
@@ -63,11 +39,12 @@
 				<table class="mb-0 table">
 					<thead>
 						<tr>
-							<th>#</th>
+							<th>ID</th>
 							<th>NAME</th>
 							<th>GRADE</th>
 							<th>ROOMS</th>
 							<th>ADDRESS</th>
+							<th>Actions</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -77,7 +54,12 @@
 								<td><a href="hotelDetail.mc?id=${hlist.hotel_id}">${hlist.name}</a></td>
 								<td>${hlist.grade}</td>
 								<td>${hlist.total_room}</td>
-								<td>${hlist.addr_sd} ${hlist.addr_sgg} ${hlist.addr_emd}</td>						
+								<td>${hlist.addr_sd} ${hlist.addr_sgg} ${hlist.addr_emd}</td>	
+								<td>
+									<button class="mb-2 mr-2 btn-transition btn btn-outline-info" 
+									onclick="location.href='adminHotelModify.mc?id=${hlist.hotel_id}'">Modify</button>
+									<button class="mb-2 mr-2 btn-transition btn btn-outline-danger">Delete</button>
+								</td>					
 							</tr>
 						</c:forEach>
 					</tbody>
