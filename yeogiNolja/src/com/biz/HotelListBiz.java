@@ -47,16 +47,19 @@ public class HotelListBiz implements Biz<String, HotelList> {
 		return dao.selectall();
 	}
 
+	public ArrayList<HotelList> findByKey(String k) throws Exception {
+		return null;
+	}
+
 	@Override
 	public ArrayList<HotelList> search(Object obj) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		return dao.search(obj);
 	}
 
 	@Override
 	public void registerAdmin(HotelList v) throws Exception {
 		dao.insertAdminFrom(v);
-		
+
 	}
 
 	@Override

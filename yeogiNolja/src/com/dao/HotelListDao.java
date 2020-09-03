@@ -7,5 +7,5 @@ import com.vo.HotelList;
 
 @Repository("hotelListDao")
 public interface HotelListDao extends Dao<String, HotelList> {
-
+	
 }

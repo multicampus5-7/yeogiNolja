@@ -2,10 +2,12 @@ package com.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.HashSet;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.json.simple.JSONArray;
@@ -44,21 +46,6 @@ public class HotelController {
 				jarr.add(string);
 			}
 			job.put("data", jarr);
-//			JSONArray nameArr = new JSONArray();
-//			JSONArray jaddr = new JSONArray();
-//			HashSet<String> addrArr = new HashSet<String>();
-//
-//			for (HotelList hotelList2 : hotelList) {
-//				nameArr.add(hotelList2.getName());
-//				addrArr.add(hotelList2.getAddr_sgg());
-//			}
-//			for (String string : addrArr) {
-//				jaddr.add(string);
-//			}
-//
-//			job.put("name", nameArr);
-//			job.put("address", jaddr);
-//			System.out.println(job.toJSONString());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -70,10 +57,14 @@ public class HotelController {
 	}
 
 	@RequestMapping("hotelList.mc")
-	public ModelAndView hotelList() {
+	public ModelAndView hotelList(HttpServletRequest request) {
+
+		String dest = request.getParameter("dest");
+
 		ArrayList<HotelList> hotelList = new ArrayList<HotelList>();
+
 		try {
-			hotelList = biz.get();
+			hotelList = biz.search(dest);
 			for (HotelList hotelList2 : hotelList) {
 				System.out.println(hotelList2);
 			}

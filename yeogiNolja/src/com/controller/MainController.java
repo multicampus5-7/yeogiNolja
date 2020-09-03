@@ -1,6 +1,7 @@
 package com.controller;
 
 import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -31,16 +32,19 @@ public class MainController {
 
 	@RequestMapping("bookingImpl.mc")
 	public String bookingImpl(HttpServletRequest request, Booking booking) {
+		String dest = "";
 		try {
 			request.setCharacterEncoding("UTF-8");
 
 			HttpSession session = request.getSession();
 			session.setAttribute("booking", booking);
+			dest = URLEncoder.encode(booking.getDest(), "UTF-8");
 		} catch (UnsupportedEncodingException e) {
 			System.out.println("booking error");
 			e.printStackTrace();
 		}
-		return "redirect: hotelList.mc";
+
+		return "redirect: hotelList.mc?dest=" + dest;
 	}
 
 }
