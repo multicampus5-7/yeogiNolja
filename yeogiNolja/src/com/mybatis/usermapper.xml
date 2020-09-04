@@ -15,7 +15,7 @@
 	</delete>
 
 	<select id="select" parameterType="String" resultType="user">
-		SELECT * FROM USERS WHERE EMAIL=#{email}
+		SELECT * FROM USERS WHERE EMAIL=#{k}
 	</select>
 
 	<select id="selectall" resultType="user">

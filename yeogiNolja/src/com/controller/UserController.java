@@ -71,10 +71,11 @@ public class UserController {
 		mv.setViewName("main");
 		return mv;
 	}
-	/*login 된 회원의 정보 수정하기 관련*/	
+	/*login 된 회원의 정보 수정하기 관련*/
+	/* 회원정보 show */
 	@RequestMapping("userdetail.mc")
-	public ModelAndView userdetail(ModelAndView mv, String email) {
-		System.out.println("R U WORKING");
+	public ModelAndView userdetail(String email) {
+		ModelAndView mv = new ModelAndView();
 		UserVO user = null;
 		try {
 			user=biz.get(email);
@@ -83,11 +84,33 @@ public class UserController {
 			e.printStackTrace();
 		}
 		mv.addObject("userdetail", user);
-		mv.addObject("centerpage", "registerok.jsp");
+		mv.addObject("centerpage", "user/detail.jsp");
 		mv.setViewName("main");
 		return mv;
 	}
+	/* 회원정보 update */
+	@RequestMapping("/userupdate.mc")
+	public ModelAndView userupdate(ModelAndView mv,	String email) {
+		UserVO user = null;
+		try {
+			user = biz.get(email);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		mv.addObject("userdetail",user);
+		mv.addObject("centerpage", "user/modify.jsp"); 
+		mv.setViewName("main");
+		return mv;
+	}
+	@RequestMapping("/userupdateimpl.mc")
+	public String userupdateimpl(UserVO user) {
+		try {
+			biz.modify(user);
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return "redirect:main.mc";
+	}
 
-	
 	
 }
