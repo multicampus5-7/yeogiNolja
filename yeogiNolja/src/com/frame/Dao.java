@@ -2,8 +2,6 @@ package com.frame;
 
 import java.util.ArrayList;
 
-import com.vo.HotelList;
-
 public interface Dao<K,V> {
 	public int insert(V v) throws Exception;
 	public int delete(K k) throws Exception;

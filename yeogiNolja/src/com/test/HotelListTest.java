@@ -1,6 +1,7 @@
 package com.test;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.GenericXmlApplicationContext;
@@ -53,7 +54,11 @@ public class HotelListTest {
 //		}
 
 		try {
-			ArrayList<HotelList> list = biz.search("동");
+			HashMap<String, String> map = new HashMap<String, String>();
+			map.put("dest", "");
+			map.put("orderBy", "grade");
+
+			ArrayList<HotelList> list = biz.search(map);
 			for (HotelList hotelList : list) {
 				System.out.println(hotelList);
 			}
@@ -61,28 +66,27 @@ public class HotelListTest {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	
-		
-		//Insert Hotel Info
-		String hotel_id = "ht1001";
-		String hotel_name = "ase";
-		String addr_sd = "SD";
-		String addr_sgg = "SGG";
-		String addr_emd = "EMD";
-		int total_room = 50;
-		double lon = 0.0;
-		double lat = 0.0;
-		String amenities = "AMAMAM MAM";
-		String grade = "5-stars";
-		String hotel_img = "ss.jpg";
-		HotelList h = new HotelList(hotel_id, hotel_name, addr_sd, addr_sgg, 
-				addr_emd, total_room, lon, lat, amenities, grade, hotel_img);
-		try {
-			biz.modifyAdmin(h);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}	
-	
+
+		// Insert Hotel Info
+//		String hotel_id = "ht1001";
+//		String hotel_name = "ase";
+//		String addr_sd = "SD";
+//		String addr_sgg = "SGG";
+//		String addr_emd = "EMD";
+//		int total_room = 50;
+//		double lon = 0.0;
+//		double lat = 0.0;
+//		String amenities = "AMAMAM MAM";
+//		String grade = "5-stars";
+//		String hotel_img = "ss.jpg";
+//		HotelList h = new HotelList(hotel_id, hotel_name, addr_sd, addr_sgg, 
+//				addr_emd, total_room, lon, lat, amenities, grade, hotel_img);
+//		try {
+//			biz.modifyAdmin(h);
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}	
+//	
 
 		factory.close();
 		System.out.println("end");

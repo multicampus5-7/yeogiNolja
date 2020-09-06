@@ -3,12 +3,15 @@ package com.controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -18,6 +21,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.frame.Biz;
+import com.vo.Booking;
 import com.vo.HotelList;
 
 @Controller
@@ -56,25 +60,63 @@ public class HotelController {
 		out.close();
 	}
 
+	@RequestMapping("bookingImpl.mc")
+	public String bookingImpl(HttpServletRequest request, Booking booking) {
+		String dest = "";
+		try {
+			request.setCharacterEncoding("UTF-8");
+
+			HttpSession session = request.getSession();
+			session.setAttribute("booking", booking);
+			dest = URLEncoder.encode(booking.getDest(), "UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			System.out.println("booking error");
+			e.printStackTrace();
+		}
+
+		return "redirect: hotelList.mc?";
+	}
+
 	@RequestMapping("hotelList.mc")
 	public ModelAndView hotelList(HttpServletRequest request) {
 
-		String dest = request.getParameter("dest");
+		HttpSession session = request.getSession();
+		Booking booking = (Booking) session.getAttribute("booking");
+		String orderBy = request.getParameter("orderBy");
+		if (orderBy == null)
+			orderBy = "hotel_id";
+		String pageNum = request.getParameter("pageNum");
+		if (pageNum == null)
+			pageNum = "1";
 
 		ArrayList<HotelList> hotelList = new ArrayList<HotelList>();
-
 		try {
-			hotelList = biz.search(dest);
-			for (HotelList hotelList2 : hotelList) {
-				System.out.println(hotelList2);
-			}
+			HashMap<String, String> map = new HashMap<String, String>();
+			map.put("dest", booking.getDest());
+			map.put("orderBy", orderBy);
+
+			hotelList = biz.search(map);
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("hotelList", hotelList);
+		mv.addObject("pageNum", pageNum);
+
 		mv.addObject("centerpage", "hotel/hotelList.jsp");
+		mv.setViewName("main");
+		return mv;
+	}
+
+	@RequestMapping("hotelListDetail.mc")
+	public ModelAndView hotelListDetail(HttpServletRequest request) {
+		ModelAndView mv = new ModelAndView();
+
+		String hotelId = request.getParameter("hotelId");
+		mv.addObject("hotelId", hotelId);
+		mv.addObject("centerpage", "hotel/hotelDetail.jsp");
 		mv.setViewName("main");
 		return mv;
 	}
