@@ -8,16 +8,16 @@ import org.springframework.stereotype.Service;
 
 import com.frame.Biz;
 import com.frame.Dao;
-import com.vo.HotelList;
+import com.vo.ReserveVO;
 
-@Service("hotelListBiz")
-public class HotelListBiz implements Biz<String, HotelList> {
+@Service("reserveBiz")
+public class ReserveBiz implements Biz<String, ReserveVO> {
 
-	@Resource(name = "hotelListDao")
-	Dao<String, HotelList> dao;
+	@Resource(name = "reserveDao")
+	Dao<String, ReserveVO> dao;
 
 	@Override
-	public void register(HotelList v) throws Exception {
+	public void register(ReserveVO v) throws Exception {
 		dao.insert(v);
 	}
 
@@ -30,7 +30,7 @@ public class HotelListBiz implements Biz<String, HotelList> {
 	}
 
 	@Override
-	public void modify(HotelList v) throws Exception {
+	public void modify(ReserveVO v) throws Exception {
 		int result = dao.update(v);
 		if (result == 0) {
 			throw new Exception();
@@ -38,23 +38,23 @@ public class HotelListBiz implements Biz<String, HotelList> {
 	}
 
 	@Override
-	public HotelList get(String k) throws Exception {
+	public ReserveVO get(String k) throws Exception {
 		return dao.select(k);
 	}
 
 	@Override
-	public ArrayList<HotelList> get() throws Exception {
+	public ArrayList<ReserveVO> get() throws Exception {
 		return dao.selectall();
 	}
 
 
 	@Override
-	public ArrayList<HotelList> search(Object obj) throws Exception {
+	public ArrayList<ReserveVO> search(Object obj) throws Exception {
 		return dao.search(obj);
 	}
 
 	@Override
-	public void registerAdmin(HotelList v) throws Exception {
+	public void registerAdmin(ReserveVO v) throws Exception {
 		dao.insertAdminForm(v);
 
 	}
@@ -65,14 +65,14 @@ public class HotelListBiz implements Biz<String, HotelList> {
 	}
 
 	@Override
-	public ArrayList<HotelList> getN(String k) throws Exception {
+	public ArrayList<ReserveVO> getN(String k) throws Exception {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 
 	@Override
-	public void modifyAdmin(HotelList v) throws Exception {
+	public void modifyAdmin(ReserveVO v) throws Exception {
 		int result = dao.updateAdminForm(v);
 		if (result == 0) {
 			throw new Exception();

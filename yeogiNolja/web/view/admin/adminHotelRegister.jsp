@@ -56,6 +56,9 @@
 		</div>
 	</div>
 </div>
+
+<jsp:include page="${message}"></jsp:include>
+
 <ul
 	class="body-tabs body-tabs-layout tabs-animated body-tabs-animated nav">
 	<li class="nav-item"><a role="tab" class="nav-link active"
@@ -115,76 +118,77 @@
 					<div class="col-md-3">
 						<div id="positionGroup">
 							<h5>Amenities</h5>
-							<div class="form-check">
-								<input type="checkbox" name="amenities" class="form-check-input"
-									value="실내수영장" checked /> <label
-									class="form-check-label" for="exampleRadios1"> 실내수영장 </label>
+							<div class="custom-checkbox custom-control">
+								<input type="checkbox" id="exampleCustomCheckbox1" name="amenities" class="custom-control-input"
+									value="실내수영장" checked /> <label class="custom-control-label" 
+									for="exampleCustomCheckbox1"> 실내수영장 </label>
 							</div>
-							<div class="form-check">
-								<input type="checkbox" name="amenities" class="form-check-input"
-									value="레스토랑" /> <label class="form-check-label"
-									for="exampleRadios1"> 레스토랑 </label>
+							<div class="custom-checkbox custom-control">
+								<input type="checkbox" id="exampleCustomCheckbox2" name="amenities" class="custom-control-input"
+									value="레스토랑" /> <label class="custom-control-label" 
+									for="exampleCustomCheckbox2"> 레스토랑 </label>
 							</div>
-							<div class="form-check">
-								<input type="checkbox" name="amenities" class="form-check-input"
-									value="회의실" /> <label class="form-check-label"
-									for="exampleRadios1"> 회의실 </label>
+							<div class="custom-checkbox custom-control">
+								<input type="checkbox" id="exampleCustomCheckbox3" name="amenities" class="custom-control-input"
+									value="회의실" /> <label class="custom-control-label" 
+									for="exampleCustomCheckbox3"> 회의실 </label>
 							</div>
-							<div class="form-check">
-								<input type="checkbox" name="positions" class="form-check-input"
-									value="운동시설" /> <label class="form-check-label"
-									for="exampleRadios1"> 운동시설 </label>
+							<div class="custom-checkbox custom-control">
+								<input type="checkbox" id="exampleCustomCheckbox4" name="amenities" class="custom-control-input"
+									value="운동시설" /> <label class="custom-control-label" 
+									for="exampleCustomCheckbox4"> 운동시설 </label>
 							</div>
-							<div class="form-check">
-								<input type="checkbox" name="amenities" class="form-check-input"
-									value="무료와이파이" /> <label class="form-check-label"
-									for="exampleRadios1"> 무료 와이파이 </label>
+							<div class="custom-checkbox custom-control">
+								<input type="checkbox" id="exampleCustomCheckbox5" name="amenities" class="custom-control-input"
+									value="무료와이파이" /> <label class="custom-control-label" 
+									for="exampleCustomCheckbox5"> 무료 와이파이 </label>
 							</div>
-							<div class="form-check">
-								<input type="checkbox" name="amenities" class="form-check-input"
-									value="주차장" /> <label
-									class="form-check-label" for="exampleRadios1"> 주차장 </label>
+							<div class="custom-checkbox custom-control">
+								<input type="checkbox" id="exampleCustomCheckbox6" name="amenities" class="custom-control-input"
+									value="주차장" /> <label class="custom-control-label" 
+									for="exampleCustomCheckbox6"> 주차장 </label>
 							</div>
-							<div class="form-check">
-								<input type="checkbox" name="amenities" class="form-check-input"
-									value="반려동물동반" /> <label class="form-check-label"
-									for="exampleRadios1"> 반려동물 동반 </label>
+							<div class="custom-checkbox custom-control">
+								<input type="checkbox" id="exampleCustomCheckbox7" name="amenities" class="custom-control-input"
+									value="반려동물동반" /> <label class="custom-control-label" 
+									for="exampleCustomCheckbox7"> 반려동물 동반 </label>
 							</div>
-							<div class="form-check">
-								<input type="checkbox" name="amenities" class="form-check-input"
-									value="카페" /> <label class="form-check-label"
-									for="exampleRadios1"> 카페 </label>
+							<div class="custom-checkbox custom-control">
+								<input type="checkbox" id="exampleCustomCheckbox8" name="amenities" class="custom-control-input"
+									value="카페" /> <label class="custom-control-label" 
+									for="exampleCustomCheckbox8"> 카페 </label>
 							</div>
 						</div>
 					</div>
 					<div class="col-md-3">
 						<div id="toastTypeGroup">
 							<h5>Grade</h5>
-							<div class="form-check">
-								<input type="radio" name="grade" class="form-check-input"
-									value="5-star" checked /> <label class="form-check-label"
-									for="exampleRadios1"> 5-star </label>
+							<div class="custom-radio custom-control">
+								<input type="radio" id="exampleCustomRadio1" class="custom-control-input"
+									name="grade" value="5-star" checked /> <label class="custom-control-label"
+									for="exampleCustomRadio1"> 5-star </label>
 							</div>
-							<div class="form-check">
-								<input type="radio" name="grade" class="form-check-input"
-									value="4-star" /> <label class="form-check-label"
-									for="exampleRadios1"> 4-star </label>
+							<div class="custom-radio custom-control">
+								<input type="radio" id="exampleCustomRadio2" class="custom-control-input"
+									name="grade" value="4-star" /> <label class="custom-control-label"
+									for="exampleCustomRadio2"> 4-star </label>
 							</div>
-							<div class="form-check">
-								<input type="radio" name="grade" class="form-check-input"
-									value="3-star" /> <label class="form-check-label"
-									for="exampleRadios1"> 3-star </label>
+							<div class="custom-radio custom-control">
+								<input type="radio" id="exampleCustomRadio3" class="custom-control-input"
+									name="grade" value="3-star" /> <label class="custom-control-label"
+									for="exampleCustomRadio3"> 3-star </label>
 							</div>
-							<div class="form-check">
-								<input type="radio" name="grade" class="form-check-input"
-									value="2-star" /> <label class="form-check-label"
-									for="exampleRadios1"> 2-star </label>
+							<div class="custom-radio custom-control">
+								<input type="radio" id="exampleCustomRadio4" class="custom-control-input"
+									name="grade" value="2-star" /> <label class="custom-control-label"
+									for="exampleCustomRadio4"> 2-star </label>
 							</div>
-							<div class="form-check">
-								<input type="radio" name="grade" class="form-check-input"
-									value="1-star" /> <label class="form-check-label"
-									for="exampleRadios1"> 1-star </label>
-							</div>							
+							<div class="custom-radio custom-control">
+								<input type="radio" id="exampleCustomRadio5" class="custom-control-input"
+									name="grade" value="1-star" /> <label class="custom-control-label"
+									for="exampleCustomRadio5"> 1-star </label>
+							</div>
+													
 						</div>
 					</div>
 				</div>

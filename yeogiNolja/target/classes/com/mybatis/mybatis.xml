@@ -5,6 +5,7 @@
 		<typeAlias type="com.vo.UserVO" alias="user" />
 		<typeAlias type="com.vo.HotelList" alias="hotelList" />
 		<typeAlias type="com.vo.HotelRoomVO" alias="hotelRoomVO" />
+		<typeAlias type="com.vo.ReserveVO" alias="ReserveVO" />
 
 	</typeAliases>
 
@@ -12,6 +13,7 @@
 		<mapper resource="com/mybatis/usermapper.xml" />
 		<mapper resource="com/mybatis/hotelListMapper.xml" />
 		<mapper resource="com/mybatis/hotelRoomMapper.xml" />
+		<mapper resource="com/mybatis/reserveMapper.xml" />
 
 	</mappers>
 </configuration>

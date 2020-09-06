@@ -69,22 +69,27 @@ public class AdminController {
 	
 	@RequestMapping("/adminHotelRegister.mc")
 	public ModelAndView adminHotelAdd() {
-		ModelAndView mv = new ModelAndView();	
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("message", "messageNull.jsp");
 		mv.addObject("centerpage", "adminHotelRegister.jsp");
 		mv.setViewName("admin/index");
 		return mv;
 	}
 	
 	@RequestMapping("/adminHotelRegisterImpl.mc")
-	public String adminHotelRegisterImpl(HotelList h) {
+	public ModelAndView adminHotelRegisterImpl(HotelList h) {
 		ModelAndView mv = new ModelAndView();
 		System.out.println(h);
 		try {
 			hbiz.registerAdmin(h);
+			mv.addObject("message", "messageOk.jsp");
 		} catch (Exception e) {
 			e.printStackTrace();
+			mv.addObject("message", "messageFail.jsp");
 		}
-		return "redirect:adminHotelList.mc";
+		mv.addObject("centerpage", "adminHotelRegister.jsp");	
+		mv.setViewName("admin/index");		
+		return mv;
 	}
 	
 	@RequestMapping("/adminHotelRoomRegisterImpl.mc")
@@ -173,6 +178,16 @@ public class AdminController {
 		
 		mv.addObject("userList", ulist);
 		mv.addObject("centerpage", "adminUserList.jsp");
+		mv.setViewName("admin/index");
+		return mv;
+	}
+	
+	@RequestMapping("/adminReserve.mc")
+	public ModelAndView adminReserve() {
+		ModelAndView mv = new ModelAndView();
+		
+		
+		mv.addObject("centerpage", "adminReserveList.jsp");
 		mv.setViewName("admin/index");
 		return mv;
 	}

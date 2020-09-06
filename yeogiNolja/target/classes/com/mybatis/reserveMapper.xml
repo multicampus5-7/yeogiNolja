@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.ReserveDao">
+
+	<insert id="insert" parameterType="reserveVO">
+		INSERT INTO HOTEL_RESERVE VALUES (#{rsv_id},#{hotel_id},#{room_id},#{user_email},
+		TO_DATE(#{start_date}, 'yyyy mm dd'), TO_DATE(#{end_date}, 'yyyy mm dd'),SYSDATE,#{pay_yn})
+	</insert>
+
+	<update id="update" parameterType="reserveVO">
+		UPDATE HOTEL_RESERVE SET HOTEL_ID=#{hotel_id} WHERE RSV_ID=#{rsv_id}
+	</update>
+
+	<delete id="delete" parameterType="String">
+		DELETE FROM HOTEL_RESERVE WHERE ROOM_ID=#{k}
+	</delete>
+
+	<select id="select" parameterType="String" resultType="reserveVO">
+		SELECT * FROM HOTEL_RESERVE WHERE ROOM_ID=#{k}
+	</select>
+
+	<select id="selectall" resultType="reserveVO">
+		SELECT * FROM HOTEL_RESERVE 
+	</select>
+	
+	<select id="selectall_count" resultType="String">
+		SELECT COUNT(*) FROM HOTEL_RESERVE 
+	</select>
+	
+	<select id="selectN" resultType="reserveVO">
+		SELECT * FROM HOTEL_RESERVE WHERE HOTEL_ID=#{k} ORDER BY ROOM_NUM
+	</select>
+
+	<insert id="insertAdminForm" parameterType="reserveVO">
+				INSERT INTO HOTEL_RESERVE VALUES (#{rsv_id},#{hotel_id},#{room_id},#{user_email},#{start_date},#{end_date},#{rsv_date},#{pay_yn})
+
+	</insert>
+
+</mapper>
