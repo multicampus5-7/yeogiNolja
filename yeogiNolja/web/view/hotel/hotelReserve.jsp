@@ -23,22 +23,24 @@
 	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+</head>
 <script>
 $(document).ready(function() {
 
-$("#adult").val(${booking.adult})
+$("#adult").val(${booking.adult});
+$("roomNum").val(${booking.roomNum});
 });
-
 </script>
-</head>
 <body>
+
 	<div id="booking" class="section">
 		<div class="section-center">
 			<div class="container">
 				<div class="row">
 					<div class="booking-form">
 						<div class="form-header">
-							<h1>Make your reservation</h1>
+							<h1>Confirm your reservation</h1>
 						</div>
 						<form>
 							<div class="form-group">
