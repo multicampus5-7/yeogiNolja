@@ -42,7 +42,7 @@
 							<th>E-MAIL</th>
 							<th>NAME</th>
 							<th>PASSWORD</th>
-							<th>ADMIN</th>
+							<th>TYPE</th>
 							<th>Actions</th>
 						</tr>
 					</thead>
@@ -52,7 +52,12 @@
 								<td scope="row">${u.email}</td>
 								<th>${u.name}</th>
 								<td>${u.pwd}</td>
-								<td>${u.admin_yn}</td>
+								<td>
+									<c:if test="${u.admin_yn == 'Y'}">
+										<div class="mb-2 mr-2 badge badge-pill badge-success">Admin</div></c:if>
+									<c:if test="${u.admin_yn == 'N'}">
+										<div class="mb-2 mr-2 badge badge-pill badge-secondary">Customer</div></c:if>
+								</td>
 								<td>
 									<button class="mb-2 mr-2 btn-transition btn btn-outline-info" 
 									onclick="location.href='adminUserModify.mc?id=${u.email}'">Edit</button>

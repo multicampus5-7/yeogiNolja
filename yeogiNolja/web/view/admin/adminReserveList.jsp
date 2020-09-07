@@ -40,12 +40,12 @@
 				<h5 class="card-title">Search Reservations </h5>
 				<div class="form-row">
 					<div class="col-md-6"> 
-					<div class="position-relative form-group"> <span class="form-label">Check In</span> <input
+					<div class="position-relative form-group"> <span class="form-label">Start Date</span> <input
 							class="form-control" type="date" name="start_date"
 							value="${requestInfo.start_date}" required> </div>
 					</div>
 					<div class="col-md-6"> 
-					<div class="position-relative form-group"> <span class="form-label">Check out</span> <input
+					<div class="position-relative form-group"> <span class="form-label">End Date</span> <input
 							class="form-control" type="date" name="end_date"
 							value="${requestInfo.end_date}" required> </div>
 					</div>
@@ -76,8 +76,8 @@
 							<th>HOTEL</th>
 							<th>ROOM</th>
 							<th>E-MAIL</th>
-							<th>START DATE</th>
-							<th>END DATE</th>
+							<th>CHECK IN</th>
+							<th>CHECK OUT</th>
 							<th>ACTIONS</th>
 						</tr>
 					</thead>

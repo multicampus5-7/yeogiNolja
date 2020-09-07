@@ -39,15 +39,16 @@
 						</tr>
 						<tr>
 							<th>Customer</th>
-							<td>${rsv.name} (${rsv.user_email})</td>
+							<td><a href="" data-toggle="modal" data-target="#modalUser">${rsv.name}</a> (${rsv.user_email})</td>
 						</tr>
 						<tr>
 							<th>Hotel</th>
-							<td>${rsv.hotel_name}</td>
+							<td><a href="" data-toggle="modal" data-target="#modalHotel">${rsv.hotel_name}</a>
+							</td>
 						</tr>
 						<tr>
 							<th>Room </th>
-							<td>${rsv.room_name} (${rsv.room_num}호)</td>
+							<td><a href="" data-toggle="modal" data-target="#modalRoom">${rsv.room_name}</a> (${rsv.room_num}호)</td>
 						</tr>
 						<tr>
 							<th>Period</th>
@@ -60,7 +61,12 @@
 						</tr>
 						<tr>
 							<th>PRICE</th>
-							<td><fmt:formatNumber value="${rsv.price}" pattern="###,###,###"/> (${rsv.pay_yn })</td>
+							<td>&#8361; <fmt:formatNumber value="${rsv.price}" pattern="###,###,###"/> &nbsp;
+							<c:if test="${rsv.pay_yn == 'Y'}">
+								<div class="mb-2 mr-2 badge badge-pill badge-success">Pay Complete</div></c:if>
+							<c:if test="${rsv.pay_yn == 'N'}">
+								<div class="mb-2 mr-2 badge badge-pill badge-danger">Not Paid</div></c:if>
+							</td>
 						</tr>
 						
 					</tbody>
@@ -89,17 +95,126 @@
 
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog-2" role="document">
+<div class="modal fade" id="modalHotel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <h5 class="modal-title" id="exampleModalLabel">${rsv.hotel_name}</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                <p class="mb-0"><img src="img/room/${r.room_img }"></p>
+				<table class="mb-0 table">
+					<tr>
+						<th>Hotel ID</th>
+						<td>${rsv.hotel_id}</td>
+					</tr>
+					<tr>
+						<th>NAME</th>
+						<td>${rsv.hotel_name}</td>
+					</tr>
+					<tr>
+						<th>Address</th>
+						<td>${rsv.addr_sd} ${rsv.addr_sgg} ${rsv.addr_emd}</td>
+					</tr>
+					<tr>
+						<th>Rooms</th>
+						<td>${rsv.total_room} </td>
+					</tr>
+					<tr>
+						<th>Amenities</th>
+						<td>${rsv.amenities}</td>
+					</tr>
+					<tr>
+						<th>Photo</th>
+						<td><img src="./img/hotel/${rsv.hotel_img}" width=100%></td>
+					</tr>
+				</table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modalUser" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">${rsv.name} 님</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+				<table class="mb-0 table">
+					<tr>
+						<th>NAME</th>
+						<td>${rsv.name}</td>
+					</tr>
+					<tr>
+						<th>E-MAIL</th>
+						<td>${rsv.user_email}</td>
+					</tr>
+					<tr>
+						<th>Admin</th>
+						<td>${rsv.admin_yn} </td>
+					</tr>
+				</table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modalRoom" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Room Information</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+				<table class="mb-0 table">
+					<tr>
+						<th>Hotel</th>
+						<td>${rsv.hotel_name}</td>
+					</tr>
+					<tr>
+						<th>Room</th>
+						<td>${rsv.room_name}</td>
+					</tr>
+					<tr>
+						<th>Number</th>
+						<td>No. ${rsv.room_num}</td>
+					</tr>
+					<tr>
+						<th>Adults</th>
+						<td>${rsv.adults}</td>
+					</tr>
+					<tr>
+						<th>Price</th>
+						<td>&#8361; <fmt:formatNumber value="${rsv.price}" pattern="###,###,###"/></td>
+					</tr>
+					<tr>
+						<th>Rooms</th>
+						<td>${rsv.total_room} </td>
+					</tr>
+					<tr>
+						<th>Amenities</th>
+						<td>${rsv.amenities}</td>
+					</tr>
+					<tr>
+						<th>Photo</th>
+						<td><img src="./img/room/${rsv.room_img}" width=100%></td>
+					</tr>
+				</table>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
