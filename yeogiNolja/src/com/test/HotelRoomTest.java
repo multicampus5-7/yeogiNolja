@@ -35,7 +35,7 @@ public class HotelRoomTest {
 		//select Hotels Room
 		ArrayList<HotelRoomVO> list = null;
 		try {
-			list = biz.getN("ht0001");
+			list = biz.getN("ht0002");
 			for (HotelRoomVO hotelRoomList : list) {
 				System.out.println(hotelRoomList);
 			}

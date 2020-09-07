@@ -134,7 +134,6 @@ public class HotelController {
 		try {
 			h = biz.get(hotelId);
 			hotelRoomList = rbiz.getN(hotelId);
-			System.out.println(hotelRoomList);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
