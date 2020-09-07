@@ -23,12 +23,16 @@ import org.springframework.web.servlet.ModelAndView;
 import com.frame.Biz;
 import com.vo.Booking;
 import com.vo.HotelList;
+import com.vo.HotelRoomVO;
 
 @Controller
 public class HotelController {
 
 	@Resource(name = "hotelListBiz")
 	Biz<String, HotelList> biz;
+
+	@Resource(name = "hotelRoomBiz")
+	Biz<String, HotelRoomVO> rbiz;
 
 	@RequestMapping("/hotelListAutoCom.mc")
 	@ResponseBody
@@ -82,12 +86,23 @@ public class HotelController {
 
 		HttpSession session = request.getSession();
 		Booking booking = (Booking) session.getAttribute("booking");
-		String orderBy = request.getParameter("orderBy");
-		if (orderBy == null)
-			orderBy = "hotel_id";
+		String orderBy;
+
+		orderBy = request.getParameter("orderBy");
+		if (orderBy == null) {
+			orderBy = (String) session.getAttribute("orderBy");
+			if (orderBy == null)
+				orderBy = "hotel_id";
+		} else {
+			session.setAttribute("orderBy", orderBy);
+		}
 		String pageNum = request.getParameter("pageNum");
 		if (pageNum == null)
 			pageNum = "1";
+
+		int stNum = Integer.parseInt(pageNum);
+		stNum = (stNum - 1) * 5;
+		int endNum = stNum + 4;
 
 		ArrayList<HotelList> hotelList = new ArrayList<HotelList>();
 		try {
@@ -103,8 +118,8 @@ public class HotelController {
 
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("hotelList", hotelList);
-		mv.addObject("pageNum", pageNum);
-
+		mv.addObject("stNum", stNum);
+		mv.addObject("endNum", endNum);
 		mv.addObject("centerpage", "hotel/hotelList.jsp");
 		mv.setViewName("main");
 		return mv;
@@ -113,9 +128,19 @@ public class HotelController {
 	@RequestMapping("hotelListDetail.mc")
 	public ModelAndView hotelListDetail(HttpServletRequest request) {
 		ModelAndView mv = new ModelAndView();
-
+		HotelList h = null;
+		ArrayList<HotelRoomVO> hotelRoomList = null;
 		String hotelId = request.getParameter("hotelId");
-		mv.addObject("hotelId", hotelId);
+		try {
+			h = biz.get(hotelId);
+			hotelRoomList = rbiz.getN(hotelId);
+			System.out.println(hotelRoomList);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		mv.addObject("hotel", h);
+		mv.addObject("hotelRoomList", hotelRoomList);
 		mv.addObject("centerpage", "hotel/hotelDetail.jsp");
 		mv.setViewName("main");
 		return mv;

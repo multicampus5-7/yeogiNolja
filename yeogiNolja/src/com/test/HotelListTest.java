@@ -26,13 +26,13 @@ public class HotelListTest {
 //			e.printStackTrace();
 //		}
 
-//		try {
-//			HotelList h = biz.get("ht0001");
-//			System.out.println("----------" + h);
-//		} catch (Exception e1) {
-//			// TODO Auto-generated catch block
-//			e1.printStackTrace();
-//		}
+		try {
+			HotelList h = biz.get("ht0001");
+			System.out.println("----------" + h);
+		} catch (Exception e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 
 //		//Count Total Hotel
 //		String hotelTotal = null;
@@ -53,19 +53,19 @@ public class HotelListTest {
 //			e.printStackTrace();
 //		}
 
-		try {
-			HashMap<String, String> map = new HashMap<String, String>();
-			map.put("dest", "");
-			map.put("orderBy", "grade");
-
-			ArrayList<HotelList> list = biz.search(map);
-			for (HotelList hotelList : list) {
-				System.out.println(hotelList);
-			}
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+//		try {
+//			HashMap<String, String> map = new HashMap<String, String>();
+//			map.put("dest", "");
+//			map.put("orderBy", "grade");
+//
+//			ArrayList<HotelList> list = biz.search(map);
+//			for (HotelList hotelList : list) {
+//				System.out.println(hotelList);
+//			}
+//		} catch (Exception e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 
 		// Insert Hotel Info
 //		String hotel_id = "ht1001";

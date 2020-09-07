@@ -73,24 +73,20 @@ img {
 		</ul>
 	</div>
 
-	<%-- <p>${pageNum}+1</p> --%>
 	<div id=hotelListInfo>
-		<c:forEach var="hlist" items="${hotelList}" begin="0" end="4">
+		<c:forEach var="hlist" items="${hotelList}" begin="${stNum}"
+			end="${endNum}">
 			<div>
-				<div>
-					<h3>
-						<a href="hotelListDetail.mc?hotelId=${hlist.hotel_id}">${hlist.name}</a>
-					</h3>
-					<p>${hlist.addr_sd}|${hlist.addr_sgg}
-						| ${hlist.addr_emd} | <a href="#">지도보기</a>
-					</p>
-				</div>
-				<div>
-					<div style="float: left;">
-						<p>
-							<img src=img/hotel/${hlist.hotel_img}>${hlist.grade }|${hlist.amenities}</p>
-					</div>
-				</div>
+				<h3>
+					<a href="hotelListDetail.mc?hotelId=${hlist.hotel_id}">
+						${hlist.name} </a>
+				</h3>
+				<p>${hlist.addr_sd}|${hlist.addr_sgg}
+					| ${hlist.addr_emd} | <a href="#">지도보기</a>
+				</p>
+				<p>
+					<img src=img/hotel/${hlist.hotel_img}>${hlist.grade }|${hlist.amenities}</p>
+
 			</div>
 
 		</c:forEach>
