@@ -29,7 +29,21 @@ public class ReserveTest {
 //		} catch (Exception e) {
 //			e.printStackTrace();
 //		}
-				
+
+		//select WHERE DATE
+		String start_date = "2020-09-06";
+		String end_date ="2020-09-20" ;
+		ReserveVO r = new ReserveVO(start_date, end_date);
+		System.out.println(r);
+		ArrayList<ReserveVO> list = null;
+		try {
+			list = biz.getByDate(r);
+			for (ReserveVO result : list) {
+				System.out.println(result);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}		
 		
 //		//insert Hotel Reserve 
 //		String rsv_id="rv1001";
@@ -48,19 +62,19 @@ public class ReserveTest {
 //			e.printStackTrace();
 //		}
 		
-		//select Hotels Room
-		SimpleDateFormat dateFrom = new SimpleDateFormat ( "yyyy-MM-dd");
-		String d = dateFrom.format(new java.util.Date());
-		ArrayList<ReserveVO> list = null;
-		
-		try {
-			list = biz.getN(d);
-			for (ReserveVO r : list) {
-				System.out.println(r);
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+//		//select Hotels Room
+//		SimpleDateFormat dateFrom = new SimpleDateFormat ( "yyyy-MM-dd");
+//		String d = dateFrom.format(new java.util.Date());
+//		ArrayList<ReserveVO> list = null;
+//		
+//		try {
+//			list = biz.getN(d);
+//			for (ReserveVO r : list) {
+//				System.out.println(r);
+//			}
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
 		
 		
 		factory.close();

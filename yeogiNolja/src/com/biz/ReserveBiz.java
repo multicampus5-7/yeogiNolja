@@ -79,4 +79,9 @@ public class ReserveBiz implements Biz<String, ReserveVO> {
 		}		
 	}
 
+	@Override
+	public ArrayList<ReserveVO> getByDate(ReserveVO v) throws Exception {
+		return dao.selectByDate(v);
+	}
+
 }

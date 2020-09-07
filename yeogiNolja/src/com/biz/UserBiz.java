@@ -76,4 +76,10 @@ public class UserBiz implements Biz<String, UserVO> {
 		
 	}
 
+	@Override
+	public ArrayList<UserVO> getByDate(UserVO v) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

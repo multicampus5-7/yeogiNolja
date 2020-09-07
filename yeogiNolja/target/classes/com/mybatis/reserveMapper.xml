@@ -30,13 +30,17 @@
 	</select>
 	
 	<select id="selectN" resultType="reserveVO"> <!-- &lt; : "<" -->
-		SELECT * FROM HOTEL_RESERVE WHERE TO_DATE(START_DATE, 'yyyy mm dd') &lt;= TO_DATE(#{start_date}, 'yyyy mm dd') AND 
-					TO_DATE(END_DATE, 'yyyy mm dd') >= TO_DATE(#{end_date}, 'yyyy mm dd');
+
 	</select>
 
 	<insert id="insertAdminForm" parameterType="reserveVO">
-				INSERT INTO HOTEL_RESERVE VALUES (#{rsv_id},#{hotel_id},#{room_id},#{user_email},#{start_date},#{end_date},#{rsv_date},#{pay_yn})
-
+		INSERT INTO HOTEL_RESERVE VALUES (#{rsv_id},#{hotel_id},#{room_id},#{user_email},#{start_date},#{end_date},#{rsv_date},#{pay_yn})
 	</insert>
 
+	<!-- Search By Date -->
+	<select id="selectByDate" resultType="reserveVO">
+		SELECT * FROM HOTEL_RESERVE
+		WHERE TO_DATE(START_DATE) >= TO_DATE(#{start_date}) AND 
+			TO_DATE(END_DATE) &lt;= TO_DATE(#{end_date})
+	</select>
 </mapper>

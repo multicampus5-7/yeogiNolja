@@ -210,4 +210,26 @@ public class AdminController {
 		mv.setViewName("admin/index");
 		return mv;
 	}
+	
+	@RequestMapping("/adminRsvSearchDateImpl.mc")
+	public ModelAndView adminRsvSearchDateImpl(ReserveVO rsv) {
+		ModelAndView mv = new ModelAndView();
+		System.out.println(rsv);
+		
+		ArrayList<ReserveVO> list = null;
+		try {
+			list = rsvbiz.getByDate(rsv);
+			for (ReserveVO result : list) {
+				System.out.println(result);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}	
+		
+		mv.addObject("reserveList", list);
+		mv.addObject("centerpage", "adminReserveList.jsp");
+		mv.setViewName("admin/index");
+		return mv;
+	}
+
 }
