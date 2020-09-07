@@ -226,9 +226,28 @@ public class AdminController {
 			e.printStackTrace();
 		}	
 		
+		mv.addObject("requestInfo",rsv);
 		mv.addObject("reserveList", list);
 		mv.addObject("centerpage", "adminReserveList.jsp");
 		mv.setViewName("admin/index");
+		return mv;
+	}
+	
+	@RequestMapping("adminRsvDetail.mc")
+	public ModelAndView adminRsvDetail(String id) {
+		ModelAndView mv = new ModelAndView();
+		ReserveVO r = new ReserveVO();
+		System.out.println(id);
+		try {
+			r = rsvbiz.get(id);
+			System.out.println(r);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		mv.addObject("rsv", r);
+		mv.addObject("centerpage", "adminRsvDetail.jsp");
+		mv.setViewName("admin/index");		
 		return mv;
 	}
 
