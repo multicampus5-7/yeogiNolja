@@ -1,13 +1,61 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <div id="center">
-<h1>User Update Page</h1>
-<form action="userupdateimpl.mc" method="post">
-	ID: ${userdetail.email }<br>
-	PWD: <input type="text" name="pwd" value="${userdetail.pwd }"><br>
-	NAME: <input type="text" name="name" value="${userdetail.name }"><br>
-	<input type="hidden" name="email" value="${userdetail.email }">
-	<input type="submit" value="UPDATE">
-</form>
+	<h1>User Update Page</h1>
+	<form action="userupdateimpl.mc" method="post">
+		ID: ${userdetail.email }<br>
+		PWD: <input type="text" name="pwd"	value="${userdetail.pwd }"><br>
+		NAME: <input type="text" name="name" value="${userdetail.name }"><br>
+		<input type="hidden" name="email" value="${userdetail.email }">
+		<input type="submit" value="UPDATE">
+	</form>
 
 </div>
+<%-- <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>회원정보 수정</title>
+<link rel="stylesheet" href="css/modify/style.css">
+</head>
+<body>
+	<div class="container rounded bg-white mt-5 mb-5">
+		<div class="row">
+			<div class="col-md-3 border-right">
+				<div class="d-flex flex-column align-items-center text-center p-3 py-5">
+					<span class="font-weight-bold">NAME : ${userdetail.name } </span>
+					<span class="text-black-50">EMAIL: ${userdetail.email }</span>
+					<span></span>
+				</div>
+			</div>
+			<div class="col-md-5 border-right">
+				<div class="p-3 py-5">
+					<div class="d-flex justify-content-between align-items-center mb-3">
+						<h4 class="text-right">Profile Settings</h4>
+					</div>
+					<form action="userupdateimpl.mc" method="post">
+						<div class="row mt-2">
+							<div class="col-md-6">
+								<label class="labels">NAME</label><input type="text" name="name" class="form-control" placeholder="your name" value="${userdetail.name }">
+							</div>
+						</div>
+						<div class="row mt-3">
+							<div class="col-md-12">
+								<label class="labels">EMAIL</label><input value="${userdetail.email }" disabled/>
+							</div>
+							<div class="col-md-12">
+								<label class="labels">PASSWORD</label><input type="password" name="pwd" class="form-control" placeholder="your new pwd" value="${userdetail.pwd }">
+							</div>
+						</div>
+						<div class="mt-5 text-center">
+							<input type="submit" value="UPDATE">
+						</div>
+					</form>
+				</div>
+			</div>			
+		</div>
+	</div>
+</body>
+</html> --%>
