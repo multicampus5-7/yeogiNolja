@@ -45,32 +45,31 @@ public class ReserveTest {
 //			e.printStackTrace();
 //		}		
 		
-//		//insert Hotel Reserve 
-//		String rsv_id="rv1001";
-//		String hotel_id="ht1001";
-//		String room_id="rm1001";
-//		String user_email="ryan@gmail.com";
-//		String start_date="2020-09-01";
-//		String end_date="2020-09-20";
-//		String pay_yn="Y";
-//		
-//		ReserveVO r = new ReserveVO(rsv_id, hotel_id, room_id, user_email, start_date, end_date, pay_yn);
-//		System.out.println(r);
-//		try {
-//			biz.registerAdmin(r);
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
+		//insert Hotel Reserve 
+		String hotel_id="ht1022";
+		String room_id="rm1001";
+		String user_email="ryan@gmail.com";
+		String start_date="2020-09-01";
+		String end_date="2020-09-20";
+		String pay_yn="Y";
 		
-		//select ALL JOIN (RSV + HOTEL + ROOM + USERS)
-		ReserveVO r = new ReserveVO();
-		String rsv_id="rv0001";
+		ReserveVO r = new ReserveVO(hotel_id, room_id, user_email, start_date, end_date, pay_yn);
+		System.out.println(r);
 		try {
-			r = biz.get(rsv_id);
-			System.out.println(r);
+			biz.register(r);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		
+//		//select ALL JOIN (RSV + HOTEL + ROOM + USERS)
+//		ReserveVO r = new ReserveVO();
+//		String rsv_id="rv0001";
+//		try {
+//			r = biz.get(rsv_id);
+//			System.out.println(r);
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
 		
 		
 		factory.close();

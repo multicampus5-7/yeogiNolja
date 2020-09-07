@@ -42,7 +42,10 @@ $("roomNum").val(${booking.roomNum});
 						<div class="form-header">
 							<h1>Confirm your reservation</h1>
 						</div>
-						<form>
+						<form action="reserveImpl.mc" method="post">
+							<input type="hidden" name="hotel_id" value="${hotel.hotel_id }">
+							<input type="hidden" name="room_id" value="${room.room_id }">
+							<input type="hidden" name="user_email" value="${user.email }">
 							<div class="form-group">
 								<input class="form-control" type="text" placeholder="hotelName"
 									value="${hotel.name}"> <span class="form-label">Hotel
@@ -56,14 +59,14 @@ $("roomNum").val(${booking.roomNum});
 							<div class="row">
 								<div class="col-md-6">
 									<div class="form-group">
-										<input class="form-control" type="date"
+										<input class="form-control" type="date" name="start_date"
 											value="${booking.inDate }"> <span class="form-label">Check
 											In</span>
 									</div>
 								</div>
 								<div class="col-md-6">
 									<div class="form-group">
-										<input class="form-control" type="date"
+										<input class="form-control" type="date" name="end_date"
 											value="${booking.outDate }"> <span class="form-label">Check
 											out</span>
 									</div>
@@ -94,12 +97,12 @@ $("roomNum").val(${booking.roomNum});
 							<div class="row">
 								<div class="col-md-6">
 									<div class="form-btn">
-										<button class="submit-btn">Book Now</button>
+										<button class="submit-btn" name="pay_yn" value="n">book Now</button>
 									</div>
 								</div>
 								<div class="col-md-6">
 									<div class="form-btn">
-										<button class="submit-btn">Pay Now</button>
+										<button class="submit-btn" name="pay_yn" value="y">pay Now</button>
 									</div>
 								</div>
 

@@ -33,7 +33,10 @@ public class UserController {
 			if (user.getPwd().equals(pwd)) {
 				HttpSession session = request.getSession();
 				session.setAttribute("user", user);
-				mv.addObject("centerpage", "user/loginok.jsp");
+				if (session.getAttribute("hotel") == null)
+					mv.addObject("centerpage", "user/loginok.jsp");
+				else
+					return new ModelAndView("redirect: setReservePage.mc");
 			} else
 				mv.addObject("centerpage", "user/loginfail.jsp");
 
@@ -54,11 +57,13 @@ public class UserController {
 
 		return new ModelAndView("redirect: main.mc");
 	}
-	/*È¸¿ø°¡ÀÔ °ü·Ã*/
+
+	/* È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ */
 	@RequestMapping("useradd.mc")
 	public String useradd() {
 		return "user/register";
 	}
+
 	@RequestMapping("useraddimpl.mc")
 	public ModelAndView useraddimpl(ModelAndView mv, UserVO user) {
 		try {
@@ -71,14 +76,15 @@ public class UserController {
 		mv.setViewName("main");
 		return mv;
 	}
-	/*login µÈ È¸¿øÀÇ Á¤º¸ ¼öÁ¤ÇÏ±â °ü·Ã*/
-	/* È¸¿øÁ¤º¸ show */
+
+	/* login ï¿½ï¿½ È¸ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½ ï¿½ï¿½ï¿½ï¿½ */
+	/* È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ show */
 	@RequestMapping("userdetail.mc")
 	public ModelAndView userdetail(String email) {
 		ModelAndView mv = new ModelAndView();
 		UserVO user = null;
 		try {
-			user=biz.get(email);
+			user = biz.get(email);
 			System.out.println(user.getEmail());
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -88,29 +94,30 @@ public class UserController {
 		mv.setViewName("main");
 		return mv;
 	}
-	/* È¸¿øÁ¤º¸ update */
+
+	/* È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ update */
 	@RequestMapping("/userupdate.mc")
-	public ModelAndView userupdate(ModelAndView mv,	String email) {
+	public ModelAndView userupdate(ModelAndView mv, String email) {
 		UserVO user = null;
 		try {
 			user = biz.get(email);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		mv.addObject("userdetail",user);
-		mv.addObject("centerpage", "user/modify.jsp"); 
+		mv.addObject("userdetail", user);
+		mv.addObject("centerpage", "user/modify.jsp");
 		mv.setViewName("main");
 		return mv;
 	}
+
 	@RequestMapping("/userupdateimpl.mc")
 	public String userupdateimpl(UserVO user) {
 		try {
 			biz.modify(user);
-		}catch(Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return "redirect:main.mc";
 	}
 
-	
 }

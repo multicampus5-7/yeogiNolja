@@ -68,6 +68,16 @@ public class ReserveVO {
 		this.end_date = end_date;
 		this.pay_yn = pay_yn;
 	}
+	
+	public ReserveVO(String hotel_id, String room_id, String user_email, String start_date,
+			String end_date, String pay_yn) {
+		this.hotel_id = hotel_id;
+		this.room_id = room_id;
+		this.user_email = user_email;
+		this.start_date = start_date;
+		this.end_date = end_date;
+		this.pay_yn = pay_yn;
+	}
 
 
 	public ReserveVO(String rsv_id, String hotel_id, String room_id, String user_email, String start_date,

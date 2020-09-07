@@ -3,8 +3,7 @@
 <mapper namespace="com.dao.ReserveDao">
 
 	<insert id="insert" parameterType="reserveVO">
-		INSERT INTO HOTEL_RESERVE VALUES (#{rsv_id},#{hotel_id},#{room_id},#{user_email},
-		TO_DATE(#{start_date}, 'yyyy mm dd'), TO_DATE(#{end_date}, 'yyyy mm dd'),SYSDATE,#{pay_yn})
+		INSERT INTO HOTEL_RESERVE(rsv_id, hotel_id, room_id, user_email, start_date, end_date, pay_yn) VALUES (('rv'||lpad(rsv_seq.nextval, 4, '0')),#{hotel_id},#{room_id},#{user_email},#{start_date},#{end_date},#{pay_yn})
 	</insert>
 
 	<update id="update" parameterType="reserveVO">
@@ -15,7 +14,7 @@
 		DELETE FROM HOTEL_RESERVE WHERE RSV_ID=#{k}
 	</delete>
 
-	<!-- ALL JOIN.. RESERVE JOIN ON HOTEL + ROOM + USER  -->	
+	<!-- ALL JOIN.. RESERVE JOIN ON HOTEL + ROOM + USER  -->
 	<select id="select" parameterType="String" resultType="reserveVO">
 		SELECT * FROM HOTEL_RESERVE RSV
 			JOIN USERS U ON(RSV.USER_EMAIL = U.EMAIL)
@@ -27,14 +26,15 @@
 	<select id="selectall" resultType="reserveVO">
 		SELECT * FROM HOTEL_RESERVE 
 	</select>
-	
+
 	<!-- Reservations Staying Today -->
 	<select id="selectall_count" resultType="String">
 		SELECT COUNT(*) FROM HOTEL_RESERVE
 		WHERE TO_DATE(SYSDATE) BETWEEN TO_DATE(START_DATE) AND TO_DATE(END_DATE)
 	</select>
-	
-	<select id="selectN" resultType="reserveVO"> <!-- &lt; : "<" -->
+
+	<select id="selectN" resultType="reserveVO">
+		<!-- &lt; : "<" -->
 
 	</select>
 
@@ -48,5 +48,5 @@
 		WHERE TO_DATE(START_DATE) >= TO_DATE(#{start_date}) AND 
 			TO_DATE(END_DATE) &lt;= TO_DATE(#{end_date})
 	</select>
-	
+
 </mapper>

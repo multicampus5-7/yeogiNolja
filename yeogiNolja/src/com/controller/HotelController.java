@@ -24,6 +24,7 @@ import com.frame.Biz;
 import com.vo.Booking;
 import com.vo.HotelList;
 import com.vo.HotelRoomVO;
+import com.vo.ReserveVO;
 
 @Controller
 public class HotelController {
@@ -32,7 +33,10 @@ public class HotelController {
 	Biz<String, HotelList> biz;
 
 	@Resource(name = "hotelRoomBiz")
-	Biz<String, HotelRoomVO> rbiz;
+	Biz<String, HotelRoomVO> hbiz;
+
+	@Resource(name = "reserveBiz")
+	Biz<String, ReserveVO> rbiz;
 
 	@RequestMapping("/hotelListAutoCom.mc")
 	@ResponseBody
@@ -133,7 +137,7 @@ public class HotelController {
 		String hotelId = request.getParameter("hotelId");
 		try {
 			h = biz.get(hotelId);
-			hotelRoomList = rbiz.getN(hotelId);
+			hotelRoomList = hbiz.getN(hotelId);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -155,11 +159,10 @@ public class HotelController {
 
 		try {
 			hotel = biz.get(hotelId);
-			hotelRoom = rbiz.get(roomId);
+			hotelRoom = hbiz.get(roomId);
 			System.out.println(hotel);
 			System.out.println(hotelRoom);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
@@ -180,5 +183,22 @@ public class HotelController {
 		mv.setViewName("hotel/hotelReserve");
 		return mv;
 
+	}
+
+	@RequestMapping("reserveImpl.mc")
+	public ModelAndView reserveImpl(HttpServletRequest request, ReserveVO r) {
+		ModelAndView mv = new ModelAndView();
+
+		HttpSession session = request.getSession();
+		session.removeAttribute("booking");
+		try {
+			rbiz.register(r);
+			mv.addObject("centerpage", "hotel/reserveOk.jsp");
+		} catch (Exception e) {
+			mv.addObject("centerpage", "hotel/reserveFail.jsp");
+			e.printStackTrace();
+		}
+		mv.setViewName("main");
+		return mv;
 	}
 }
