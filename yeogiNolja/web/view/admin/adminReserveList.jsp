@@ -42,12 +42,12 @@
 					<div class="col-md-6"> 
 					<div class="position-relative form-group"> <span class="form-label">Check In</span> <input
 							class="form-control" type="date" name="start_date"
-							value="${rsv.start_date}" required> </div>
+							value="${requestInfo.start_date}" required> </div>
 					</div>
 					<div class="col-md-6"> 
 					<div class="position-relative form-group"> <span class="form-label">Check out</span> <input
 							class="form-control" type="date" name="end_date"
-							value="${rsv.end_date}" required> </div>
+							value="${requestInfo.end_date}" required> </div>
 					</div>
 				</div>
 				<button class="mt-1 btn btn-primary" type="submit">Search</button>
@@ -84,7 +84,8 @@
 					<tbody>
 						<c:forEach var="rsv" items="${reserveList}">
 							<tr>
-								<td scope="row">${rsv.rsv_id}</td>
+								<td scope="row"><a href="adminRsvDetail.mc?id=${rsv.rsv_id}">
+									${rsv.rsv_id}</a></td>
 								<td>${rsv.hotel_id}</td>
 								<td>${rsv.room_id}</td>
 								<td>${rsv.user_email}</td>
