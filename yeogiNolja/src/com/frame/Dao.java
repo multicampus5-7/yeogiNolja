@@ -14,6 +14,7 @@ public interface Dao<K,V> {
 	public void insertAdminForm(V v) throws Exception;
 	public int updateAdminForm(V v) throws Exception;
 	public ArrayList<V> selectN(K k) throws Exception;
+	public ArrayList<V> selectByDate(V v) throws Exception;
 
 	public void insertAdminFrom(V v);
 }

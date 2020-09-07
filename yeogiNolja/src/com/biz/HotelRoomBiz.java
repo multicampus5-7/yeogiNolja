@@ -74,6 +74,12 @@ public class HotelRoomBiz implements Biz<String, HotelRoomVO> {
 		
 	}
 
+	@Override
+	public ArrayList<HotelRoomVO> getByDate(HotelRoomVO v) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	
 
 }

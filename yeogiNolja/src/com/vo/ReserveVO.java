@@ -17,6 +17,11 @@ public class ReserveVO {
 		this.rsv_id = rsv_id;
 	}
 
+	public ReserveVO(String start_date, String end_date) {
+		this.start_date = start_date;
+		this.end_date = end_date;
+	}
+
 	public ReserveVO(String rsv_id, String hotel_id, String room_id, String user_email, String start_date,
 			String end_date, String rsv_date, String pay_yn) {
 		this.rsv_id = rsv_id;
