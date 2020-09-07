@@ -144,4 +144,41 @@ public class HotelController {
 		mv.setViewName("main");
 		return mv;
 	}
+
+	@RequestMapping("goReservePage.mc")
+	public ModelAndView goReservePage(HttpServletRequest request) {
+		String hotelId = request.getParameter("hotelId");
+		String roomId = request.getParameter("roomId");
+
+		HotelList hotel = null;
+		HotelRoomVO hotelRoom = null;
+
+		try {
+			hotel = biz.get(hotelId);
+			hotelRoom = rbiz.get(roomId);
+			System.out.println(hotel);
+			System.out.println(hotelRoom);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		HttpSession session = request.getSession();
+		session.setAttribute("hotel", hotel);
+		session.setAttribute("room", hotelRoom);
+
+		System.out.println(hotelId + roomId);
+		if (session.getAttribute("user") == null)
+			return new ModelAndView("redirect: login.mc");
+		else
+			return new ModelAndView("redirect: setReservePage.mc");
+	}
+
+	@RequestMapping("setReservePage.mc")
+	public ModelAndView setReservePage(HttpServletRequest request) {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("hotel/hotelReserve");
+		return mv;
+
+	}
 }

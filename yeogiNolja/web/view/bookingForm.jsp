@@ -69,6 +69,9 @@
 		document.getElementById("inDate").setAttribute("min", today);
 		document.getElementById("outDate").setAttribute("min", today);
 
+		$("#adult").val(${booking.adult})
+		$("#roomNum").val(${booking.roomNum});
+
 	});
 </script>
 
@@ -101,18 +104,8 @@
 		<div class="row">
 			<div class="col-sm-4">
 				<div class="form-group">
-					<span class="form-label">Grade</span> <select class="form-control"
-						name="hotelType">
-						<option value="O01">전체</option>
-						<option value="O02">1급</option>
-						<option value="O03">2급</option>
-					</select> <span class="select-arrow"></span>
-				</div>
-			</div>
-			<div class="col-sm-4">
-				<div class="form-group">
 					<span class="form-label">Rooms</span> <select class="form-control"
-						name="roomNum">
+						name="roomNum" id="roomNum">
 						<option>1</option>
 						<option>2</option>
 						<option>3</option>
@@ -122,7 +115,7 @@
 			<div class="col-sm-4">
 				<div class="form-group">
 					<span class="form-label">Adults</span> <select class="form-control"
-						name="adult">
+						name="adult" id="adult">
 						<option>1</option>
 						<option>2</option>
 						<option>3</option>
