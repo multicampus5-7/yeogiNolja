@@ -11,6 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.frame.Biz;
 import com.vo.HotelList;
 import com.vo.HotelRoomVO;
+import com.vo.ReserveVO;
 import com.vo.UserVO;
 
 @Controller
@@ -25,23 +26,31 @@ public class AdminController {
 	@Resource(name = "hotelRoomBiz")
 	Biz<String, HotelRoomVO> rbiz;	
 
+	@Resource(name = "reserveBiz")
+	Biz<String, ReserveVO> rsvbiz;	
+	
 	@RequestMapping("/admin.mc")
 	public ModelAndView admin() {
 		ModelAndView mv = new ModelAndView();
 		
 		String hotelTotal = null;
 		String userTotal = null;
+		String todayRsvTotal = null;
+
 		try {
 			hotelTotal = hbiz.count();
 			userTotal = ubiz.count();
+			todayRsvTotal = rsvbiz.count();
 			System.out.println(hotelTotal);
 			System.out.println(userTotal);
+			System.out.println(todayRsvTotal);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
 		mv.addObject("hotelTotalNum", hotelTotal);
 		mv.addObject("userTotalNum", userTotal);
+		mv.addObject("rsvTotalNum", todayRsvTotal);
 		mv.addObject("centerpage", "adminCenter.jsp");
 		mv.setViewName("admin/index");
 		return mv;
@@ -185,8 +194,18 @@ public class AdminController {
 	@RequestMapping("/adminReserve.mc")
 	public ModelAndView adminReserve() {
 		ModelAndView mv = new ModelAndView();
+		//select all reservations
+		ArrayList<ReserveVO> rsvlist = null;
+		try {
+			rsvlist = rsvbiz.get();
+			for (ReserveVO r : rsvlist) {
+				System.out.println(r);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		
-		
+		mv.addObject("reserveList", rsvlist);
 		mv.addObject("centerpage", "adminReserveList.jsp");
 		mv.setViewName("admin/index");
 		return mv;

@@ -66,8 +66,8 @@ public class ReserveBiz implements Biz<String, ReserveVO> {
 
 	@Override
 	public ArrayList<ReserveVO> getN(String k) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		return dao.selectN(k);
+	
 	}
 
 

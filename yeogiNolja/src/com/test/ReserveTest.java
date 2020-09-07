@@ -1,7 +1,8 @@
 package com.test;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.sql.Date;
+import java.util.Date;
 
 import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.GenericXmlApplicationContext;
@@ -22,31 +23,44 @@ public class ReserveTest {
 //		ArrayList<ReserveVO> list = null;
 //		try {
 //			list = biz.get();
-//			for (ReserveVO hotelRoomList : list) {
-//				System.out.println(hotelRoomList);
+//			for (ReserveVO r : list) {
+//				System.out.println(r);
 //			}
 //		} catch (Exception e) {
 //			e.printStackTrace();
 //		}
 				
 		
-		//insert Hotel Reserve 
-		String rsv_id="rv1001";
-		String hotel_id="ht1001";
-		String room_id="rm1001";
-		String user_email="ryan@gmail.com";
-		String start_date="2020-09-01";
-		String end_date="2020-09-20";
-		String rsv_date="2020-09-20";
-		String pay_yn="Y";
+//		//insert Hotel Reserve 
+//		String rsv_id="rv1001";
+//		String hotel_id="ht1001";
+//		String room_id="rm1001";
+//		String user_email="ryan@gmail.com";
+//		String start_date="2020-09-01";
+//		String end_date="2020-09-20";
+//		String pay_yn="Y";
+//		
+//		ReserveVO r = new ReserveVO(rsv_id, hotel_id, room_id, user_email, start_date, end_date, pay_yn);
+//		System.out.println(r);
+//		try {
+//			biz.registerAdmin(r);
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
 		
-		ReserveVO r = new ReserveVO(rsv_id, hotel_id, room_id, user_email, start_date, end_date, rsv_date, pay_yn);
-		System.out.println(r);
+		//select Hotels Room
+		SimpleDateFormat dateFrom = new SimpleDateFormat ( "yyyy-MM-dd");
+		String d = dateFrom.format(new java.util.Date());
+		ArrayList<ReserveVO> list = null;
+		
 		try {
-			biz.registerAdmin(r);
+			list = biz.getN(d);
+			for (ReserveVO r : list) {
+				System.out.println(r);
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
-		}		
+		}
 		
 		
 		factory.close();

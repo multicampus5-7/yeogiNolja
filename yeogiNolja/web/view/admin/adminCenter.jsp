@@ -75,12 +75,12 @@
 		<div class="card mb-3 widget-content bg-arielle-smile">
 			<div class="widget-content-wrapper text-white">
 				<div class="widget-content-left">
-					<div class="widget-heading">Today's Reservation</div>
-					<div class="widget-subheading">오늘 숙박 예약 건 수</div>
+					<div class="widget-heading">Reservations Staying Today</div>
+					<div class="widget-subheading">오늘 숙박 중인 예약</div>
 				</div>
 				<div class="widget-content-right">
 					<div class="widget-numbers text-white">
-						<span>$ 000</span>
+						<span>${rsvTotalNum}</span>
 					</div>
 				</div>
 			</div>

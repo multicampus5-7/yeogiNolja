@@ -23,12 +23,15 @@
 		SELECT * FROM HOTEL_RESERVE 
 	</select>
 	
+	<!-- Reservations Staying Today -->
 	<select id="selectall_count" resultType="String">
-		SELECT COUNT(*) FROM HOTEL_RESERVE 
+		SELECT COUNT(*) FROM HOTEL_RESERVE
+		WHERE TO_DATE(SYSDATE) BETWEEN TO_DATE(START_DATE) AND TO_DATE(END_DATE)
 	</select>
 	
-	<select id="selectN" resultType="reserveVO">
-		SELECT * FROM HOTEL_RESERVE WHERE HOTEL_ID=#{k} ORDER BY ROOM_NUM
+	<select id="selectN" resultType="reserveVO"> <!-- &lt; : "<" -->
+		SELECT * FROM HOTEL_RESERVE WHERE TO_DATE(START_DATE, 'yyyy mm dd') &lt;= TO_DATE(#{start_date}, 'yyyy mm dd') AND 
+					TO_DATE(END_DATE, 'yyyy mm dd') >= TO_DATE(#{end_date}, 'yyyy mm dd');
 	</select>
 
 	<insert id="insertAdminForm" parameterType="reserveVO">

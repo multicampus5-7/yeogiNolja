@@ -1,8 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <div class="app-page-title">
 	<div class="page-title-wrapper">
@@ -38,15 +37,19 @@
 		<div class="main-card mb-3 card">
 			<div class="card-body">
 				<h5 class="card-title">Search Reservations </h5>
-				<span class="form-label">Check In</span> <input
-						class="form-control" type="date" name="inDate" id="inDate"
-						value="${booking.inDate}" required>
-						
-				<span class="form-label">Check out</span> <input
-						class="form-control" type="date" name="outDate" id="outDate"
-						value="${booking.outDate}" required>
-				
-				
+				<div class="form-row">
+					<div class="col-md-6"> 
+					<div class="position-relative form-group"> <span class="form-label">Check In</span> <input
+							class="form-control" type="date" name="inDate" id="inDate"
+							value="${booking.inDate}" required> </div>
+					</div>
+					<div class="col-md-6"> 
+					<div class="position-relative form-group"> <span class="form-label">Check out</span> <input
+							class="form-control" type="date" name="outDate" id="outDate"
+							value="${booking.outDate}" required> </div>
+					</div>
+				</div>
+				<button class="mt-1 btn btn-primary">Search</button>
 			</div>
 		</div>		
 	</div>	
@@ -66,20 +69,29 @@
 							<th>ACTIONS</th>
 						</tr>
 					</thead>
-					<tbody><!-- 
-						<c:forEach var="u" items="${userList}">
+					<tbody>
+						<c:forEach var="rsv" items="${reserveList}">
 							<tr>
-								<td scope="row">${u.email}</td>
-								<th>${u.name}</th>
-								<td>${u.pwd}</td>
-								<td>${u.admin_yn}</td>
+								<td scope="row">${rsv.rsv_id}</td>
+								<td>${rsv.hotel_id}</td>
+								<td>${rsv.room_id}</td>
+								<td>${rsv.user_email}</td>
 								<td>
-									<button class="mb-2 mr-2 btn-transition btn btn-outline-info" 
-									onclick="location.href='adminUserModify.mc?id=${u.email}'">Edit</button>
-									<button class="mb-2 mr-2 btn-transition btn btn-outline-danger">Delete</button>
+									<fmt:parseDate value="${rsv.start_date}" var="startDate" pattern="yyyy-MM-dd"/>
+									<fmt:formatDate value="${startDate}" pattern="yyyy-MM-dd"/>
+								</td>
+								<td>
+									<fmt:parseDate value="${rsv.end_date}" var="endDate" pattern="yyyy-MM-dd"/>
+									<fmt:formatDate value="${endDate}" pattern="yyyy-MM-dd"/>
+								</td>
+								<td>
+									<button class="mr-2 btn-icon btn-icon-only btn btn-outline-info" 
+									onclick="location.href='adminRsvModify.mc?id=${rsv.rsv_id}'">Edit</button>
+									<button class="mr-2 btn-icon btn-icon-only btn btn-outline-danger">
+									<i class="pe-7s-trash btn-icon-wrapper"> </i> </button>
 								</td>					
 							</tr>
-						</c:forEach> -->
+						</c:forEach>
 					</tbody>
 				</table>
 			</div>
@@ -101,46 +113,6 @@
 		}
 
 		return today = "" + yyyy + '-' + mm + '-' + dd;
-	}
-
-	function getHotelListData() {
-		$.ajax({
-			url : 'hotelListAutoCom.mc',
-			async : false,
-
-			success : function(result) {
-				console.log("autoComplete ok");
-				setAutoComplete(result.data);
-			},
-			error : function() {
-				console.log("autoComplete Fail");
-			}
-		});
-	}
-
-	function setAutoComplete(searchSource) {
-		$("#dest").autocomplete({
-			source : searchSource,
-			select : function(event, ui) {
-				console.log(ui.item);
-			},
-			focus : function(event, ui) {
-				return false;
-			},
-			minLength : 1,
-			autoFocus : true,
-			classes : {
-				"ui-autocomplete" : "highlight"
-			},
-			position : {
-				my : "right top",
-				at : "right bottom"
-			},
-			close : function(event) {
-				console.log(event);
-			}
-		});
-
 	}
 
 	$(document).ready(function() {
