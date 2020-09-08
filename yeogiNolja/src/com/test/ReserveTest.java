@@ -31,12 +31,6 @@ public class ReserveTest {
 //			e.printStackTrace();
 //		}
 //
-//		try {
-//			biz.remove("rv0032");
-//		} catch (Exception e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
 //		//select WHERE DATE
 //		String start_date = "2020-09-06";
 //		String end_date ="2020-09-20" ;

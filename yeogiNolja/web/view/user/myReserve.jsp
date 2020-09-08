@@ -43,8 +43,8 @@ h2, p {
 <body>
 	<header>
 		<p>${user.name}님
-			| <a href="main.mc">메인페이지 </a> | <a href="userupdate.mc">회원
-				정보 수정</a> | <a href="logout.mc">logout</a>
+			| <a href="main.mc">메인페이지 </a> | <a href="userupdate.mc">회원 정보 수정</a>
+			| <a href="logout.mc">logout</a>
 		</p>
 	</header>
 	<div class="section-center">
@@ -101,9 +101,18 @@ h2, p {
 									</div>
 								</div>
 							</div>
-							<div class="form-btn">
-								<input type="hidden" name="rsv_id" value="${r.rsv_id}">
-								<button class="submit-btn">예약 취소하기</button>
+							<div class="row">
+								<div class="col-md-3">
+									<div class="form-btn">
+										<input type="hidden" name="rsv_id" value="${r.rsv_id}">
+										<button class="submit-btn">예약 취소하기</button>
+									</div>
+								</div>
+								<div class="col-md-3">
+									<div class="form-btn">
+										<button class="submit-btn">결제하기</button>
+									</div>
+								</div>
 							</div>
 						</form>
 					</div>
