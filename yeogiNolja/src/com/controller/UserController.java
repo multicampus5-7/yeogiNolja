@@ -77,19 +77,22 @@ public class UserController {
 	}
 
 	@RequestMapping("/userupdate.mc")
-	public String userupdate(ModelAndView mv, String email) {
+	public String userupdate() {
 		return "user/modify";
 	}
 
 	@RequestMapping("/userupdateimpl.mc")
 	public ModelAndView userupdateimpl(HttpServletRequest request, UserVO user) {
 		ModelAndView mv = new ModelAndView();
-		HttpSession session = request.getSession();
-		
+
+		System.out.println(user);
+//		String name = request.getParameter("name");
+//		System.out.println(name);
 		try {
 			biz.modify(user);
 			mv.addObject("centerpage", "user/modifyOk.jsp");
 
+			HttpSession session = request.getSession();
 			session.removeAttribute("user");
 			session.setAttribute("user", user);
 		} catch (Exception e) {

@@ -73,7 +73,6 @@ public class HotelController {
 		String dest = "";
 		try {
 			request.setCharacterEncoding("UTF-8");
-
 			HttpSession session = request.getSession();
 			session.setAttribute("booking", booking);
 			dest = URLEncoder.encode(booking.getDest(), "UTF-8");
