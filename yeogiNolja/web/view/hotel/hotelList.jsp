@@ -56,27 +56,13 @@ img {
 		document.querySelector("#totalPage").innerHTML=pageNumSet;
 	};
 	
-	 $('a[href="#modal_open"]').click(function(event) {
-	      event.preventDefault();
-	 
-	      $(this).modal({
-	    	  fadeDuration: 1000,
-	    	  fadeDelay: 0.50,
-	    	  width: 80%,
-	    	  height: 200%
-	      });
-	      map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
-    	  // 마커가 지도 위에 표시되도록 설정합니다
-    	  marker.setMap(map);
-	 });
-	 var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+	/* 지도 변수들 */
+	var map;
+	var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 	    mapOption = { 
-	        center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+			center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
 	        level: 3 // 지도의 확대 레벨
 	    };
-	 var map;
-	
-
 	// 마커가 표시될 위치입니다 
 	var markerPosition  = new kakao.maps.LatLng(33.450701, 126.570667); 
 
@@ -84,7 +70,21 @@ img {
 	var marker = new kakao.maps.Marker({
 	    position: markerPosition
 	});
+	/* 모달 생성 후, 3초 후에 지도 업로드되게 */
+	 $('a[href="#modal_open"]').click(function(event) {
+	      event.preventDefault();
+	 
+	      $(this).modal({
+	    	  fadeDuration: 1000,
+	    	  fadeDelay: 0.50,
+	      });
+	      setTimeout(function(){
 
+		      map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+	    	  // 마커가 지도 위에 표시되도록 설정합니다
+	    	  marker.setMap(map);
+	      }, 3000);
+	 });
 	
 </script>
 
@@ -128,10 +128,11 @@ img {
 		<ul id=totalPage></ul>
 	</div>
 	
-	<div id="modal_open" class="modal" style="z-index: 3;">
-		<div id="map" style="width: 80%; height: 200%; z-index: 99;">
-			<h3>MAP POSITION</h3>
+	<div id="modal_open" class="modal" style="z-index: 3; width: 500px; height: 1000px;">
+		<!-- 지도가 표시될 div -->
+		<div id="map" style="width: 80%; height: 40%; z-index: 99;">			
 		</div>
+		<!-- close 동작 실시 -->
 		<a href="#" rel="modal:close">CLOSE</a>
 	</div>
 </div>
