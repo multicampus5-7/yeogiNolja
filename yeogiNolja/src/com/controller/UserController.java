@@ -85,9 +85,6 @@ public class UserController {
 	public ModelAndView userupdateimpl(HttpServletRequest request, UserVO user) {
 		ModelAndView mv = new ModelAndView();
 
-		System.out.println(user);
-//		String name = request.getParameter("name");
-//		System.out.println(name);
 		try {
 			biz.modify(user);
 			mv.addObject("centerpage", "user/modifyOk.jsp");

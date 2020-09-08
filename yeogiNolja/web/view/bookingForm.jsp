@@ -67,11 +67,21 @@
 		getHotelListData();
 		var today = getDateFormat(new Date());
 		document.getElementById("inDate").setAttribute("min", today);
-		document.getElementById("outDate").setAttribute("min", today);
+		document.getElementById("outDate").setAttribute("min",  today);
 
-		$("#adult").val(${booking.adult})
+		$("#outDate").on("change keyup paste", function(){
+			var inDate = $("#inDate").val();
+			var outDate = $("#outDate").val();
+			
+			if(inDate > outDate){
+			alert("checkOut은 checkIn이후여야 합니다.");
+			$(this).val('');
+			}
+				
+		});
+		$("#adult").val(${booking.adult});
 		$("#roomNum").val(${booking.roomNum});
-
+		
 	});
 </script>
 

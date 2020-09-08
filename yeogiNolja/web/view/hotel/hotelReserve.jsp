@@ -24,16 +24,17 @@
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
-</head>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script>
-$(document).ready(function() {
+	$(document).ready(function() {
+		$("#adult").val(${booking.adult});
+		$("#roomNum").val(${booking.roomNum});
+		});
+	</script>
+</head>
 
-$("#adult").val(${booking.adult});
-$("roomNum").val(${booking.roomNum});
-});
-</script>
 <body>
-
 	<div id="booking" class="section">
 		<div class="section-center">
 			<div class="container">
@@ -97,12 +98,14 @@ $("roomNum").val(${booking.roomNum});
 							<div class="row">
 								<div class="col-md-6">
 									<div class="form-btn">
-										<button class="submit-btn" name="pay_yn" value="n">book Now</button>
+										<button class="submit-btn" name="pay_yn" value="n">book
+											Now</button>
 									</div>
 								</div>
 								<div class="col-md-6">
 									<div class="form-btn">
-										<button class="submit-btn" name="pay_yn" value="y">pay Now</button>
+										<button class="submit-btn" name="pay_yn" value="y">pay
+											Now</button>
 									</div>
 								</div>
 

@@ -28,7 +28,7 @@
 	</select>
 
 	<sql id="findDest">
-	(HOTEL_NAME LIKE '%'||#{dest}||'%')or(ADDR_SGG LIKE '%'||#{dest}||'%') order by ${orderBy}
+	(HOTEL_NAME LIKE '%'||#{dest}||'%')or(ADDR_SD LIKE '%'||#{dest}||'%') or(ADDR_SGG LIKE '%'||#{dest}||'%') order by ${orderBy}
 	</sql>
 
 

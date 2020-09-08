@@ -31,12 +31,9 @@ img {
 </style>
 
 <script>
-	
 	$(document).ready(function(){
 		setTotalPageNum();
-		//setHotelList();
 	});
-	
 	
 	function setTotalPageNum(){
 		var pageNumSet = '';
@@ -49,17 +46,6 @@ img {
 		document.querySelector("#totalPage").innerHTML=pageNumSet;
 	};
 	
-	function setHotelList(){
-		var page = Number(${pageNum})-1;
-		var beginNum = page * 5;
-		var endNum = page * 5 + 4;
-		console.log(beginNum + " " + endNum);
-
-		var result = '<c:forEach var="hlist" items="${hotelList}" begin="0" end="4">';
-		result += '	<p>${hlist.hotel_id}${hlist.name}</p>';
-		result += '	</c:forEach>'; 
-		document.querySelector("#hotelListInfo").innerHTML=result;
-	}
 </script>
 
 
@@ -86,9 +72,8 @@ img {
 				</p>
 				<p>
 					<img src=img/hotel/${hlist.hotel_img}>${hlist.grade }|${hlist.amenities}</p>
-
 			</div>
-
+			<hr/>
 		</c:forEach>
 	</div>
 	<div>
