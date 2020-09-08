@@ -44,7 +44,7 @@
 					<a href="myReserve.mc">나의 예약 확인하기 </a>
 				</p>
 				<p>
-					<a href="userdetail.mc?email=${user.email }">회원 정보 수정</a>
+					<a href="userupdate.mc">회원 정보 수정</a>
 				</p>
 			</c:otherwise>
 		</c:choose>

@@ -1,5 +1,7 @@
 package com.controller;
 
+import java.io.UnsupportedEncodingException;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -58,7 +60,6 @@ public class UserController {
 		return new ModelAndView("redirect: main.mc");
 	}
 
-	/* ȸ������ ���� */
 	@RequestMapping("useradd.mc")
 	public String useradd() {
 		return "user/register";
@@ -77,47 +78,38 @@ public class UserController {
 		return mv;
 	}
 
-	/* login �� ȸ���� ���� �����ϱ� ���� */
-	/* ȸ������ show */
-	@RequestMapping("userdetail.mc")
-	public ModelAndView userdetail(String email) {
-		ModelAndView mv = new ModelAndView();
-		UserVO user = null;
-		try {
-			user = biz.get(email);
-			System.out.println(user.getEmail());
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		mv.addObject("userdetail", user);
-		mv.addObject("centerpage", "user/detail.jsp");
-		mv.setViewName("main");
-		return mv;
-	}
-
-	/* ȸ������ update */
 	@RequestMapping("/userupdate.mc")
-	public ModelAndView userupdate(ModelAndView mv, String email) {
-		UserVO user = null;
-		try {
-			user = biz.get(email);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		mv.addObject("userdetail", user);
-		mv.addObject("centerpage", "user/modify.jsp");
-		mv.setViewName("main");
-		return mv;
+	public String userupdate(ModelAndView mv, String email) {
+		return "user/modify";
 	}
 
 	@RequestMapping("/userupdateimpl.mc")
-	public String userupdateimpl(UserVO user) {
+	public ModelAndView userupdateimpl(HttpServletRequest request, UserVO user) {
+		ModelAndView mv = new ModelAndView();
+		HttpSession session = request.getSession();
+		
+		try {
+			request.setCharacterEncoding("UTF-8");
+
+			String name = request.getParameter("name");
+			System.out.println(name);
+		} catch (UnsupportedEncodingException e1) {
+			  System.out.println("utf error");
+			e1.printStackTrace();
+		}
+
 		try {
 			biz.modify(user);
+			mv.addObject("centerpage", "user/modifyOk.jsp");
+
+			session.removeAttribute("user");
+			session.setAttribute("user", user);
 		} catch (Exception e) {
+			mv.addObject("centerpage", "user/modifyFail.jsp");
 			e.printStackTrace();
 		}
-		return "redirect:main.mc";
+		mv.setViewName("main");
+		return mv;
 	}
 
 }
