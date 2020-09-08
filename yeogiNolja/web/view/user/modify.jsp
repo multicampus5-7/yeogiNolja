@@ -16,7 +16,12 @@
 <link rel="stylesheet" href="css/register/style.css">
 </head>
 <body>
-
+	<header>
+		<p>${user.name}님
+			| <a href="main.mc">메인페이지 </a> | <a href="myReserve.mc">나의 예약 확</a>
+			| <a href="logout.mc">logout</a>
+		</p>
+	</header>
 	<div class="main">
 
 		<section class="signup">
