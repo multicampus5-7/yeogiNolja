@@ -17,19 +17,20 @@ public class ReserveTest {
 		System.out.println("Spring Started .......");
 		// IoC
 
-		Biz<String, ReserveVO> biz = (Biz) factory.getBean("reserveBiz");	
+		Biz<String, ReserveVO> biz = (Biz) factory.getBean("reserveBiz");
 
-//		//select all reservations
+		// select all reservations
 //		ArrayList<ReserveVO> list = null;
 //		try {
-//			list = biz.get();
-//			for (ReserveVO r : list) {
-//				System.out.println(r);
+//			list = biz.getN("saebom023@gmail.com");
+//
+//			for (ReserveVO reserveVO : list) {
+//				System.out.println(reserveVO);
 //			}
 //		} catch (Exception e) {
 //			e.printStackTrace();
 //		}
-
+//
 //		//select WHERE DATE
 //		String start_date = "2020-09-06";
 //		String end_date ="2020-09-20" ;
@@ -44,23 +45,23 @@ public class ReserveTest {
 //		} catch (Exception e) {
 //			e.printStackTrace();
 //		}		
-		
-		//insert Hotel Reserve 
-		String hotel_id="ht1022";
-		String room_id="rm1001";
-		String user_email="ryan@gmail.com";
-		String start_date="2020-09-01";
-		String end_date="2020-09-20";
-		String pay_yn="Y";
-		
-		ReserveVO r = new ReserveVO(hotel_id, room_id, user_email, start_date, end_date, pay_yn);
-		System.out.println(r);
-		try {
-			biz.register(r);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
+
+//		//insert Hotel Reserve 
+//		String hotel_id="ht1022";
+//		String room_id="rm1001";
+//		String user_email="ryan@gmail.com";
+//		String start_date="2020-09-01";
+//		String end_date="2020-09-20";
+//		String pay_yn="Y";
+//		
+//		ReserveVO r = new ReserveVO(hotel_id, room_id, user_email, start_date, end_date, pay_yn);
+//		System.out.println(r);
+//		try {
+//			biz.register(r);
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+
 //		//select ALL JOIN (RSV + HOTEL + ROOM + USERS)
 //		ReserveVO r = new ReserveVO();
 //		String rsv_id="rv0001";
@@ -70,9 +71,8 @@ public class ReserveTest {
 //		} catch (Exception e) {
 //			e.printStackTrace();
 //		}
-		
-		
+
 		factory.close();
-		System.out.println("end");		
+		System.out.println("end");
 	}
 }

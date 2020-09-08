@@ -5,6 +5,17 @@
 
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script type="text/javascript"
+	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=77051248a1682bf5a19186626f35773e"></script>
+<!-- modal src -->
+<!-- duplicated jquery src hidden -->
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script> -->
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+<script type="text/javascript"
+	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c6ffc3753db47ec9c6dd9088d9872dd0"></script>
 
 <style>
 #totalPage, #sortCrit>ul {
@@ -33,6 +44,7 @@ img {
 <script>
 	$(document).ready(function(){
 		setTotalPageNum();
+		displayMap();
 	});
 	
 	function setTotalPageNum(){
@@ -45,6 +57,39 @@ img {
 		}
 		document.querySelector("#totalPage").innerHTML=pageNumSet;
 	};
+	var map = null;
+
+	function displayMap(){
+		var container = document.getElementById('map');
+		var options = {
+				center: new kakao.maps.LatLng(33.450701, 126.570667),
+		        level: 3 
+		};
+		
+		var markerPosition  = new kakao.maps.LatLng(33.450701, 126.570667); 
+		var marker = new kakao.maps.Marker({
+		    position: markerPosition
+		});
+		
+		map = new kakao.maps.Map(container, options);
+
+		/* 모달 생성 후, 3초 후에 지도 업로드되게 */
+		 /* $('a[href="#modal_open"]').click(function(event) {
+		      event.preventDefault();
+		 
+		      $(this).modal({
+		    	  fadeDuration: 1000,
+		    	  fadeDelay: 0.50,
+		      });
+		      setTimeout(function(){
+
+			      map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+		    	  // 마커가 지도 위에 표시되도록 설정합니다
+		    	  marker.setMap(map);
+		      }, 3000);
+		 }); */
+	}
+	
 	
 </script>
 
@@ -74,7 +119,7 @@ img {
 				</tr>
 				<tr>
 					<td><p>${hlist.addr_sd}|${hlist.addr_sgg}
-							| ${hlist.addr_emd} | <a href="#">지도보기</a></td>
+							| ${hlist.addr_emd} | <a href="#modal_open" rel="modal:open">지도보기</a></td>
 				</tr>
 				<tr>
 					<td>${hlist.grade }|${hlist.amenities}</td>
@@ -85,5 +130,13 @@ img {
 	</div>
 	<div>
 		<ul id=totalPage></ul>
+	</div>
+
+	<div id="modal_open" class="modal"
+		style="z-index: 3; width: 500px; height: 1000px;">
+		<!-- 지도가 표시될 div -->
+		<div id="map" style="width: 80%; height: 40%; z-index: 99;"></div>
+		<!-- close 동작 실시 -->
+		<a href="#" rel="modal:close">CLOSE</a>
 	</div>
 </div>

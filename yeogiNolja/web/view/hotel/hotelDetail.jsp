@@ -12,7 +12,14 @@ img {
 	height: 20%;
 }
 </style>
-
+<script>
+	$(document).ready(function() {
+		$('#reserveButton').click(function() {
+			if(${user == null} )
+				alert('로그인이 필요합니다.');
+		});
+	});
+</script>
 <div class="booking-cta">
 	<h1>${hotel.name}</h1>
 	<p>주소 : ${hotel.addr_sd} ${hotel.addr_sgg} ${hotel.addr_emd }</p>

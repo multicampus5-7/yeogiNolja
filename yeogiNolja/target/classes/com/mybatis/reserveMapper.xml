@@ -33,9 +33,11 @@
 		WHERE TO_DATE(SYSDATE) BETWEEN TO_DATE(START_DATE) AND TO_DATE(END_DATE)
 	</select>
 
-	<select id="selectN" resultType="reserveVO">
-		<!-- &lt; : "<" -->
-
+	<select id="selectN" parameterType="String" resultType="reserveVO">
+	select rsv.rsv_id, h.hotel_id, h.hotel_name, rm.room_id, rm.room_name, to_char(rsv.rsv_date, 'yyyy-MM-dd')as rsv_date, to_char(rsv.start_date, 'yyyy-MM-dd') as start_date, to_char(rsv.end_date,'yyyy-MM-dd') as end_date, rsv.pay_yn from hotel_reserve rsv
+	    	JOIN HOTEL_LIST H ON(RSV.HOTEL_ID = H.HOTEL_ID)
+			JOIN HOTEL_ROOM RM ON(RSV.ROOM_ID = RM.ROOM_ID) 
+			where user_email=#{email}
 	</select>
 
 	<insert id="insertAdminForm" parameterType="reserveVO">
