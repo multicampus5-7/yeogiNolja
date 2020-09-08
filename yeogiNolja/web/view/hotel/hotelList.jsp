@@ -25,8 +25,8 @@ a {
 }
 
 img {
-	width: 15%;
-	height: 15%;
+	width: 100%;
+	height: 30%;
 }
 </style>
 
@@ -60,20 +60,27 @@ img {
 	</div>
 
 	<div id=hotelListInfo>
+		<hr />
 		<c:forEach var="hlist" items="${hotelList}" begin="${stNum}"
 			end="${endNum}">
-			<div>
-				<h3>
-					<a href="hotelListDetail.mc?hotelId=${hlist.hotel_id}">
-						${hlist.name} </a>
-				</h3>
-				<p>${hlist.addr_sd}|${hlist.addr_sgg}
-					| ${hlist.addr_emd} | <a href="#">지도보기</a>
-				</p>
-				<p>
-					<img src=img/hotel/${hlist.hotel_img}>${hlist.grade }|${hlist.amenities}</p>
-			</div>
-			<hr/>
+			<table>
+				<tr>
+					<td rowspan="3" style="width: 40%"><img
+						src=img/hotel/${hlist.hotel_img}></td>
+					<td><h3>
+							<a href="hotelListDetail.mc?hotelId=${hlist.hotel_id}">
+								${hlist.name} </a>
+						</h3></td>
+				</tr>
+				<tr>
+					<td><p>${hlist.addr_sd}|${hlist.addr_sgg}
+							| ${hlist.addr_emd} | <a href="#">지도보기</a></td>
+				</tr>
+				<tr>
+					<td>${hlist.grade }|${hlist.amenities}</td>
+				</tr>
+			</table>
+			<hr />
 		</c:forEach>
 	</div>
 	<div>
