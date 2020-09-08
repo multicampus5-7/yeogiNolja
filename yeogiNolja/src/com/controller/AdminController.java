@@ -253,6 +253,7 @@ public class AdminController {
 		}
 		
 		mv.addObject("rsv", r);
+		mv.addObject("message", "messageNull.jsp");
 		mv.addObject("centerpage", "adminRsvDetail.jsp");
 		mv.setViewName("admin/index");		
 		return mv;
@@ -275,12 +276,23 @@ public class AdminController {
 		mv.setViewName("admin/index");		
 		return mv;
 	}
-
-	@RequestMapping("ttt.mc")
-	public ModelAndView ttt(String id) {
+	
+	@RequestMapping("/adminRsvModifyImpl.mc")
+	public ModelAndView adminRsvModifyImpl(ReserveVO rsv) {
 		ModelAndView mv = new ModelAndView();
-		mv.addObject("centerpage", "bookingForm2.jsp");
-		mv.setViewName("admin/index");		
+		ReserveVO r = new ReserveVO();
+		System.out.println(rsv);
+		try {
+			rsvbiz.modify(rsv);
+			r = rsvbiz.get(rsv.getRsv_id());
+			mv.addObject("rsv", r);
+			mv.addObject("message", "messageOk.jsp");
+		} catch (Exception e) {
+			e.printStackTrace();
+			mv.addObject("message", "messageFail.jsp");
+		}
+		mv.addObject("centerpage", "adminRsvDetail.jsp");
+		mv.setViewName("admin/index");
 		return mv;
 	}
 	

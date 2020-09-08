@@ -7,7 +7,15 @@
 	</insert>
 
 	<update id="update" parameterType="reserveVO">
-		UPDATE HOTEL_RESERVE SET HOTEL_ID=#{hotel_id} WHERE RSV_ID=#{rsv_id}
+		UPDATE HOTEL_RESERVE R
+		SET R.HOTEL_ID=(SELECT H.HOTEL_ID FROM HOTEL_LIST H WHERE H.HOTEL_NAME=#{hotel_name}),
+		R.USER_EMAIL=(SELECT U.EMAIL FROM USERS U WHERE U.NAME=#{name}),
+		R.ROOM_ID=(SELECT RM.ROOM_ID FROM HOTEL_ROOM RM WHERE RM.ROOM_NAME=#{room_name} AND 
+		                                                    RM.HOTEL_ID=(SELECT H2.HOTEL_ID FROM HOTEL_LIST H2 WHERE H2.HOTEL_NAME=#{hotel_name})),
+		R.START_DATE=TO_DATE(#{start_date}),
+		R.END_DATE=TO_DATE(#{end_date}),
+		R.PAY_YN=#{pay_yn}
+		WHERE R.RSV_ID=#{rsv_id}
 	</update>
 
 	<delete id="delete" parameterType="String">

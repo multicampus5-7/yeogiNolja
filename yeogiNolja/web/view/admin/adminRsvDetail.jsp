@@ -26,6 +26,9 @@
 		</div>
 	</div>
 </div>
+
+<jsp:include page="${message}"></jsp:include>
+
 <div class="row">
 	<div class="col-lg-6-2">
 		<div class="main-card mb-3 card">
@@ -48,7 +51,7 @@
 						</tr>
 						<tr>
 							<th>Room </th>
-							<td><a href="" data-toggle="modal" data-target="#modalRoom">${rsv.room_name}</a> (${rsv.room_num}호)</td>
+							<td><a href="" data-toggle="modal" data-target="#modalRoom">${rsv.room_name}</a></td>
 						</tr>
 						<tr>
 							<th>Period</th>
@@ -62,9 +65,9 @@
 						<tr>
 							<th>PRICE</th>
 							<td>&#8361; <fmt:formatNumber value="${rsv.price}" pattern="###,###,###"/> &nbsp;
-							<c:if test="${rsv.pay_yn == 'Y'}">
+							<c:if test="${rsv.pay_yn == 'Y' || rsv.pay_yn == 'y'}">
 								<div class="mb-2 mr-2 badge badge-pill badge-success">Pay Complete</div></c:if>
-							<c:if test="${rsv.pay_yn == 'N'}">
+							<c:if test="${rsv.pay_yn == 'N' || rsv.pay_yn == 'n'}">
 								<div class="mb-2 mr-2 badge badge-pill badge-danger">Not Paid</div></c:if>
 							</td>
 						</tr>

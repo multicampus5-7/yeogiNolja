@@ -1,8 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
@@ -23,12 +24,13 @@
 
 	function getHotelListData() {
 		$.ajax({
-			url : 'hotelListAutoCom.mc',
+			url : 'adminAutoCom.mc',
 			async : false,
 
 			success : function(result) {
 				console.log("autoComplete ok");
 				setAutoComplete(result.data);
+				setAutoComplete2(result.dataUser);
 			},
 			error : function() {
 				console.log("autoComplete Fail");
@@ -38,6 +40,31 @@
 
 	function setAutoComplete(searchSource) {
 		$("#dest").autocomplete({
+			source : searchSource,
+			select : function(event, ui) {
+				console.log(ui.item);
+			},
+			focus : function(event, ui) {
+				return false;
+			},
+			minLength : 1,
+			autoFocus : true,
+			classes : {
+				"ui-autocomplete" : "highlight"
+			},
+			position : {
+				my : "right top",
+				at : "right bottom"
+			},
+			close : function(event) {
+				console.log(event);
+			}
+		});
+
+	}
+	
+	function setAutoComplete2(searchSource) {
+		$("#user").autocomplete({
 			source : searchSource,
 			select : function(event, ui) {
 				console.log(ui.item);
@@ -108,43 +135,61 @@
 	<div class="col-lg-6-2">
 		<div class="main-card mb-3 card">
 			<div class="card-body">
-			<form action="adminHotelModifyImpl.mc" method="post">
+			<form action="adminRsvModifyImpl.mc" method="post">
 				<h5 class="card-title">Modify Reservation</h5>
 				<table class="mb-0 table">
 					<tbody>
 						<tr>
 							<th>Reservation ID</th>
-							<th>${rsv.hotel_id}
-							<input type="text" name="dest"id="dest" value="asdf">
-								<input type="hidden" name="hotel_id" value="${rsv.hotel_id}">
-								
-								<span class="form-label">Your Destination</span> <input
-				class="form-control" type="text"
-				placeholder="Enter a destination or hotel name" name="dest"
-				id="dest" value="${booking.dest}" required>
+							<th>${rsv.rsv_id}
+								<input type="hidden" name="rsv_id" value="${rsv.rsv_id}">
 							</th>
 						</tr>
 						<tr>
 							<th>Customer</th>
-							<td><input id="title" name="name" type="text" class="form-control"
-								value="${rsv.name}"/>
+							<td><input class="form-control" type="text"
+								name="name" id="user" value="${rsv.name}" />
 							</td>
 						</tr>
 						<tr>
 							<th>Hotel</th>
-							<td><input id="title" name="addr_sd" type="text" class="form-control"
-								value="${rsv.hotel_name}"/>
+							<td><input class="form-control" type="text"
+								name="hotel_name" id="dest" value="${rsv.hotel_name}" />
 							</td>
 						</tr>
 						<tr>
 							<th>Room</th>
-							<td><input id="title" name="total_room" type="text" class="form-control"
-								value="${rsv.room_name}"/>
+							<td><div class="custom-radio custom-control">
+									<input type="radio" id="roomRadio1" class="custom-control-input"
+										name="room_name" value="스탠다드" 
+										<c:if test="${rsv.room_name == '스탠다드'}">checked</c:if> 
+										/> <label class="custom-control-label"
+										for="roomRadio1"> 스탠다드 </label>
+								</div>
+								<div class="custom-radio custom-control">
+									<input type="radio" id="roomRadio2" class="custom-control-input"
+										name="room_name" value="더블" 
+										<c:if test="${rsv.room_name == '더블'}"> checked</c:if>
+										/> <label class="custom-control-label"
+										for="roomRadio2"> 더블 </label>
+								</div>
+								<div class="custom-radio custom-control">
+									<input type="radio" id="roomRadio3" class="custom-control-input"
+										name="room_name" value="패밀리" 
+										<c:if test="${rsv.room_name == '패밀리'}">checked</c:if> 
+										/> <label class="custom-control-label"
+										for="roomRadio3"> 패밀리 </label>
+								</div>
+								<div class="custom-radio custom-control">
+									<input type="radio" id="roomRadio4" class="custom-control-input"
+										name="room_name" value="스위트" 
+										<c:if test="${rsv.room_name == '스위트'}"> checked</c:if>
+										/> <label class="custom-control-label"
+										for="roomRadio4"> 스위트 </label>
+								</div>
 							</td>
 						</tr>
 						<tr>
-						
-						
 							<th>Period</th>
 								<td>
 								<div class="form-row">
@@ -171,21 +216,23 @@
 							</tr>
 						<tr>
 							<th>Price</th>
-							<td><input id="title" name="lat" type="text" class="form-control"
-								value="${rsv.price}"/>
-							</td>
+							<td>&#8361; <fmt:formatNumber value="${rsv.price}" pattern="###,###,###"/></td>
 						</tr>
 						<tr>
 							<th>Pay</th>
 							<td>
 								<div class="custom-radio custom-control">
 									<input type="radio" id="exampleCustomRadio1" class="custom-control-input"
-										name="pay_yn" value="Y" checked /> <label class="custom-control-label"
+										name="pay_yn" value="Y" 
+										<c:if test="${rsv.pay_yn == 'Y' || rsv.pay_yn == 'y'}">checked</c:if> 
+										/> <label class="custom-control-label"
 										for="exampleCustomRadio1"> YES </label>
 								</div>
 								<div class="custom-radio custom-control">
 									<input type="radio" id="exampleCustomRadio2" class="custom-control-input"
-										name="pay_yn" value="N" checked /> <label class="custom-control-label"
+										name="pay_yn" value="N" 
+										<c:if test="${rsv.pay_yn == 'N' || rsv.pay_yn == 'n'}"> checked</c:if>
+										/> <label class="custom-control-label"
 										for="exampleCustomRadio2"> NO </label>
 								</div>
 							</td>
