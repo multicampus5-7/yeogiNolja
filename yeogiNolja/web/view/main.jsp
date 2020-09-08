@@ -38,13 +38,8 @@
 			</c:when>
 			<c:otherwise>
 				<p>${user.name}님
-					<a href="logout.mc">logout</a>
-				</p>
-				<p>
-					<a href="myReserve.mc">나의 예약 확인하기 </a>
-				</p>
-				<p>
-					<a href="userupdate.mc">회원 정보 수정</a>
+					| <a href="myReserve.mc">나의 예약 확인하기 </a> | <a href="userupdate.mc">회원
+						정보 수정</a> | <a href="logout.mc">logout</a>
 				</p>
 			</c:otherwise>
 		</c:choose>

@@ -1,7 +1,5 @@
 package com.controller;
 
-import java.io.UnsupportedEncodingException;
-
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -88,16 +86,6 @@ public class UserController {
 		ModelAndView mv = new ModelAndView();
 		HttpSession session = request.getSession();
 		
-		try {
-			request.setCharacterEncoding("UTF-8");
-
-			String name = request.getParameter("name");
-			System.out.println(name);
-		} catch (UnsupportedEncodingException e1) {
-			  System.out.println("utf error");
-			e1.printStackTrace();
-		}
-
 		try {
 			biz.modify(user);
 			mv.addObject("centerpage", "user/modifyOk.jsp");
