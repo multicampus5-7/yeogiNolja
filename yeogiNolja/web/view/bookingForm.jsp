@@ -63,22 +63,31 @@
 
 	}
 
-	$(document).ready(function() {
-		getHotelListData();
-		var today = getDateFormat(new Date());
-		document.getElementById("inDate").setAttribute("min", today);
-		document.getElementById("outDate").setAttribute("min",  today);
+	function setInOutDate(){
+		$("#alert-danger").hide();
 
 		$("#outDate").on("change keyup paste", function(){
 			var inDate = $("#inDate").val();
 			var outDate = $("#outDate").val();
 			
-			if(inDate > outDate){
-			alert("checkOut은 checkIn이후여야 합니다.");
-			$(this).val('');
+			if(inDate != "" || outDate != ""){
+				if(inDate > outDate){
+					$("#alert-danger").show();				
+				}
+				if(inDate <= outDate){
+					$("#alert-danger").hide();	
+				}
 			}
-				
 		});
+	}
+	$(document).ready(function() {
+		getHotelListData();
+		setInOutDate();
+		var today = getDateFormat(new Date());
+		document.getElementById("inDate").setAttribute("min", today);
+		document.getElementById("outDate").setAttribute("min",  today);
+
+		
 		$("#adult").val(${booking.adult});
 		$("#roomNum").val(${booking.roomNum});
 		
@@ -108,6 +117,8 @@
 					<span class="form-label">Check out</span> <input
 						class="form-control" type="date" name="outDate" id="outDate"
 						value="${booking.outDate}" required>
+					<div class="alert alert-danger" id="alert-danger">checkOut은
+						checkIn이후여야 합니다.</div>
 				</div>
 			</div>
 		</div>
