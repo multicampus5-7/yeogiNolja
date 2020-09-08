@@ -41,6 +41,12 @@ h2, p {
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <body>
+	<header>
+		<p>${user.name}님
+			| <a href="main.mc">메인페이지 </a> | <a href="userupdate.mc">회원
+				정보 수정</a> | <a href="logout.mc">logout</a>
+		</p>
+	</header>
 	<div class="section-center">
 		<div class="container">
 			<h2>${user.name}님의예약페이지입니다.</h2>
