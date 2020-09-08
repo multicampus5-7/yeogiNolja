@@ -19,7 +19,7 @@
 		</div>
 		<div class="page-title-actions">
 			<button class="mb-2 mr-2 btn btn-info"
-				onclick="location.href='adminRsvlModify.mc?id=${rsv.rsv_id}'">
+				onclick="location.href='adminRsvModify.mc?id=${rsv.rsv_id}'">
 				Edit</button>
 			<button class="mb-2 mr-2 btn btn-danger">
 				Delete</button>

@@ -1,11 +1,18 @@
 package com.controller;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.HashSet;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletResponse;
 
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.frame.Biz;
@@ -250,5 +257,68 @@ public class AdminController {
 		mv.setViewName("admin/index");		
 		return mv;
 	}
+	
+	@RequestMapping("adminRsvModify.mc")
+	public ModelAndView adminRsvModify(String id) {
+		ModelAndView mv = new ModelAndView();
+		ReserveVO r = new ReserveVO();
+		System.out.println(id);
+		try {
+			r = rsvbiz.get(id);
+			System.out.println(r);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		mv.addObject("rsv", r);
+		mv.addObject("centerpage", "adminRsvModify.jsp");
+		mv.setViewName("admin/index");		
+		return mv;
+	}
 
+	@RequestMapping("ttt.mc")
+	public ModelAndView ttt(String id) {
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("centerpage", "bookingForm2.jsp");
+		mv.setViewName("admin/index");		
+		return mv;
+	}
+	
+	@RequestMapping("/adminAutoCom.mc")
+	@ResponseBody
+	public void adminAutoCom(HttpServletResponse response) throws IOException {
+		ArrayList<HotelList> hotelList = new ArrayList<HotelList>();
+		ArrayList<UserVO> userList = new ArrayList<UserVO>();
+		JSONObject job = new JSONObject();
+		try {
+			hotelList = hbiz.get();
+			userList = ubiz.get();
+			
+			JSONArray jarr1 = new JSONArray();
+			JSONArray jarr2 = new JSONArray();
+			HashSet<String> addrArr = new HashSet<String>();
+
+			for (HotelList hotelList2 : hotelList) {
+				jarr1.add(hotelList2.getName());
+				//addrArr.add(hotelList2.getAddr_sgg());
+			}
+			
+			for (UserVO u : userList) {
+				jarr2.add(u.getName());
+			}
+
+			for (String string : addrArr) {
+				//jarr.add(string);
+			}
+			job.put("data", jarr1);
+			job.put("dataUser", jarr2);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		response.setContentType("application/json;charset=utf-8");
+		PrintWriter out = response.getWriter();
+		out.print(job.toJSONString());
+		out.close();
+	}
 }

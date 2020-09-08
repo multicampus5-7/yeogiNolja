@@ -29,7 +29,6 @@
 			<div class="card-body">
 			<form action="adminHotelModifyImpl.mc" method="post">
 				<h5 class="card-title">Modify Hotel Information</h5>
-				<img src="img/hotel/${hotelDetail.hotel_img }">
 				<table class="mb-0 table">
 					<tbody>
 						<tr>
@@ -86,6 +85,10 @@
 						</tr>
 						<tr>
 							<th>Image</th>
+							<td><img src="img/hotel/${hotelDetail.hotel_img }" width=50%></td>
+						</tr>
+						<tr>
+							<th>Image File</th>
 							<td><input id="title" name="hotel_img" type="text" class="form-control"
 								value="${hotelDetail.hotel_img}"/>
 							</td>

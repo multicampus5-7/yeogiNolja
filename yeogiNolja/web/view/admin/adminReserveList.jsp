@@ -2,7 +2,112 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
+<script>
+	function getDateFormat(date) {
+		var dd = date.getDate();
+		var mm = date.getMonth() + 1;
+		var yyyy = date.getFullYear();
+		if (dd < 10) {
+			dd = '0' + dd
+		}
+		if (mm < 10) {
+			mm = '0' + mm
+		}
+
+		return today = "" + yyyy + '-' + mm + '-' + dd;
+	}
+
+	function getHotelListData() {
+		$.ajax({
+			url : 'adminAutoCom.mc',
+			async : false,
+
+			success : function(result) {
+				console.log("autoComplete ok");
+				setAutoComplete(result.data);
+				setAutoComplete2(result.dataUser);
+			},
+			error : function() {
+				console.log("autoComplete Fail");
+			}
+		});
+	}
+
+	function setAutoComplete(searchSource) {
+		$("#dest").autocomplete({
+			source : searchSource,
+			select : function(event, ui) {
+				console.log(ui.item);
+			},
+			focus : function(event, ui) {
+				return false;
+			},
+			minLength : 1,
+			autoFocus : true,
+			classes : {
+				"ui-autocomplete" : "highlight"
+			},
+			position : {
+				my : "right top",
+				at : "right bottom"
+			},
+			close : function(event) {
+				console.log(event);
+			}
+		});
+
+	}
+	
+	function setAutoComplete2(searchSource) {
+		$("#user").autocomplete({
+			source : searchSource,
+			select : function(event, ui) {
+				console.log(ui.item);
+			},
+			focus : function(event, ui) {
+				return false;
+			},
+			minLength : 1,
+			autoFocus : true,
+			classes : {
+				"ui-autocomplete" : "highlight"
+			},
+			position : {
+				my : "right top",
+				at : "right bottom"
+			},
+			close : function(event) {
+				console.log(event);
+			}
+		});
+
+	}
+
+	$(document).ready(function() {
+		getHotelListData();
+		var today = getDateFormat(new Date());
+		document.getElementById("inDate").setAttribute("min", today);
+		document.getElementById("outDate").setAttribute("min",  today);
+
+		$("#outDate").on("change keyup paste", function(){
+			var inDate = $("#inDate").val();
+			var outDate = $("#outDate").val();
+			
+			if(inDate > outDate){
+			alert("checkOut은 checkIn이후여야 합니다.");
+			$(this).val('');
+			}
+				
+		});
+		$("#adult").val(${booking.adult});
+		$("#roomNum").val(${booking.roomNum});
+		
+	});
+</script>
 <div class="app-page-title">
 	<div class="page-title-wrapper">
 		<div class="page-title-heading">
@@ -37,17 +142,35 @@
 		<div class="main-card mb-3 card">
 			<div class="card-body">
 			<form action="adminRsvSearchDateImpl.mc" method="post">
-				<h5 class="card-title">Search Reservations </h5>
+				<h5 class="card-title">Search </h5>
 				<div class="form-row">
 					<div class="col-md-6"> 
-					<div class="position-relative form-group"> <span class="form-label">Start Date</span> <input
+					<div class="position-relative form-group"> <span class="form-label"> <font color="red">* </font>
+							Start Date</span> <input
 							class="form-control" type="date" name="start_date"
-							value="${requestInfo.start_date}" required> </div>
+							value="${requestInfo.start_date}" required > </div>
 					</div>
 					<div class="col-md-6"> 
-					<div class="position-relative form-group"> <span class="form-label">End Date</span> <input
+					<div class="position-relative form-group"> <span class="form-label"> <font color="red">* </font>
+							End Date</span> <input
 							class="form-control" type="date" name="end_date"
-							value="${requestInfo.end_date}" required> </div>
+							value="${requestInfo.end_date}" required > </div>
+					</div>
+				</div>
+				<div class="form-row">
+					<div class="col-lg-6-2">		
+					<div class="position-relative form-group"> <span class="form-label">Hotel Name</span> <input
+						class="form-control" type="text"
+						placeholder="Optional" name="hotel_name"
+						id="dest" > </div>
+					</div>
+				</div>
+				<div class="form-row">
+					<div class="col-lg-6-2">
+					<div class="position-relative form-group"> <span class="form-label">User Name</span> <input
+						class="form-control" type="text"
+						placeholder="Optional" name="name"
+						id="user" > </div>
 					</div>
 				</div>
 				<button class="mt-1 btn btn-primary" type="submit">Search</button>
@@ -56,14 +179,7 @@
 		</div>		
 	</div>
 	<div class="col-lg-6">
-		<div class="tab-pane tabs-animation fade show active"
-			role="tabpanel">
-			<div class="main-card mb-3 card">
-				<div class="card-body">
-					<div id='calendar'></div>
-				</div>
-			</div>
-		</div>
+	<!-- null -->
 	</div>
 	<div class="col-lg-6-2">
 		<div class="main-card mb-3 card">
@@ -75,7 +191,7 @@
 							<th>R. ID</th>
 							<th>HOTEL</th>
 							<th>ROOM</th>
-							<th>E-MAIL</th>
+							<th>USER</th>
 							<th>CHECK IN</th>
 							<th>CHECK OUT</th>
 							<th>ACTIONS</th>
@@ -86,9 +202,9 @@
 							<tr>
 								<td scope="row"><a href="adminRsvDetail.mc?id=${rsv.rsv_id}">
 									${rsv.rsv_id}</a></td>
-								<td>${rsv.hotel_id}</td>
-								<td>${rsv.room_id}</td>
-								<td>${rsv.user_email}</td>
+								<td>${rsv.hotel_name}</td>
+								<td>${rsv.room_name}</td>
+								<td>${rsv.name}</td>
 								<td>
 									<fmt:parseDate value="${rsv.start_date}" var="startDate" pattern="yyyy-MM-dd"/>
 									<fmt:formatDate value="${startDate}" pattern="yyyy-MM-dd"/>
@@ -111,28 +227,3 @@
 		</div>
 	</div>
 </div>
-
-
-<script>
-	function getDateFormat(date) {
-		var dd = date.getDate();
-		var mm = date.getMonth() + 1;
-		var yyyy = date.getFullYear();
-		if (dd < 10) {
-			dd = '0' + dd
-		}
-		if (mm < 10) {
-			mm = '0' + mm
-		}
-
-		return today = "" + yyyy + '-' + mm + '-' + dd;
-	}
-
-	$(document).ready(function() {
-		getHotelListData();
-		var today = getDateFormat(new Date());
-		document.getElementById("inDate").setAttribute("min", today);
-		document.getElementById("outDate").setAttribute("min", today);
-
-	});
-</script>

@@ -18,11 +18,6 @@
 			</div>
 		</div>
 		<div class="page-title-actions">
-			<button class="mb-2 mr-2 btn btn-info"
-				onclick="location.href='adminHotelModify.mc?id=${hotelDetail.hotel_id}'">
-				Edit</button>
-			<button class="mb-2 mr-2 btn btn-danger">
-				Delete</button>
 		</div>
 	</div>
 </div>
@@ -59,6 +54,14 @@
 						</tr>
 					</tbody>
 				</table>
+				<div class="card-footer d-block clearfix">
+					<div class="float-right">
+						<button class="mt-1 btn btn-info"
+							onclick="location.href='adminHotelModify.mc?id=${hotelDetail.hotel_id}'">
+							Edit</button>&nbsp;
+						<button class="mt-1 btn btn-danger">Delete</button>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
