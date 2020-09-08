@@ -24,7 +24,12 @@
 	</select>
 
 	<select id="selectall" resultType="reserveVO">
-		SELECT * FROM HOTEL_RESERVE 
+		SELECT * FROM HOTEL_RESERVE RSV
+			JOIN USERS U ON(RSV.USER_EMAIL = U.EMAIL)
+			JOIN HOTEL_LIST H ON(RSV.HOTEL_ID = H.HOTEL_ID)
+			JOIN HOTEL_ROOM RM ON(RSV.ROOM_ID = RM.ROOM_ID)
+		WHERE TO_DATE(RSV.START_DATE) >= TO_DATE(SYSDATE)
+		ORDER BY RSV.RSV_ID
 	</select>
 
 	<!-- Reservations Staying Today -->
@@ -46,9 +51,15 @@
 
 	<!-- Search By Date -->
 	<select id="selectByDate" resultType="reserveVO">
-		SELECT * FROM HOTEL_RESERVE
+		SELECT * FROM HOTEL_RESERVE RSV
+			JOIN USERS U ON(RSV.USER_EMAIL = U.EMAIL)
+			JOIN HOTEL_LIST H ON(RSV.HOTEL_ID = H.HOTEL_ID)
+			JOIN HOTEL_ROOM RM ON(RSV.ROOM_ID = RM.ROOM_ID)
 		WHERE TO_DATE(START_DATE) >= TO_DATE(#{start_date}) AND 
-			TO_DATE(END_DATE) &lt;= TO_DATE(#{end_date})
+				TO_DATE(END_DATE) &lt;= TO_DATE(#{end_date}) AND
+			H.HOTEL_NAME LIKE '%'||#{hotel_name}||'%' AND
+			U.NAME LIKE '%'||#{name}||'%'
+		ORDER BY RSV.RSV_ID
 	</select>
 
 </mapper>
