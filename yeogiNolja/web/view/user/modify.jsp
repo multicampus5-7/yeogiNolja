@@ -7,50 +7,53 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <title>회원정보 수정</title>
-<link rel="stylesheet" href="css/modify/style.css">
+
+<!-- Font Icon -->
+<link rel="stylesheet"
+	href="css/register/fonts/material-icon/css/material-design-iconic-font.min.css">
+
+<!-- Main css -->
+<link rel="stylesheet" href="css/register/style.css">
 </head>
 <body>
-	<div class="container rounded bg-white mt-5 mb-5">
-		<div class="row">
-			<div class="col-md-3 border-right">
-				<div
-					class="d-flex flex-column align-items-center text-center p-3 py-5">
-					<span class="font-weight-bold">NAME : ${user.name } </span> <span
-						class="text-black-50">EMAIL: ${user.email }</span> <span></span>
-				</div>
-			</div>
-			<div class="col-md-5 border-right">
-				<div class="p-3 py-5">
-					<div class="d-flex justify-content-between align-items-center mb-3">
-						<h4 class="text-right">Profile Settings</h4>
-					</div>
-					<form action="userupdateimpl.mc" method="post">
-						<div class="row mt-2">
-							<div class="col-md-6">
-								<label class="labels">NAME</label><input type="text" name="name"
-									class="form-control" placeholder="your name"
-									value="${user.name }">
-							</div>
+
+	<div class="main">
+
+		<section class="signup">
+			<!-- <img src="images/signup-bg.jpg" alt=""> -->
+			<div class="container">
+				<div class="signup-content">
+					<form method="POST" action="userupdateimpl.mc" id="signup-form"
+						class="signup-form">
+						<h2 class="form-title">회원정보 수정</h2>
+						<p>Email: ${user.email } / 이름: ${user.name }</p>
+
+						<div class="form-group">
+							email: <input type="email" class="form-input" name="email"
+								id="email" value="${user.email }" disabled /> <input
+								type="hidden" name="email" value="${user.email }">
 						</div>
-						<div class="row mt-3">
-							<div class="col-md-12">
-								<label class="labels">EMAIL</label><input value="${user.email }"
-									disabled /> <input type="hidden" name="email"
-									value="${user.email }">
-							</div>
-							<div class="col-md-12">
-								<label class="labels">PASSWORD</label><input type="password"
-									name="pwd" class="form-control" placeholder="your new pwd"
-									value="${user.pwd }">
-							</div>
+						<div class="form-group">
+							비밀번호: <input type="password" class="form-input" name="pwd"
+								id="password" value="${user.pwd }" /> <span toggle="#password"
+								class="zmdi zmdi-eye field-icon toggle-password"></span>
 						</div>
-						<div class="mt-5 text-center">
-							<input type="submit" value="UPDATE">
+						<div class="form-group">
+							이름: <input type="text" class="form-input" name="name" id="name"
+								placeholder="Your Name" value="${user.name }" />
+						</div>
+
+						<div class="form-group">
+							<input type="submit" name="submit" id="submit"
+								class="form-submit" value="정보 수정 " />
 						</div>
 					</form>
 				</div>
 			</div>
-		</div>
+		</section>
+
 	</div>
+
 </body>
+<!-- This templates was made by Colorlib (https://colorlib.com) -->
 </html>
