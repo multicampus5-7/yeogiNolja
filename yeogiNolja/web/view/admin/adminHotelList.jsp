@@ -22,6 +22,9 @@
 		</div>
 	</div>
 </div>
+
+<jsp:include page="${message}"></jsp:include>
+
 <div class="row">
 	<div class="col-lg-6-2">
 		<div class="main-card mb-3 card">
