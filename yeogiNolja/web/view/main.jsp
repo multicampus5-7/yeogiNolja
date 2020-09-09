@@ -33,7 +33,13 @@
 		<c:choose>
 			<c:when test="${user == null}">
 				<p>
-					<a href="login.mc">login</a> <a href="admin.mc">admin</a>
+					<a href="login.mc">login</a> 
+				</p>
+			</c:when>
+			<c:when test="${user.admin_yn == 'Y'}">
+				<p>${user.name}님
+					| <a href="myReserve.mc">나의 예약 확인하기 </a> | <a href="userupdate.mc">회원
+						정보 수정</a> | <a href="admin.mc">관리자</a> | <a href="logout.mc">logout</a>
 				</p>
 			</c:when>
 			<c:otherwise>

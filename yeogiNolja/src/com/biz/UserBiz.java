@@ -72,8 +72,10 @@ public class UserBiz implements Biz<String, UserVO> {
 
 	@Override
 	public void modifyAdmin(UserVO v) throws Exception {
-		// TODO Auto-generated method stub
-		
+		int result = dao.updateAdminForm(v);
+		if(result == 0) {
+			throw new Exception();
+		}		
 	}
 
 	@Override

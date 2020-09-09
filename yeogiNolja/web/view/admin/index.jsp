@@ -97,21 +97,19 @@
                                             <i class="fa fa-angle-down ml-2 opacity-8"></i>
                                         </a>
                                         <div tabindex="-1" role="menu" aria-hidden="true" class="dropdown-menu dropdown-menu-right">
-                                            <button type="button" tabindex="0" class="dropdown-item">User Account</button>
-                                            <button type="button" tabindex="0" class="dropdown-item">Settings</button>
-                                            <h6 tabindex="-1" class="dropdown-header">Header</h6>
-                                            <button type="button" tabindex="0" class="dropdown-item">Actions</button>
-                                            <div tabindex="-1" class="dropdown-divider"></div>
-                                            <button type="button" tabindex="0" class="dropdown-item">Dividers</button>
+                                            <button type="button" tabindex="0" class="dropdown-item"
+                                            onclick="location.href='main.mc'">Go To Home</button>
+                                            <button type="button" tabindex="0" class="dropdown-item"
+                                            onclick="location.href='logout.mc'"><font color=#C10035>Logout</font></button>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="widget-content-left  ml-3 header-user-info">
                                     <div class="widget-heading">
-                                        Alina Mclourd
+                                        ${user.name}
                                     </div>
                                     <div class="widget-subheading">
-                                        VP People Manager
+                                        ${user.email }
                                     </div>
                                 </div>
                                 <div class="widget-content-right header-user-info ml-3">
