@@ -165,30 +165,29 @@
 							<h5>Grade</h5>
 							<div class="custom-radio custom-control">
 								<input type="radio" id="exampleCustomRadio1" class="custom-control-input"
-									name="grade" value="5-star" checked /> <label class="custom-control-label"
-									for="exampleCustomRadio1"> 5-star </label>
+									name="grade" value="1급" checked /> <label class="custom-control-label"
+									for="exampleCustomRadio1"> 1급 </label>
 							</div>
 							<div class="custom-radio custom-control">
 								<input type="radio" id="exampleCustomRadio2" class="custom-control-input"
-									name="grade" value="4-star" /> <label class="custom-control-label"
-									for="exampleCustomRadio2"> 4-star </label>
+									name="grade" value="2급" /> <label class="custom-control-label"
+									for="exampleCustomRadio2"> 2급 </label>
 							</div>
 							<div class="custom-radio custom-control">
 								<input type="radio" id="exampleCustomRadio3" class="custom-control-input"
-									name="grade" value="3-star" /> <label class="custom-control-label"
-									for="exampleCustomRadio3"> 3-star </label>
+									name="grade" value="3급" /> <label class="custom-control-label"
+									for="exampleCustomRadio3"> 3급 </label>
 							</div>
 							<div class="custom-radio custom-control">
 								<input type="radio" id="exampleCustomRadio4" class="custom-control-input"
-									name="grade" value="2-star" /> <label class="custom-control-label"
-									for="exampleCustomRadio4"> 2-star </label>
+									name="grade" value="4급" /> <label class="custom-control-label"
+									for="exampleCustomRadio4"> 4급 </label>
 							</div>
 							<div class="custom-radio custom-control">
 								<input type="radio" id="exampleCustomRadio5" class="custom-control-input"
-									name="grade" value="1-star" /> <label class="custom-control-label"
-									for="exampleCustomRadio5"> 1-star </label>
-							</div>
-													
+									name="grade" value="5급" /> <label class="custom-control-label"
+									for="exampleCustomRadio5"> 5급 </label>
+							</div>				
 						</div>
 					</div>
 				</div>

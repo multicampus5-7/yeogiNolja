@@ -66,17 +66,13 @@ public class AdminController {
 	@RequestMapping("/adminHotelList.mc")
 	public ModelAndView adminHotelList() {
 		ModelAndView mv = new ModelAndView();
-		
 		ArrayList<HotelList> hotelList = new ArrayList<HotelList>();
 		try {
 			hotelList = hbiz.get();
-//			for (HotelList hList : hotelList) {
-//				System.out.println(hList);
-//			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+		mv.addObject("message", "messageNull.jsp");		
 		mv.addObject("hotelList", hotelList);
 		mv.addObject("centerpage", "adminHotelList.jsp");
 		mv.setViewName("admin/index");
@@ -95,22 +91,25 @@ public class AdminController {
 	@RequestMapping("/adminHotelRegisterImpl.mc")
 	public ModelAndView adminHotelRegisterImpl(HotelList h) {
 		ModelAndView mv = new ModelAndView();
+		ArrayList<HotelList> hotelList = new ArrayList<HotelList>();
 		System.out.println(h);
 		try {
 			hbiz.registerAdmin(h);
+			hotelList = hbiz.get();
 			mv.addObject("message", "messageOk.jsp");
+			mv.addObject("hotelList", hotelList);
+			mv.addObject("centerpage", "adminHotelList.jsp");
 		} catch (Exception e) {
 			e.printStackTrace();
 			mv.addObject("message", "messageFail.jsp");
+			mv.addObject("centerpage", "adminHotelRegister.jsp");	
 		}
-		mv.addObject("centerpage", "adminHotelRegister.jsp");	
-		mv.setViewName("admin/index");		
+		mv.setViewName("admin/index");	
 		return mv;
 	}
 	
 	@RequestMapping("/adminHotelRoomRegisterImpl.mc")
 	public String adminHotelRoomRegisterImpl(HotelRoomVO hr) {
-		ModelAndView mv = new ModelAndView();
 		System.out.println(hr);
 		String hotelid = hr.getHotel_id();
 		try {
@@ -136,7 +135,7 @@ public class AdminController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+		mv.addObject("message", "messageNull.jsp");
 		mv.addObject("hotelDetail", h);
 		mv.addObject("roomList", roomlist);
 		mv.addObject("centerpage", "adminHotelDetail.jsp");
@@ -167,15 +166,26 @@ public class AdminController {
 	}
 	
 	@RequestMapping("/adminHotelModifyImpl.mc")
-	public String adminHotelModifyImpl(HotelList h) {
+	public ModelAndView adminHotelModifyImpl(HotelList h) {
+		ModelAndView mv = new ModelAndView();
+		HotelList hList = null;
+		ArrayList<HotelRoomVO> roomlist = new ArrayList<HotelRoomVO>();
 		System.out.println(h);
 		String hotelid = h.getHotel_id();
 		try {
 			hbiz.modifyAdmin(h);
+			hList = hbiz.get(hotelid);
+			roomlist = rbiz.getN(hotelid);
+			mv.addObject("message", "messageOk.jsp");
 		} catch (Exception e) {
 			e.printStackTrace();
+			mv.addObject("message", "messageFail.jsp");
 		}
-		return "redirect:hotelDetail.mc?id="+hotelid;
+		mv.addObject("hotelDetail", hList);
+		mv.addObject("roomList", roomlist);
+		mv.addObject("centerpage", "adminHotelDetail.jsp");
+		mv.setViewName("admin/index");	
+		return mv;
 	}
 	
 	@RequestMapping("/adminUserList.mc")

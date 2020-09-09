@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 	
-<script src="http://maps.google.com/maps/api/js?sensor=true"></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=238179f228ad1dcc201f832e9e25eced"></script>
 
 <div class="app-page-title">
 	<div class="page-title-wrapper">
@@ -21,6 +21,9 @@
 		</div>
 	</div>
 </div>
+
+<jsp:include page="${message}"></jsp:include>
+
 <div class="row">
 	<div class="col-lg-6-2">
 		<div class="main-card mb-3 card">
@@ -34,7 +37,7 @@
 						</tr>
 						<tr>
 							<th>NAME</th>
-							<td>${hotelDetail.name}</td>
+							<td>${hotelDetail.name} </td>
 						</tr>
 						<tr>
 							<th>ADDRESS</th>
@@ -42,7 +45,7 @@
 						</tr>
 						<tr>
 							<th>ROOMS</th>
-							<td>${hotelDetail.total_room}</td>
+							<td>${hotelDetail.total_room} 개</td>
 						</tr>
 						<tr>
 							<th>AMENITIES</th>
@@ -77,8 +80,8 @@
 	<div class="col-md-6">
 		<div class="main-card mb-3 card">
 			<div class="card-body">
-				<div class="card-title">Maps</div>
-				<div id="gmap-example"></div>
+				<div class="card-title">Location</div>
+					<div id="map" style="width:100%;height:300px;"></div>
 			</div>
 		</div>
 	</div>
@@ -91,7 +94,6 @@
 					<thead>
 						<tr>
 							<th>ID</th>
-							<th>NUMBER</th>
 							<th>NAME</th>
 							<th>CAPACITY</th>
 							<th>PRICE</th>
@@ -103,7 +105,6 @@
 						<c:forEach var="r" items="${roomList}">
 							<tr>
 								<th scope="row">${r.room_id}</th>
-								<td>${r.room_num}</td>
 								<td>${r.room_name}</td>
 								<td>${r.adults}</td>
 								<td><fmt:formatNumber value="${r.price}" pattern="###,###,###"/></td>
@@ -144,3 +145,47 @@
         </div>
     </div>
 </div>
+
+<script>
+var maplon = ${hotelDetail.lon};
+var maplat = ${hotelDetail.lat};
+
+var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+    mapOption = { 
+        center: new kakao.maps.LatLng(maplon+0.0002, maplat), // 지도의 중심좌표
+        level: 3 // 지도의 확대 레벨
+    };
+
+var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+
+// 마커가 표시될 위치입니다 
+var markerPosition  = new kakao.maps.LatLng(maplon, maplat); 
+
+// 마커를 생성합니다
+var marker = new kakao.maps.Marker({
+    position: markerPosition
+});
+
+// 마커가 지도 위에 표시되도록 설정합니다
+marker.setMap(map);
+
+// 아래 코드는 지도 위의 마커를 제거하는 코드입니다
+// marker.setMap(null);    
+
+// 커스텀 오버레이에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+var content = '<div class="customoverlay">' +
+    '    <span class="title">${hotelDetail.name}</span>' +
+    '</div>';
+
+// 커스텀 오버레이가 표시될 위치입니다 
+var position = new kakao.maps.LatLng(maplon, maplat);  
+
+// 커스텀 오버레이를 생성합니다
+var customOverlay = new kakao.maps.CustomOverlay({
+    map: map,
+    position: position,
+    content: content,
+    yAnchor: 1 
+});
+
+</script>
