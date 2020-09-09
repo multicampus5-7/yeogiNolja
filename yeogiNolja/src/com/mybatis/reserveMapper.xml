@@ -70,4 +70,8 @@
 		ORDER BY RSV.RSV_ID
 	</select>
 
+	<update id="updateAdminForm" parameterType="reserveVO">
+		update hotel_reserve set pay_yn=#{pay_yn} where rsv_id=#{rsv_id}
+	</update>
+
 </mapper>

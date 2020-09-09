@@ -62,6 +62,19 @@ public class ReserveTest {
 //			e.printStackTrace();
 //		}
 
+		// update test
+		String rsv_id = "rv0034";
+		String pay_yn = "n";
+		ReserveVO reserveVO = new ReserveVO(rsv_id, pay_yn, "");
+		System.out.println(reserveVO);
+		
+		try {
+			biz.modifyAdmin(reserveVO);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 //		//select ALL JOIN (RSV + HOTEL + ROOM + USERS)
 //		ReserveVO r = new ReserveVO();
 //		String rsv_id="rv0001";
