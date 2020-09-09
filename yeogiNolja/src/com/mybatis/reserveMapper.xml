@@ -3,7 +3,7 @@
 <mapper namespace="com.dao.ReserveDao">
 
 	<insert id="insert" parameterType="reserveVO">
-		INSERT INTO HOTEL_RESERVE(rsv_id, hotel_id, room_id, user_email, start_date, end_date, pay_yn) VALUES (('rv'||lpad(rsv_seq.nextval, 4, '0')),#{hotel_id},#{room_id},#{user_email},#{start_date},#{end_date},#{pay_yn})
+		INSERT INTO HOTEL_RESERVE(rsv_id, hotel_id, room_id, user_email, start_date, end_date, pay_yn) VALUES (('rv'||lpad(rsv_seq.nextval, 4, '0')),#{hotel_id},#{room_id},#{user_email},TO_DATE(#{start_date}, 'YYYY-MM-DD'),TO_DATE(#{end_date}, 'YYYY-MM-DD'),#{pay_yn})
 	</insert>
 
 	<update id="update" parameterType="reserveVO">
@@ -12,8 +12,8 @@
 		R.USER_EMAIL=(SELECT U.EMAIL FROM USERS U WHERE U.NAME=#{name}),
 		R.ROOM_ID=(SELECT RM.ROOM_ID FROM HOTEL_ROOM RM WHERE RM.ROOM_NAME=#{room_name} AND 
 		                                                    RM.HOTEL_ID=(SELECT H2.HOTEL_ID FROM HOTEL_LIST H2 WHERE H2.HOTEL_NAME=#{hotel_name})),
-		R.START_DATE=TO_DATE(#{start_date}),
-		R.END_DATE=TO_DATE(#{end_date}),
+		R.START_DATE=TO_DATE(#{start_date}, 'YYYY-MM-DD'),
+		R.END_DATE=TO_DATE(#{end_date}, 'YYYY-MM-DD'),
 		R.PAY_YN=#{pay_yn}
 		WHERE R.RSV_ID=#{rsv_id}
 	</update>
@@ -54,7 +54,7 @@
 	</select>
 
 	<insert id="insertAdminForm" parameterType="reserveVO">
-		INSERT INTO HOTEL_RESERVE VALUES (#{rsv_id},#{hotel_id},#{room_id},#{user_email},#{start_date},#{end_date},#{rsv_date},#{pay_yn})
+		INSERT INTO HOTEL_RESERVE VALUES (#{rsv_id},#{hotel_id},#{room_id},#{user_email}, TO_DATE(#{start_date}, 'YYYY-MM-DD'), TO_DATE(#{end_date}, 'YYYY-MM-DD'), TO_DATE(#{rsv_date}, 'YYYY-MM-DD'),#{pay_yn})
 	</insert>
 
 	<!-- Search By Date -->
@@ -63,12 +63,13 @@
 			JOIN USERS U ON(RSV.USER_EMAIL = U.EMAIL)
 			JOIN HOTEL_LIST H ON(RSV.HOTEL_ID = H.HOTEL_ID)
 			JOIN HOTEL_ROOM RM ON(RSV.ROOM_ID = RM.ROOM_ID)
-		WHERE TO_DATE(START_DATE) >= TO_DATE(#{start_date}) AND 
-				TO_DATE(END_DATE) &lt;= TO_DATE(#{end_date}) AND
+		WHERE TO_DATE(START_DATE) >= TO_DATE(#{start_date}, 'YYYY-MM-DD') AND 
+				TO_DATE(END_DATE) &lt;= TO_DATE(#{end_date}, 'YYYY-MM-DD') AND
 			H.HOTEL_NAME LIKE '%'||#{hotel_name}||'%' AND
 			U.NAME LIKE '%'||#{name}||'%'
 		ORDER BY RSV.RSV_ID
 	</select>
+	
 
 	<update id="updateAdminForm" parameterType="reserveVO">
 		update hotel_reserve set pay_yn=#{pay_yn} where rsv_id=#{rsv_id}
