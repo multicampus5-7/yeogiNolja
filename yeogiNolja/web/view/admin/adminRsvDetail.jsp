@@ -2,8 +2,8 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-	
-<script src="http://maps.google.com/maps/api/js?sensor=true"></script>
+
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=238179f228ad1dcc201f832e9e25eced"></script>
 
 <div class="app-page-title">
 	<div class="page-title-wrapper">
@@ -90,7 +90,7 @@
 		<div class="main-card mb-3 card">
 			<div class="card-body">
 				<div class="card-title">Maps</div>
-				<div id="gmap-example"></div>
+				<div id="map" style="width:100%;height:300px;"></div>
 			</div>
 		</div>
 	</div>
@@ -225,3 +225,47 @@
         </div>
     </div>
 </div>
+
+<script>
+var maplon = ${rsv.lon};
+var maplat = ${rsv.lat};
+
+var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+    mapOption = { 
+        center: new kakao.maps.LatLng(maplon+0.0002, maplat), // 지도의 중심좌표
+        level: 3 // 지도의 확대 레벨
+    };
+
+var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+
+// 마커가 표시될 위치입니다 
+var markerPosition  = new kakao.maps.LatLng(maplon, maplat); 
+
+// 마커를 생성합니다
+var marker = new kakao.maps.Marker({
+    position: markerPosition
+});
+
+// 마커가 지도 위에 표시되도록 설정합니다
+marker.setMap(map);
+
+// 아래 코드는 지도 위의 마커를 제거하는 코드입니다
+// marker.setMap(null);    
+
+// 커스텀 오버레이에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+var content = '<div class="customoverlay">' +
+    '    <span class="title">${rsv.hotel_name}</span>' +
+    '</div>';
+
+// 커스텀 오버레이가 표시될 위치입니다 
+var position = new kakao.maps.LatLng(maplon, maplat);  
+
+// 커스텀 오버레이를 생성합니다
+var customOverlay = new kakao.maps.CustomOverlay({
+    map: map,
+    position: position,
+    content: content,
+    yAnchor: 1 
+});
+
+</script>
