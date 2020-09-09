@@ -214,6 +214,8 @@
 									<fmt:formatDate value="${endDate}" pattern="yyyy-MM-dd"/>
 								</td>
 								<td>
+									<button class="mr-2 btn-icon btn-icon-only btn btn-outline-success" 
+									onclick="location.href='adminRsvDetail.mc?id=${rsv.rsv_id}'">View</button>
 									<button class="mr-2 btn-icon btn-icon-only btn btn-outline-info" 
 									onclick="location.href='adminRsvModify.mc?id=${rsv.rsv_id}'">Edit</button>
 									<button class="mr-2 btn-icon btn-icon-only btn btn-outline-danger">
