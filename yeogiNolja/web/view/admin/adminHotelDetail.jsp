@@ -3,8 +3,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 	
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=238179f228ad1dcc201f832e9e25eced"></script>
-
+<script type="text/javascript"
+	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=77051248a1682bf5a19186626f35773e"></script>
+<
 <div class="app-page-title">
 	<div class="page-title-wrapper">
 		<div class="page-title-heading">
