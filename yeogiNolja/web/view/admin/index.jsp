@@ -29,7 +29,7 @@
     <div class="app-container app-theme-white body-tabs-shadow fixed-sidebar fixed-header">
         <div class="app-header header-shadow">
             <div class="app-header__logo">
-                <div class="logo-src"></div>
+                <div class="logo-src" OnClick="location.href ='admin.mc'"></div>
                 <div class="header__pane ml-auto">
                     <div>
                         <button type="button" class="hamburger close-sidebar-btn hamburger--elastic" data-class="closed-sidebar">
@@ -467,33 +467,6 @@
                                         Users
                                     </a>
                                 </li>
-                                
-                                <li class="app-sidebar__heading">Widgets</li>
-                                <li>
-                                    <a href="#">
-                                        <i class="metismenu-icon pe-7s-display2"></i>
-                                        Dashboard Boxes
-                                    </a>
-                                </li>
-                                <li class="app-sidebar__heading">Forms</li>
-                                <li>
-                                    <a href="#">
-                                        <i class="metismenu-icon pe-7s-mouse">
-                                        </i>Forms Controls
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="metismenu-icon pe-7s-eyedropper">
-                                        </i>Forms Layouts
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="metismenu-icon pe-7s-pendrive">
-                                        </i>Forms Validation
-                                    </a>
-                                </li>
                             </ul>
                         </div>
                     </div>
@@ -529,7 +502,6 @@
                             </div>
                         </div>
                     </div>    </div>
-                <script src="http://maps.google.com/maps/api/js?sensor=true"></script>
         </div>
     </div>
 <script type="text/javascript" src="./assets/scripts/main.js"></script></body>

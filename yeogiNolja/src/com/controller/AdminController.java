@@ -43,11 +43,13 @@ public class AdminController {
 		String hotelTotal = null;
 		String userTotal = null;
 		String todayRsvTotal = null;
-
+		ArrayList<UserVO> ulist = null;
+		
 		try {
 			hotelTotal = hbiz.count();
 			userTotal = ubiz.count();
 			todayRsvTotal = rsvbiz.count();
+			ulist = ubiz.get();
 			System.out.println(hotelTotal);
 			System.out.println(userTotal);
 			System.out.println(todayRsvTotal);
@@ -55,6 +57,7 @@ public class AdminController {
 			e.printStackTrace();
 		}
 		
+		mv.addObject("userList", ulist);
 		mv.addObject("hotelTotalNum", hotelTotal);
 		mv.addObject("userTotalNum", userTotal);
 		mv.addObject("rsvTotalNum", todayRsvTotal);
