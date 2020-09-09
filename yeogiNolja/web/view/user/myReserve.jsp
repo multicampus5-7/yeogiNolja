@@ -40,6 +40,16 @@ h2, p {
 </style>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script>
+	$(document).ready(function() {
+	for (var i = 1; i <= ${rListLen}; i++) {
+		var str = '#pay'+i;
+		
+		if($(str).val() == 'Y')
+			$(str).hide();
+	}
+	});
+</script>
 <body>
 	<header>
 		<p>${user.name}님
@@ -51,70 +61,76 @@ h2, p {
 		<div class="container">
 			<h2>${user.name}님의예약페이지입니다.</h2>
 			<p>총 ${rListLen}건의 예약이 확인되었습니다.</p>
-			<p>${st }</p>
-			<c:forEach var="r" items="${rList }">
+			<c:forEach var="r" items="${rList }" varStatus="status">
 				<div class="row">
 					<div class="booking-form">
-						<form action="removeReservation.mc" method="post">
-							<div class="row">
-								<div class="col-md-6">
-									<div class="form-group">
-										<span class="form-label">Hotel Name</span> <input
-											class="form-control" type="text" value="${r.hotel_name}"
-											disabled>
-									</div>
-								</div>
-								<div class="col-md-6">
-									<div class="form-group">
-										<span class="form-label">Room Type</span> <input
-											class="form-control" type="text" value="${r.room_name}"
-											disabled>
-									</div>
+						<div class="row">
+							<div class="col-md-6">
+								<div class="form-group">
+									<span class="form-label">Hotel Name</span> <input
+										class="form-control" type="text" value="${r.hotel_name}"
+										disabled>
 								</div>
 							</div>
-							<div class="row">
-								<div class="col-md-3">
-									<div class="form-group">
-										<span class="form-label">Reservation Date</span> <input
-											class="form-control" type="date" value="${r.rsv_date }"
-											disabled>
-									</div>
-								</div>
-								<div class="col-md-3">
-									<div class="form-group">
-										<span class="form-label">Check In</span> <input
-											class="form-control" type="date" value="${r.start_date }"
-											disabled>
-									</div>
-								</div>
-								<div class="col-md-3">
-									<div class="form-group">
-										<span class="form-label">Check Out</span> <input
-											class="form-control" type="date" value="${r.end_date }"
-											disabled>
-									</div>
-								</div>
-								<div class="col-md-3">
-									<div class="form-group">
-										<span class="form-label">결제 상태</span> <input
-											class="form-control" type="text" value="${r.pay_yn}" disabled>
-									</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<span class="form-label">Room Type</span> <input
+										class="form-control" type="text" value="${r.room_name}"
+										disabled>
 								</div>
 							</div>
-							<div class="row">
-								<div class="col-md-3">
-									<div class="form-btn">
+						</div>
+						<div class="row">
+							<div class="col-md-3">
+								<div class="form-group">
+									<span class="form-label">Reservation Date</span> <input
+										class="form-control" type="date" value="${r.rsv_date }"
+										disabled>
+								</div>
+							</div>
+							<div class="col-md-3">
+								<div class="form-group">
+									<span class="form-label">Check In</span> <input
+										class="form-control" type="date" value="${r.start_date }"
+										disabled>
+								</div>
+							</div>
+							<div class="col-md-3">
+								<div class="form-group">
+									<span class="form-label">Check Out</span> <input
+										class="form-control" type="date" value="${r.end_date }"
+										disabled>
+								</div>
+							</div>
+							<div class="col-md-3">
+								<div class="form-group">
+									<span class="form-label">결제 상태</span> <input
+										class="form-control" type="text" value="${r.pay_yn}" disabled>
+								</div>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-md-3">
+								<div class="form-btn">
+									<form action="removeReservation.mc" method="post">
 										<input type="hidden" name="rsv_id" value="${r.rsv_id}">
-										<button class="submit-btn">예약 취소하기</button>
-									</div>
-								</div>
-								<div class="col-md-3">
-									<div class="form-btn">
-										<button class="submit-btn">결제하기</button>
-									</div>
+										<button id="cancel" class="submit-btn">예약 취소하기</button>
+									</form>
+
 								</div>
 							</div>
-						</form>
+							<div class="col-md-3">
+								<div class="form-btn">
+									<form action="payReservation.mc" method="post">
+										<input type="hidden" name="rsv_id" value="${r.rsv_id}">
+										<button class="submit-btn" id="pay${status.count}"
+											value="${r.pay_yn}">결제하기</button>
+									</form>
+
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 			</c:forEach>

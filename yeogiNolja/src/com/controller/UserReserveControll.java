@@ -49,10 +49,22 @@ public class UserReserveControll {
 
 		try {
 			rbiz.remove(rsv_id);
-			mv.addObject("remove", "ok");
 		} catch (Exception e) {
 			e.printStackTrace();
-			mv.addObject("remove", "fail");
+		}
+		return mv;
+	}
+
+	@RequestMapping("payReservation.mc")
+	public ModelAndView payReservation(String rsv_id) {
+		ModelAndView mv = new ModelAndView("redirect: myReserve.mc");
+
+		try {
+			ReserveVO reserveVO = new ReserveVO(rsv_id, "Y", "");
+			System.out.println(reserveVO);
+			rbiz.modifyAdmin(reserveVO);
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 		return mv;
 	}

@@ -1,7 +1,7 @@
 package com.vo;
 
 public class ReserveVO {
-	//HOTEL_RESERVE
+	// HOTEL_RESERVE
 	private String rsv_id;
 	private String hotel_id;
 	private String room_id;
@@ -10,12 +10,12 @@ public class ReserveVO {
 	private String end_date;
 	private String rsv_date;
 	private String pay_yn;
-	
-	//USERS
+
+	// USERS
 	private String name;
 	private String admin_yn;
-	
-	//HOTEL_LIST
+
+	// HOTEL_LIST
 	private String hotel_name;
 	private String addr_sd;
 	private String addr_sgg;
@@ -26,17 +26,17 @@ public class ReserveVO {
 	private String amenities;
 	private String grade;
 	private String hotel_img;
-	
-	//HOTEL_ROOM
+
+	// HOTEL_ROOM
 	private String room_name;
 	private String adults;
 	private String price;
 	private String room_img;
 	private String room_num;
-	
+
 	public ReserveVO() {
 	}
-	
+
 	public ReserveVO(String rsv_id) {
 		this.rsv_id = rsv_id;
 	}
@@ -44,6 +44,11 @@ public class ReserveVO {
 	public ReserveVO(String start_date, String end_date) {
 		this.start_date = start_date;
 		this.end_date = end_date;
+	}
+
+	public ReserveVO(String rsv_id, String pay_yn, String empty) {
+		this.rsv_id = rsv_id;
+		this.pay_yn = pay_yn;
 	}
 
 	public ReserveVO(String rsv_id, String hotel_id, String room_id, String user_email, String start_date,
@@ -68,9 +73,9 @@ public class ReserveVO {
 		this.end_date = end_date;
 		this.pay_yn = pay_yn;
 	}
-	
-	public ReserveVO(String hotel_id, String room_id, String user_email, String start_date,
-			String end_date, String pay_yn) {
+
+	public ReserveVO(String hotel_id, String room_id, String user_email, String start_date, String end_date,
+			String pay_yn) {
 		this.hotel_id = hotel_id;
 		this.room_id = room_id;
 		this.user_email = user_email;
@@ -78,7 +83,6 @@ public class ReserveVO {
 		this.end_date = end_date;
 		this.pay_yn = pay_yn;
 	}
-
 
 	public ReserveVO(String rsv_id, String hotel_id, String room_id, String user_email, String start_date,
 			String end_date, String rsv_date, String pay_yn, String name, String admin_yn, String hotel_name,
@@ -322,6 +326,5 @@ public class ReserveVO {
 				+ ", hotel_img=" + hotel_img + ", room_name=" + room_name + ", adults=" + adults + ", price=" + price
 				+ ", room_img=" + room_img + ", room_num=" + room_num + "]";
 	}
-
 
 }

@@ -98,13 +98,13 @@
 							<div class="row">
 								<div class="col-md-6">
 									<div class="form-btn">
-										<button class="submit-btn" name="pay_yn" value="n">book
+										<button class="submit-btn" name="pay_yn" value="N">book
 											Now</button>
 									</div>
 								</div>
 								<div class="col-md-6">
 									<div class="form-btn">
-										<button class="submit-btn" name="pay_yn" value="y">pay
+										<button class="submit-btn" name="pay_yn" value="Y">pay
 											Now</button>
 									</div>
 								</div>
