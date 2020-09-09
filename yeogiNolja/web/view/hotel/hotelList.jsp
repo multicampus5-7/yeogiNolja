@@ -57,10 +57,11 @@ img {
 			 else{
 				 $('.map').eq(idx).show();
 				 var idx2 = Number(idx) +1;
-				 var mapNum = 'map'+idx2
-				 console.log(mapNum);
-
-				 displayMap(mapNum);
+				 var mapNum = 'map'+idx2;
+				 var lonNum = $('#lon'+idx2).val();
+				 var latNum = $('#lat'+idx2).val();
+				
+				displayMap(mapNum, lonNum, latNum);
 			 }
 		});
 	});
@@ -76,15 +77,15 @@ img {
 		document.querySelector("#totalPage").innerHTML=pageNumSet;
 	};
 
-	function displayMap(mapNum){
+	function displayMap(mapNum, lon, lat){
 		var mapContainer = document.getElementById(mapNum),
 	    mapOption = { 
-	        center: new kakao.maps.LatLng(33.450701, 126.570667),
+	        center: new kakao.maps.LatLng(lon, lat),
 	        level: 3 
 	    };
 
 		var map = new kakao.maps.Map(mapContainer, mapOption); 
-		var markerPosition  = new kakao.maps.LatLng(33.450701, 126.570667); 
+		var markerPosition  = new kakao.maps.LatLng(lon, lat); 
 		var marker = new kakao.maps.Marker({
 	    	position: markerPosition
 		});
@@ -121,7 +122,10 @@ img {
 				</tr>
 				<tr>
 					<td><p>${hlist.addr_sd}|${hlist.addr_sgg}
-							| ${hlist.addr_emd} | <a class="showMap">지도보기</a></td>
+							| ${hlist.addr_emd} | <a class="showMap">지도보기</a> <input
+								type="hidden" id="lon${status.count}" value="${hlist.lon}"><input
+								type="hidden" id="lat${status.count}" value="${hlist.lat }"></td>
+
 				</tr>
 				<tr>
 					<td>${hlist.grade }|${hlist.amenities}</td>
