@@ -25,6 +25,9 @@
 	<select id="selectall_count" resultType="String">
 		SELECT COUNT(*) FROM USERS
 	</select>
-
+	
+	<update id="updateAdminForm" parameterType="user">
+		UPDATE USERS SET PWD=#{pwd}, NAME=#{name}, ADMIN_YN=#{admin_yn} WHERE EMAIL=#{email}
+	</update>
 </mapper>
 

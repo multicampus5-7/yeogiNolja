@@ -191,7 +191,7 @@ public class AdminController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+		mv.addObject("message", "messageNull.jsp");
 		mv.addObject("userList", ulist);
 		mv.addObject("centerpage", "adminUserList.jsp");
 		mv.setViewName("admin/index");
@@ -332,5 +332,45 @@ public class AdminController {
 		PrintWriter out = response.getWriter();
 		out.print(job.toJSONString());
 		out.close();
+	}
+	
+	@RequestMapping("adminUserModify.mc")
+	public ModelAndView adminUserModify(String id) {
+		ModelAndView mv = new ModelAndView();
+		System.out.println(id);
+		UserVO u = null;
+
+		try {
+			u = ubiz.get(id);
+			System.out.println(u);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		mv.addObject("userDetail", u);
+		mv.addObject("centerpage", "adminUserModify.jsp");
+		mv.setViewName("admin/index");		
+		return mv;
+	}
+	
+	@RequestMapping("/adminUserModifyImpl.mc")
+	public ModelAndView adminUserModifyImpl(UserVO u) {
+		ModelAndView mv = new ModelAndView();
+		System.out.println(u);
+		ArrayList<UserVO> ulist = null;	
+		
+		try {
+			ubiz.modifyAdmin(u);
+			ulist = ubiz.get();
+			mv.addObject("userList", ulist);
+			mv.addObject("message", "messageOk.jsp");
+		} catch (Exception e) {
+			e.printStackTrace();
+			mv.addObject("message", "messageFail.jsp");
+		}
+		
+		mv.addObject("centerpage", "adminUserList.jsp");
+		mv.setViewName("admin/index");
+		return mv;
 	}
 }

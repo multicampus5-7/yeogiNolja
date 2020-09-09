@@ -31,6 +31,9 @@
 		</div>
 	</div>
 </div>
+
+<jsp:include page="${message}"></jsp:include>
+
 <div class="row">
 	<div class="col-lg-6-2">
 		<div class="main-card mb-3 card">
@@ -60,7 +63,7 @@
 								</td>
 								<td>
 									<button class="mb-2 mr-2 btn-transition btn btn-outline-info" 
-									onclick="location.href='userupdate.mc?id=${u.email}'">Edit</button>
+									onclick="location.href='adminUserModify.mc?id=${u.email}'">Edit</button>
 									<button class="mb-2 mr-2 btn-transition btn btn-outline-danger">Delete</button>
 								</td>					
 							</tr>
