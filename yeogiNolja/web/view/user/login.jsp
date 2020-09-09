@@ -28,14 +28,14 @@
 					<div class="wrap-input100 validate-input"
 						data-validate="Valid email is required: ex@abc.xyz">
 						<input class="input100" type="text" name="email"
-							placeholder="Email" value="saebom023@gmail.com"> <span class="focus-input100-1"></span>
+							placeholder="Email"> <span class="focus-input100-1"></span>
 						<span class="focus-input100-2"></span>
 					</div>
 
 					<div class="wrap-input100 rs1 validate-input"
 						data-validate="Password is required">
 						<input class="input100" type="password" name="pwd"
-							placeholder="Password" value="pwd123"> <span class="focus-input100-1"></span>
+							placeholder="Password"> <span class="focus-input100-1"></span>
 						<span class="focus-input100-2"></span>
 					</div>
 
