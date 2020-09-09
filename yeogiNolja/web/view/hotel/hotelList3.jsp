@@ -39,7 +39,7 @@ img {
 }
 
 .map {
-	height: 200px;
+	height: 10px;
 	border: 2px solid blue;
 }
 </style>
@@ -49,20 +49,30 @@ img {
 <script>
 	$(document).ready(function(){
 		setTotalPageNum();
-		$('.map').hide();
-		$(".showMap").click(function(){
-			 var idx = $(".showMap").index(this);
-			 if( $('.map').eq(idx).is(":visible"))
-				 $('.map').eq(idx).hide();
-			 else{
-				 $('.map').eq(idx).show();
-				 var idx2 = Number(idx) +1;
-				 var mapNum = 'map'+idx2
-				 console.log(mapNum);
-
-				 displayMap(mapNum);
-			 }
-		});
+		
+		//$('#map').eq(2).hide();
+		 for (var i = ${stNum}; i <=${endNum}; i++) {
+			var str = '#map'+i;
+			var str2 = '#showMap' +i;
+			$(str).hide();
+			
+			$(str2).click(function(){
+				console.log(str2);
+				if($(str).is(":visible"))
+					$(str).hide();
+				
+				else{
+					$(str).show();
+				}
+				
+				
+				
+				
+				
+				
+				
+			});
+		} 
 	});
 	
 	function setTotalPageNum(){
@@ -76,8 +86,8 @@ img {
 		document.querySelector("#totalPage").innerHTML=pageNumSet;
 	};
 
-	function displayMap(mapNum){
-		var mapContainer = document.getElementById(mapNum),
+	function displayMap(){
+		var mapContainer = document.getElementById('map'),
 	    mapOption = { 
 	        center: new kakao.maps.LatLng(33.450701, 126.570667),
 	        level: 3 
@@ -121,13 +131,13 @@ img {
 				</tr>
 				<tr>
 					<td><p>${hlist.addr_sd}|${hlist.addr_sgg}
-							| ${hlist.addr_emd} | <a class="showMap">지도보기</a></td>
+							| ${hlist.addr_emd} | <a id="showMap${status.count }">지도보기</a></td>
 				</tr>
 				<tr>
 					<td>${hlist.grade }|${hlist.amenities}</td>
 				</tr>
 			</table>
-			<div id="map${status.count}" class="map"></div>
+			<div id="map${status.count }" class="map"></div>
 			<hr />
 		</c:forEach>
 	</div>

@@ -48,7 +48,7 @@ public class HotelController {
 
 			JSONArray jarr = new JSONArray();
 			HashSet<String> addrArr = new HashSet<String>();
-
+			jarr.add("서울");
 			for (HotelList hotelList2 : hotelList) {
 				jarr.add(hotelList2.getName());
 				addrArr.add(hotelList2.getAddr_sgg());
