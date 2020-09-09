@@ -19,15 +19,6 @@
 				data-placement="bottom" class="btn-shadow mr-3 btn btn-dark">
 				<i class="fa fa-star"></i>
 			</button>
-			<div class="d-inline-block dropdown">
-				<button type="button" data-toggle="dropdown" aria-haspopup="true"
-					aria-expanded="false"
-					class="btn-shadow dropdown-toggle btn btn-info">
-					<span class="btn-icon-wrapper pr-2 opacity-7"> <i
-						class="fa fa-business-time fa-w-20"></i>
-					</span> Buttons
-				</button>
-			</div>
 		</div>
 	</div>
 </div>
@@ -56,9 +47,12 @@
 								<td>${hlist.total_room}</td>
 								<td>${hlist.addr_sd} ${hlist.addr_sgg} ${hlist.addr_emd}</td>	
 								<td>
+									<button class="mb-2 mr-2 btn-transition btn btn-outline-success" 
+									onclick="location.href='hotelDetail.mc?id=${hlist.hotel_id}'">View</button>
 									<button class="mb-2 mr-2 btn-transition btn btn-outline-info" 
 									onclick="location.href='adminHotelModify.mc?id=${hlist.hotel_id}'">Edit</button>
-									<button class="mb-2 mr-2 btn-transition btn btn-outline-danger">Delete</button>
+									<button class="mb-2 mr-2 btn-transition btn btn-outline-danger">
+									<i class="pe-7s-trash btn-icon-wrapper"> </i></button>
 								</td>					
 							</tr>
 						</c:forEach>
